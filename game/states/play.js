@@ -7,8 +7,11 @@ States.Play = {
 	},
 	// Starts the game.
 	create: function(){
+		// Sets the game background with file associated to 'map' on boot.js.
+		this.game.background = this.game.add.tileSprite(0, 0, 1536, 1536, 'map');
+
 		// Sets the world bounds.
-		this.game.world.setBounds(0, 0, 900, 500);
+		this.game.world.setBounds(0, 0, 1536, 1536);
 
 		// Initialiazes the cursor keys.
 		this.game.cursors = game.input.keyboard.createCursorKeys();
