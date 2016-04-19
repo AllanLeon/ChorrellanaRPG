@@ -6,7 +6,7 @@ Game = {
 };
 
 // Initializes the Phaser game.
-window.game = game = new Phaser.Game(1536, 1536, Phaser.AUTO, '');
+window.game = game = new Phaser.Game(800, 600, Phaser.AUTO, '');
 
 // Adds the necessary states to the game.
 game.state.add('Boot', Game.States.Boot);
