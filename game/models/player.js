@@ -4,7 +4,7 @@ function Player(game){
 	this.health = 100;
 	this.sprite = null;
 	this.colliderSprite = null;
-	this.speed = 350;
+	this.speed = 200;
 	this.animation = 'slenderman';
 	this.direction = 'Down';
 	this.arrowKeys = null;
