@@ -5,11 +5,10 @@ function Player(game){
 	this.sprite = null;
 	this.colliderSprite = null;
 	this.speed = 200;
-	this.animation = 'slenderman';
+	this.animation = 'dukeAnim';
 	this.direction = 'Down';
 	this.arrowKeys = null;
 	this.stopped = true;
-	this.canMove = true;
 }
 
 // Info of the player's position.
@@ -27,7 +26,7 @@ Player.prototype.render = function(){
 	// sets sprite properties
 	this.colliderSprite.alpha = 0; // invisible collider sprite
 	this.game.physics.arcade.enable(this.colliderSprite); // enables physics on colliderSprite
-	this.game.physics.arcade.enable(this.sprite); // enables physics on sprite
+	//this.game.physics.arcade.enable(this.sprite); // enables physics on sprite
 
 	//this.colliderSprite.immovable = true; // makes it immovable when a collision occurs
 	this.colliderSprite.body.collideWorldBounds = true; // colliderSprite cannot exceed the world bounds
