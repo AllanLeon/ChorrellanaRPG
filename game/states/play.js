@@ -26,6 +26,8 @@ States.Play = {
 		//Creates and loads a HUD object
 		game.HUD = new HUD(window.game);
 		game.HUD.load();
+		game.HUD.healthBar.fixedToCamera = true;
+		game.HUD.availableHealth.fixedToCamera = true;
 		game.HUD.enableBody = true;
 	},
 	// Updates all the game's objects.
