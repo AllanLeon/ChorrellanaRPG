@@ -22,6 +22,11 @@ States.Play = {
 
 		// Sets the camera to follow the player.
 		this.game.camera.follow(this.game.player.colliderSprite);
+
+		//Creates and loads a HUD object
+		game.HUD = new HUD(window.game);
+		game.HUD.load();
+		game.HUD.enableBody = true;
 	},
 	// Updates all the game's objects.
 	update: function(){
