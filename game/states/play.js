@@ -20,13 +20,14 @@ States.Play = {
     	game.player = new Player(window.game);
 		game.player.load();
 
+		// Sets the camera to follow the player.
+		this.game.camera.follow(this.game.player.colliderSprite);
+		//this.game.camera.follow(this.game.enemy.colliderSprite);
+
 		// Creates and loads a Enemy.
 		game.enemy = new Enemy(window.game);
 		game.enemy.load();
 
-		// Sets the camera to follow the player.
-		this.game.camera.follow(this.game.player.colliderSprite);
-		//this.game.camera.follow(this.game.enemy.colliderSprite);
 
 	},
 	// Updates all the game's objects.

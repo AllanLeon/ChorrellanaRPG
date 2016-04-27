@@ -1,5 +1,5 @@
 // Declaration of Enemy data.
-function Enemy(game){
+function Enemy(game,player){
 	this.game = game;
 	this.health = 100;
 	this.sprite = null;
@@ -7,13 +7,14 @@ function Enemy(game){
 	this.speed = 200;
 	this.animation = 'redEnemy';
 	this.direction = 'Down';
+	this.player = player;
 	//this.arrowKeys = null;
 	this.stopped = true;
 }
 
 // Info of the Enemy's position.
 var positionData = {
-	initial: { x: Math.random()*1000, y: 100 }, // initial position of the Enemy
+	initial: { x: Math.floor(Math.random() * (1536 - (180 + 10))), y: Math.floor(Math.random() * (1536 - (180 + 10))) }, // initial position of the Enemy
 	colliderDifference: {x: 4, y: 3}, // distance from collider sprite to sprite
 };
 
@@ -53,7 +54,7 @@ Enemy.prototype.playAnimation = function(){
 
 // Stops all the animations and sets the currect frame to the default based on the Enemy's direction.
 Enemy.prototype.stopAnimation = function(direction){
-	this.sprite.animations.stop();
+	//this.sprite.animations.stop();
 
 	switch (this.direction) {
 		case 'Left':
@@ -100,7 +101,7 @@ Enemy.prototype.setBodyPosition = function(x, y){
 
 // Checks the input and handles the movement.
 Enemy.prototype.handleMovement = function(){
-	this.stop();
+	//this.stop();
 
 	if (this.game.cursors.up.isDown){
 		this.direction = "Up";
