@@ -22,10 +22,20 @@ States.Play = {
 
 		// Sets the camera to follow the player.
 		this.game.camera.follow(this.game.player.colliderSprite);
+		/*
+		//Create the stones group
+		stones = game.add.group();
+		stones.enableBody = true
+		*/
+
+		// Creates and loads a bullet object.
+    	game.bullet = new Bullet(window.game);
+    	game.bullet.load();
 	},
 	// Updates all the game's objects.
 	update: function(){
 		// Updates the player.
 		game.player.update();
+		game.bullet.update();
 	}
 };
