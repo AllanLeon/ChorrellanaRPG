@@ -4,7 +4,7 @@ function Enemy(game,player){
 	this.health = 100;
 	this.sprite = null;
 	this.colliderSprite = true;
-	this.speed = 200;
+	this.speed = 700;
 	this.animation = 'redEnemy';
 	this.direction = 'Down';
 	this.player = player;
@@ -14,7 +14,7 @@ function Enemy(game,player){
 
 // Info of the Enemy's position.
 var positionData = {
-	initial: { x: Math.floor(Math.random() * (1536 - (180 + 10))), y: Math.floor(Math.random() * (1536 - (180 + 10))) }, // initial position of the Enemy
+	initial: { x: Math.floor(Math.random() * (1356)), y: Math.floor(Math.random() * (1356)) }, // initial position of the Enemy
 	colliderDifference: {x: 4, y: 3}, // distance from collider sprite to sprite
 };
 
@@ -64,7 +64,7 @@ Enemy.prototype.stopAnimation = function(direction){
 			this.sprite.frame = 8;
 			break;
 		case 'Up':
-			this.sprite.frame = 12;
+			this.sprite.frame = 10;
 			break;
 		case 'Down':
 			this.sprite.frame = 0;
@@ -103,6 +103,16 @@ Enemy.prototype.setBodyPosition = function(x, y){
 Enemy.prototype.handleMovement = function(){
 	//this.stop();
 
+	if (this.sprite.x < 60){
+		this.direction = "Right";
+		this.move(this.speed, 1);
+	}
+
+	else if (this.sprite.x> 1250){
+		this.direction = "Left";
+		this.move(-this.speed, 1)
+	}
+
 	if (this.game.cursors.up.isDown){
 		this.direction = "Up";
 		//this.move(-this.speed, 0);
@@ -121,12 +131,7 @@ Enemy.prototype.handleMovement = function(){
 		//this.move(this.speed, 1);
 	}
 
-	if(this.stopped){
-		this.stopAnimation();
-	}
-	else{
-		this.playAnimation();
-	}
+	this.playAnimation();
 
 	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.x);
 }
