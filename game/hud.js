@@ -7,10 +7,11 @@ function HUD(game)
 	this.availableHealth = null;
 }
 
+//Settingg the inital position for the healthbar and available life
 var positionDataHud = 
 {
-	initialHUD: { healthBarx: 0, healthBary: 0 },
-	availablelife: { lifeBarx: 10 , lifeBary : 10 }
+	initialHUD: { healthBarx: 5, healthBary: 5 },
+	availablelife: { lifeBarx: 15 , lifeBary : 15 }
 };
 
 HUD.prototype.render = function() 
@@ -25,11 +26,13 @@ HUD.prototype.load = function()
 	this.render();
 }
 
-
-HUD.prototype.move = function()
+HUD.prototype.lifeBarUpdate = function()
 {
-	this.player.position.x
+	this.availableHealth.scale.setTo((this.health/10),1);
 }
 
-
+HUD.prototype.update = function() 
+{
+	this.lifeBarUpdate();
+};
 

@@ -28,11 +28,12 @@ States.Play = {
 		game.HUD.load();
 		game.HUD.healthBar.fixedToCamera = true;
 		game.HUD.availableHealth.fixedToCamera = true;
-		game.HUD.enableBody = true;
+
 	},
 	// Updates all the game's objects.
 	update: function(){
 		// Updates the player.
 		game.player.update();
+		game.HUD.update();
 	}
 };
