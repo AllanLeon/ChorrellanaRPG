@@ -13,7 +13,8 @@ function Player(game){
 
 // Info of the player's position.
 var positionData = {
-	initial: { x: 10, y: 230 }, // initial position of the player
+	//initial: { x: 300, y: 300}, // initial position of the player
+	initial: { x: 50, y: 230}, // initial position of the player
 	colliderDifference: {x: 4, y: 3}, // distance from collider sprite to sprite
 };
 
@@ -133,4 +134,5 @@ Player.prototype.handleMovement = function(){
 // Updates the player.
 Player.prototype.update = function(){
 	this.handleMovement();
+	game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite);
 }
