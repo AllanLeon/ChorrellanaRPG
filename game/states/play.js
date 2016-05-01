@@ -22,6 +22,10 @@ States.Play = {
 
 		// Sets the camera to follow the player.
 		this.game.camera.follow(this.game.player.colliderSprite);
+
+		//Creates and loads blocks
+		game.obstacle = new Obstacle(window.game);
+		game.obstacle.load();
 	},
 	// Updates all the game's objects.
 	update: function(){
