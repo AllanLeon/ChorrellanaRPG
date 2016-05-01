@@ -28,6 +28,15 @@ States.Play = {
 		game.HUD.load();
 		game.HUD.healthBar.fixedToCamera = true;
 		game.HUD.availableHealth.fixedToCamera = true;
+		game.HUD.miniMap.fixedToCamera = true;
+
+
+		//game.minimapmove = new Minimapmove(window.game);
+		//game.minimapmove.load();
+
+		//this.game.minimap.follow(this.game.minimapmove.colliderSprite);
+
+		//this.game.minimap.scale.setTo(0.10);
 
 	},
 	// Updates all the game's objects.
