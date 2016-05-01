@@ -9,6 +9,8 @@ States.Boot = {
 		this.game.load.image('map', 'assets/images/backgrounds/yourmommasmap.png');
 		this.game.load.image('healthBar', 'assets/images/HUD/healthbar.png');
 		this.game.load.image('lifeBar', 'assets/images/HUD/life.png');
+		// Load the asset needed for the minimap
+		this.game.load.image('minimap','assets/images/backgrounds/yourmommasmap.png');
 	},
 	// Starts the next state.
 	create: function(){

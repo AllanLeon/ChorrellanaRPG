@@ -52,9 +52,9 @@ States.Play = {
     	game.player = new Player(window.game);
 		game.player.load();
 		
-		/*Creates and loads a minimap object
+		//Creates and loads a minimap object
 		game.minimapmove = new Minimapmove(window.game);
-		game.minimapmove.load();*/
+		game.minimapmove.load();
 
 		// Sets the camera to follow the player.
 		this.game.camera.follow(this.game.player.colliderSprite);
