@@ -9,6 +9,7 @@ function Player(game){
 	this.direction = 'Down';
 	this.arrowKeys = null;
 	this.stopped = true;
+	this.weapon = null;
 }
 
 // Info of the player's position.
@@ -44,6 +45,13 @@ Player.prototype.addAnimations = function () {
 Player.prototype.load = function(){
 	this.render();
 	this.addAnimations();
+	this.loadWeapon();
+}
+
+Player.prototype.loadWeapon = function(){
+	// Creates and loads a weapon object.
+    this.weapon = new Weapon(this.game);
+    this.weapon.load();
 }
 
 // Plays the current animation.
@@ -127,10 +135,19 @@ Player.prototype.handleMovement = function(){
 		this.playAnimation();
 	}
 
-	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.x);
+	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.y);
 }
 
 // Updates the player.
 Player.prototype.update = function(){
 	this.handleMovement();
+	this.fireWeapon();
+}
+
+// Checks the input and fires the weapon.
+Player.prototype.fireWeapon = function(){
+	this.weapon.cooldown();
+	if (game.input.keyboard.isDown(Phaser.Keyboard.X)) {
+		this.weapon.fireWeapon();
+	}
 }
