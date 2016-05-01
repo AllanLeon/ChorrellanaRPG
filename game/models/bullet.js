@@ -160,29 +160,7 @@ Bullet.prototype.fireWeapon = function(){
 		this.sprite.y = this.game.player.sprite.y;
 		this.sprite.alpha = 1;
 
-		//var stone = stones.create(10, 5, 'stone');
-
-
 		this.direction = this.game.player.direction;
-
-		/*if (this.game.cursors.up.isDown){
-				this.direction = "Up";
-				this.move(-this.speed, 0);
-			}
-		else if (this.game.cursors.down.isDown){
-				this.direction = "Down";
-				this.move(this.speed, 0);
-			}
-
-		if (this.game.cursors.left.isDown){
-				this.direction = "Left";
-				this.move(-this.speed, 1);
-			}
-		else if (this.game.cursors.right.isDown){
-				this.direction = "Right";
-				this.move(this.speed, 1);
-			}
-			*/
 	}
 	
 }
