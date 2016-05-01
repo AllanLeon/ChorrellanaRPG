@@ -7,7 +7,12 @@ States.Boot = {
 		this.game.load.image('dukeCollider', 'assets/images/characters/collider.png');
 		this.game.load.spritesheet('duke', 'assets/images/characters/duke.png', 23, 43);
 		this.game.load.image('map', 'assets/images/backgrounds/yourmommasmap.png');
-		this.game.load.image('stone','assets/images/weapons/stone.png');		
+		for (var i=0; i<2; i++){
+			var iStr = i.toString();
+			this.game.load.image('bullet'.concat(iStr),'assets/images/weapons/bullet/bullet'.concat(iStr.concat(".png")));
+			this.game.load.image('weapon'.concat(iStr),'assets/images/weapons/weapon'.concat(iStr.concat(".png")));	
+		}
+				
 	},
 	// Starts the next state.
 	create: function(){

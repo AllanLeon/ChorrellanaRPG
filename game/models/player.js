@@ -9,9 +9,8 @@ function Player(game){
 	this.direction = 'Down';
 	this.arrowKeys = null;
 	this.stopped = true;
+	this.weapon = null;
 }
-
-var text;
 
 // Info of the player's position.
 var positionData = {
@@ -46,6 +45,13 @@ Player.prototype.addAnimations = function () {
 Player.prototype.load = function(){
 	this.render();
 	this.addAnimations();
+	this.loadWeapon();
+}
+
+Player.prototype.loadWeapon = function(){
+	// Creates and loads a weapon object.
+    this.weapon = new Weapon(this.game);
+    this.weapon.load();
 }
 
 // Plays the current animation.
@@ -129,37 +135,19 @@ Player.prototype.handleMovement = function(){
 		this.playAnimation();
 	}
 
-	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.x);
+	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.y);
 }
 
 // Updates the player.
 Player.prototype.update = function(){
 	this.handleMovement();
+	this.fireWeapon();
 }
 
-/*
+// Checks the input and fires the weapon.
 Player.prototype.fireWeapon = function(){
-	
-	if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
-		text = game.add.text(this.sprite.x, this.sprite.y, this.direction);	
-
-		var stone = stones.create(10, 5, 'stone');
-
-		switch(this.direction){
-			case 'Left':
-				stone.velocity.x = this.speed - 10;
-			break;
-				case 'Right':
-				stone.velocity.x = -(this.speed -10);
-			break;
-				case 'Up':
-				stone.velocity.y = -(this.speed -10);
-			break;
-				case 'Down':
-				stone.velocity.y = this.speed -10;
-			break;			
-		}	
+	this.weapon.cooldown();
+	if (game.input.keyboard.isDown(Phaser.Keyboard.X)) {
+		this.weapon.fireWeapon();
 	}
-	
 }
-*/
