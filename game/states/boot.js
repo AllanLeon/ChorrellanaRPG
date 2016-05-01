@@ -10,6 +10,7 @@ States.Boot = {
 		this.game.load.image('healthBar', 'assets/images/HUD/healthbar.png');
 		this.game.load.image('lifeBar', 'assets/images/HUD/life.png');
 		this.game.load.image('minimap','assets/images/backgrounds/minimap.png');
+
 	},
 	// Starts the next state.
 	create: function(){

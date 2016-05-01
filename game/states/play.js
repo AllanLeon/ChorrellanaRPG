@@ -10,6 +10,9 @@ States.Play = {
 		// Sets the game background with file associated to 'map' on boot.js.
 		this.game.background = this.game.add.sprite(0, 0, 'map');
 
+		//Creates minimap
+		this.game.minimap = this.game.add.sprite(10,400,'minimap');
+
 		// Sets the world bounds.
 		this.game.world.setBounds(0, 0, 1536, 1536);
 
@@ -37,6 +40,13 @@ States.Play = {
 		//this.game.minimap.follow(this.game.minimapmove.colliderSprite);
 
 		//this.game.minimap.scale.setTo(0.10);
+
+		//Creates and loads a minimap object
+		game.minimapmove = new Minimapmove(window.game);
+		game.minimapmove.load();
+
+		//minimap
+		this.game.minimap.scale.setTo(0.10);
 
 	},
 	// Updates all the game's objects.
