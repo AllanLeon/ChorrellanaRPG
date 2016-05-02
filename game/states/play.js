@@ -30,5 +30,6 @@ States.Play = {
 	update: function(){
 		// Updates the player.
 		game.player.update();
+		game.enemyLeo.update();
 	}
 };

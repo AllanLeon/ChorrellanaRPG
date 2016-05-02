@@ -13,15 +13,19 @@ function EnemyLeo(game){
 
 // Info of the player's position.
 var positionData = {
-	initial: { x: 120, y: 230 }, // initial position of the player
+	initial: { x: 200, y: 230 }, // initial position of the player
 	colliderDifference: {x: 4, y: 3}, // distance from collider sprite to sprite
 };
+var bullets;
+var fireRate = 100;
+var nextFire = 0;
+
 
 // Initializes the players sprites.
 EnemyLeo.prototype.render = function(){
 	// loads sprites
-	this.colliderSprite = this.game.add.sprite(positionData.initial.x - positionData.colliderDifference.x, positionData.initial.y - positionData.colliderDifference.y, 'dukeCollider');
-	this.sprite = this.game.add.sprite(positionData.initial.x, positionData.initial.y, 'duke');
+	this.colliderSprite = this.game.add.sprite(positionData.initial.x - positionData.colliderDifference.x, positionData.initial.y - positionData.colliderDifference.y, 'invaderCollider');
+	this.sprite = this.game.add.sprite(positionData.initial.x, positionData.initial.y, 'invader');
 	
 	// sets sprite properties
 	this.colliderSprite.alpha = 0; // invisible collider sprite
@@ -30,20 +34,29 @@ EnemyLeo.prototype.render = function(){
 
 	//this.colliderSprite.immovable = true; // makes it immovable when a collision occurs
 	this.colliderSprite.body.collideWorldBounds = true; // colliderSprite cannot exceed the world bounds
+
+	bullets = game.add.group();
+    bullets.enableBody = true;
+    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+
+    bullets.createMultiple(50, 'bullet');
+    bullets.setAll('checkWorldBounds', true);
+    bullets.setAll('outOfBoundsKill', true);
+    
 };
 
 // Defines the player's animations with their respective frames.
-EnemyLeo.prototype.addAnimations = function () {
-	this.sprite.animations.add(this.animation + 'Left', [4, 5, 6, 7], 10, true);
-	this.sprite.animations.add(this.animation + 'Right', [8, 9, 10, 11], 10, true);
-	this.sprite.animations.add(this.animation + 'Up', [12, 13, 14, 15], 10, true);
-	this.sprite.animations.add(this.animation + 'Down', [0, 1, 2, 3], 10, true);
-}
+//EnemyLeo.prototype.addAnimations = function () {
+//	this.sprite.animations.add(this.animation + 'Left', [4, 5, 6, 7], 10, true);
+//	this.sprite.animations.add(this.animation + 'Right', [8, 9, 10, 11], 10, true);
+//	this.sprite.animations.add(this.animation + 'Up', [12, 13, 14, 15], 10, true);
+//	this.sprite.animations.add(this.animation + 'Down', [0, 1, 2, 3], 10, true);
+//}
 
 // Loads the player's sprites and defines it's animations.
 EnemyLeo.prototype.load = function(){
 	this.render();
-	this.addAnimations();
+	//this.addAnimations();
 }
 
 // Plays the current animation.
@@ -57,13 +70,13 @@ EnemyLeo.prototype.stopAnimation = function(direction){
 
 	switch (this.direction) {
 		case 'Left':
-			this.sprite.frame = 4;
+			this.sprite.frame = 0;
 			break;
 		case 'Right':
-			this.sprite.frame = 8;
+			this.sprite.frame = 0;
 			break;
 		case 'Up':
-			this.sprite.frame = 12;
+			this.sprite.frame = 0;
 			break;
 		case 'Down':
 			this.sprite.frame = 0;
@@ -102,30 +115,7 @@ EnemyLeo.prototype.setBodyPosition = function(x, y){
 EnemyLeo.prototype.handleMovement = function(){
 	this.stop();
 
-	if (this.game.cursors.up.isDown){
-		this.direction = "Up";
-		this.move(-this.speed, 0);
-	}
-	else if (this.game.cursors.down.isDown){
-		this.direction = "Down";
-		this.move(this.speed, 0);
-	}
-
-	if (this.game.cursors.left.isDown){
-		this.direction = "Left";
-		this.move(-this.speed, 1);
-	}
-	else if (this.game.cursors.right.isDown){
-		this.direction = "Right";
-		this.move(this.speed, 1);
-	}
-
-	if(this.stopped){
-		this.stopAnimation();
-	}
-	else{
-		this.playAnimation();
-	}
+	this.fire();
 
 	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.x);
 }
@@ -133,4 +123,17 @@ EnemyLeo.prototype.handleMovement = function(){
 // Updates the player.
 EnemyLeo.prototype.update = function(){
 	this.handleMovement();
+}
+
+EnemyLeo.prototype.fire = function(){
+	 if (game.time.now > nextFire)
+    {
+        nextFire = game.time.now + fireRate;
+
+        var bullet = bullets.getFirstDead();
+
+        bullet.reset(this.sprite.x - 8, this.sprite.y - 8);
+
+        game.physics.arcade.moveToPointer(bullet, 300);
+    }
 }
