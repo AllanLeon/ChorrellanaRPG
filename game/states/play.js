@@ -19,6 +19,10 @@ States.Play = {
 		// Creates and loads a Player object.
     	game.player = new Player(window.game);
 		game.player.load();
+		
+		//creates coins
+		game.collectableItems = new CollectableItems(window.game);
+		game.collectableItems.load();
 
 		// Sets the camera to follow the player.
 		this.game.camera.follow(this.game.player.colliderSprite);

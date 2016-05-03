@@ -133,4 +133,5 @@ Player.prototype.handleMovement = function(){
 // Updates the player.
 Player.prototype.update = function(){
 	this.handleMovement();
+	game.physics.arcade.collide(game.collectableItems.coins, this.colliderSprite);
 }
