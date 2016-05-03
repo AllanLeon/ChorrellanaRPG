@@ -20,6 +20,7 @@ var positionDataHud =
 	availablelife: { lifeBarX: 15 , lifeBarY : 15 }
 };
 
+
 HUD.prototype.render = function() 
 {
 	this.healthBar = this.game.add.sprite(positionDataHud.initialHUD.healthBarX, positionDataHud.initialHUD.healthBarY, 'healthBar' );
@@ -27,7 +28,7 @@ HUD.prototype.render = function()
 	this.availableHealth.scale.setTo((this.healthHUD/10),1);
 	this.miniMap = this.game.add.sprite(this.miniMapPosX, this.miniMapPosY, 'minimap');
 	this.miniMap.scale.setTo(0.10,0.10);		
-	this.drawCircle();
+	this.drawPlayerPos();
 };
 
 HUD.prototype.load = function()
@@ -41,7 +42,7 @@ HUD.prototype.lifeBarUpdate = function()
 	this.availableHealth.scale.setTo((this.healthHUD/10),1);
 }
 
-HUD.prototype.drawCircle = function()
+HUD.prototype.drawPlayerPos = function()
 {
 graphics = game.add.graphics(0, 0);
 
@@ -53,14 +54,14 @@ graphics = game.add.graphics(0, 0);
     window.graphics = graphics;
 }
 
-HUD.prototype.updateCircle = function()
+HUD.prototype.updatePlayerPos = function()
 {
 	graphics.clear();
 	this.playerPosMiniMapX = game.player.sprite.x/10;
 	this.playerPosMiniMapY = game.player.sprite.y/10;
 
 	graphics.beginFill(0x0000FF);
-    graphics.drawCircle(this.playerPosMiniMapX+this.miniMap.x+4, this.playerPosMiniMapY+this.miniMap.y+3, 5);
+    graphics.drawCircle(this.playerPosMiniMapX+this.miniMap.x+3, this.playerPosMiniMapY+this.miniMap.y+2, 5);
     graphics.endFill();
 
     window.graphics = graphics;
@@ -70,6 +71,6 @@ HUD.prototype.updateCircle = function()
 HUD.prototype.update = function() 
 {
 	this.lifeBarUpdate();
-	this.updateCircle();
+	this.updatePlayerPos();
 };
 
