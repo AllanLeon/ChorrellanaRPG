@@ -1,5 +1,6 @@
 // Declaration of player data.
-function Player(game){
+function Player(game)
+{
 	this.game = game;
 	this.health = 100;
 	this.sprite = null;
@@ -80,6 +81,20 @@ Player.prototype.stopAnimation = function(direction){
 	}
 }
 
+//FUncion para probar el lifeBarUpdate del hud
+Player.prototype.drainLife = function()
+{
+	if(this.sprite.x>400)
+	{
+		this.health = 20;
+	}
+	else
+	{
+		this.health = 100;
+	}
+}
+
+
 // Stops the player's movement.
 Player.prototype.stop = function(){
 	this.stopped = true;
@@ -139,8 +154,10 @@ Player.prototype.handleMovement = function(){
 	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.y);
 }
 
+
 // Updates the player.
-Player.prototype.update = function(){
+Player.prototype.update = function()
+{
 	this.handleMovement();
 	game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite);
 	this.fireWeapon();
@@ -153,3 +170,5 @@ Player.prototype.fireWeapon = function(){
 		this.weapon.fireWeapon();
 	}
 }
+
+

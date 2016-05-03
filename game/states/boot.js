@@ -11,12 +11,15 @@ States.Boot = {
 		this.game.load.image('invader', 'assets/images/characters/invader.png');
 		this.game.load.image('bullet', 'assets/images/bullets/purple_ball.png');
 		this.game.load.image('map', 'assets/images/backgrounds/yourmommasmap.png');
+		this.game.load.image('healthBar', 'assets/images/HUD/healthbar.png');
+		this.game.load.image('lifeBar', 'assets/images/HUD/life.png');
+		this.game.load.image('minimap','assets/images/backgrounds/minimap.png');
+
 		for (var i=0; i<2; i++){
 			var iStr = i.toString();
 			this.game.load.image('bullet'.concat(iStr),'assets/images/weapons/bullet/bullet'.concat(iStr.concat(".png")));
 			this.game.load.image('weapon'.concat(iStr),'assets/images/weapons/weapon'.concat(iStr.concat(".png")));	
 		}
-				
 	},
 	// Starts the next state.
 	create: function(){
