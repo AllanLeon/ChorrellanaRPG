@@ -10,11 +10,13 @@ function Player(game)
 	this.direction = 'Down';
 	this.arrowKeys = null;
 	this.stopped = true;
+	this.weapon = null;
 }
 
 // Info of the player's position.
 var positionData = {
-	initial: { x: 10, y: 230 }, // initial position of the player
+	//initial: { x: 300, y: 300}, // initial position of the player
+	initial: { x: 50, y: 230}, // initial position of the player
 	colliderDifference: {x: 4, y: 3}, // distance from collider sprite to sprite
 };
 
@@ -45,6 +47,13 @@ Player.prototype.addAnimations = function () {
 Player.prototype.load = function(){
 	this.render();
 	this.addAnimations();
+	this.loadWeapon();
+}
+
+Player.prototype.loadWeapon = function(){
+	// Creates and loads a weapon object.
+    this.weapon = new Weapon(this.game);
+    this.weapon.load();
 }
 
 // Plays the current animation.
@@ -142,7 +151,7 @@ Player.prototype.handleMovement = function(){
 		this.playAnimation();
 	}
 
-	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.x);
+	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.y);
 }
 
 
@@ -150,6 +159,16 @@ Player.prototype.handleMovement = function(){
 Player.prototype.update = function()
 {
 	this.handleMovement();
+	game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite);
+	this.fireWeapon();
+}
+
+// Checks the input and fires the weapon.
+Player.prototype.fireWeapon = function(){
+	this.weapon.cooldown();
+	if (game.input.keyboard.isDown(Phaser.Keyboard.X)) {
+		this.weapon.fireWeapon();
+	}
 }
 
 

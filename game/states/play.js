@@ -23,10 +23,12 @@ States.Play = {
     	game.player = new Player(window.game);
 		game.player.load();
 
+		game.enemyLeo = new EnemyLeo(window.game);
+		game.enemyLeo.load();
+
 		// Sets the camera to follow the player.
 		this.game.camera.follow(this.game.player.colliderSprite);
 
-		//Creates and loads a HUD object
 		game.HUD = new HUD(window.game);
 		game.HUD.load();
 		game.HUD.healthBar.fixedToCamera = true;
@@ -48,11 +50,15 @@ States.Play = {
 		//minimap
 		//this.game.minimap.scale.setTo(0.10);
 
+		//Creates and loads blocks
+		game.obstacle = new Obstacle(window.game);
+		game.obstacle.load();
 	},
 	// Updates all the game's objects.
 	update: function(){
 		// Updates the player.
 		game.player.update();
 		game.HUD.update();
+		game.enemyLeo.update();
 	}
 };
