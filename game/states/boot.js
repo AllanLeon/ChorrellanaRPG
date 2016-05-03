@@ -10,6 +10,7 @@ States.Boot = {
 		this.game.load.image('invaderCollider','assets/images/characters/collider.png');
 		this.game.load.image('invader', 'assets/images/characters/invader.png');
 		this.game.load.image('bullet', 'assets/images/bullets/purple_ball.png');
+		this.game.load.spritesheet('enemy', 'assets/images/characters/enemy1.png',32,32);
 		this.game.load.image('map', 'assets/images/backgrounds/yourmommasmap.png');
 		this.game.load.image('healthBar', 'assets/images/HUD/healthbar.png');
 		this.game.load.image('lifeBar', 'assets/images/HUD/life.png');
