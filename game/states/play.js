@@ -20,6 +20,9 @@ States.Play = {
     	game.player = new Player(window.game);
 		game.player.load();
 
+		game.enemyLeo = new EnemyLeo(window.game);
+		game.enemyLeo.load();
+
 		// Sets the camera to follow the player.
 		this.game.camera.follow(this.game.player.colliderSprite);
 
@@ -31,5 +34,6 @@ States.Play = {
 	update: function(){
 		// Updates the player.
 		game.player.update();
+		game.enemyLeo.update();
 	}
 };
