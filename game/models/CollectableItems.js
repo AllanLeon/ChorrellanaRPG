@@ -20,13 +20,14 @@ CollectableItems.prototype.render = function(){
         var coin=this.coins.create(i * 300,j * 300, 'coin');
         //game.physics.enable(this.coin, Phaser.Physics.ARCADE);
         //this.coins.body.collideWorldBounds = true;
-    }}
+    }
+}
     game.physics.enable(this.coins, Phaser.Physics.ARCADE);
     //this.coins.body.collideWorldBounds = true;
 };
 
 function CollectCoin(){
-    //Removes the coin fro the screen
+    //Removes the coin from the screen
     coin.kill();
 }
 
@@ -40,7 +41,7 @@ CollectableItems.prototype.update = function(){
 	this.handleMovement();
 
 //function update(){
-   // game.physics.arcade.collide(coins, player);
+    game.physics.arcade.collide(coins, player);
 
      //  Checks to see if the player overlaps with any of the coins, if he does call the collectCoin function
     game.physics.arcade.overlap(player, coins, CollectCoin, null, this);
