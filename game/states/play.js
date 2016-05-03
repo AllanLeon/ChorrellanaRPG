@@ -53,12 +53,42 @@ States.Play = {
 		//Creates and loads blocks
 		game.obstacle = new Obstacle(window.game);
 		game.obstacle.load();
+
+		// Creates and loads a Enemy.
+		game.enemy = new Enemy(window.game, game.player);
+		game.enemy.load();
+
+
+		game.enemy2 = new Enemy(window.game, game.player);
+		game.enemy2.load();
+
+		game.enemy3 = new Enemy(window.game, game.player);
+		game.enemy3.load();
+
+		game.physics.arcade.enable(game.player);
+		game.physics.arcade.enable(game.enemy);
+		game.physics.arcade.enable(game.enemy2);
+		game.physics.arcade.enable(game.enemy3);
+
 	},
 	// Updates all the game's objects.
 	update: function(){
 		// Updates the player.
 		game.player.update();
 		game.HUD.update();
+
 		game.enemyLeo.update();
+		game.enemy.update();
+		game.enemy2.update();
+		game.enemy3.update();
+
+		game.physics.arcade.overlap(game.player, game.enemy, collisionEnemy, null, this);
 	}
+
 };
+	function collisionEnemy (Player, Enemy) {
+
+    Player.kill();
+    Enemy.kill();
+
+}
