@@ -130,7 +130,7 @@ EnemyLeo.prototype.fire = function(){
     {
         nextFire = game.time.now + fireRate;
 
-        var bullet = bullets.getFirstDead();
+        var bullet = bullets.getFirstDead(true, this.sprite.x - 8, this.sprite.y - 8, 'bullet');
 
         bullet.reset(this.sprite.x - 8, this.sprite.y - 8);
 
