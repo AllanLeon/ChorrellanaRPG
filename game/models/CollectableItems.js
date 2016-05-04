@@ -1,3 +1,4 @@
+
 //branch creation//asd
 function CollectableItems(game){
 	this.game = game;
@@ -26,7 +27,7 @@ CollectableItems.prototype.render = function(){
     //this.coins.body.collideWorldBounds = true;
 };
 
-function CollectCoin(){
+function CollectCoin(player, coin){
     //Removes the coin from the screen
     coin.kill();
 }
@@ -37,12 +38,14 @@ CollectableItems.prototype.load = function(){
 }
 
 // Plays the current animation.
-CollectableItems.prototype.update = function(){
-	this.handleMovement();
+//CollectableItems.prototype.update = function(){
+	//this.handleMovement();
 
-//function update(){
-    game.physics.arcade.collide(coins, player);
+    //  Collide the player and the coins
+    //game.physics.arcade.collide(player, coins);
 
-     //  Checks to see if the player overlaps with any of the coins, if he does call the collectCoin function
-    game.physics.arcade.overlap(player, coins, CollectCoin, null, this);
-}
+     //  Checks to see if the player overlaps with any of the coins, if he does, call the collectCoin function
+    //game.physics.arcade.overlap(game.player.colliderSprite, this.coins, CollectCoin, null, this);
+//}
+//branch creation
+//commit test
