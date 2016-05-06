@@ -176,10 +176,35 @@ Player.prototype.update = function()
 	this.fireWeapon();
 
 	//  Collide the player and the coins
-    game.physics.arcade.collide(game.collectableItems.coins, this.colliderSprite, game.collectableItems.collectCoin);
+   	game.physics.arcade.collide(game.collectableItems.coins, this.colliderSprite, collectCoin);
 
-     //  Checks to see if the player overlaps with any of the coins, if he does, call the collectCoin function
-   	//game.physics.arcade.overlap(this.colliderSprite, game.CollectableItems.coins , game.CollectableItems.CollectCoin, null, this);
+	//  Collide the player and the hearts
+   	game.physics.arcade.collide(game.collectableItems.hearts, this.colliderSprite, collectHeart);
+
+   	// Collide the player and the cat
+	game.physics.arcade.collide(game.collectableItems.sprite, this.sprite, collectPet, null, this);
+}
+
+function collectHeart(player, heart){
+    //Removes the heart from the screen
+    heart.kill();
+
+    //Adds life to the player
+    if(health=>80){
+    	health=100;
+    } else {
+    	health=health+20;
+    }
+}
+
+function collectPet(player, cat){
+	//Starts the animation of the cat
+	game.collectableItems.playAnimation();
+}
+
+function collectCoin(player, coin){
+    //Removes the coin from the screen
+    coin.kill();
 }
 
 // Checks the input and fires the weapon.

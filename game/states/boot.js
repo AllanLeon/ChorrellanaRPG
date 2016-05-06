@@ -7,7 +7,7 @@ States.Boot = {
 		this.game.load.image('dukeCollider', 'assets/images/characters/collider.png');
 		this.game.load.image('blockH', 'assets/images/backgrounds/blockH.png');
 		this.game.load.spritesheet('duke', 'assets/images/characters/duke.png', 23, 43);
-		this.game.load.image('heart', 'assets/images/characters/heart.jpg');
+		this.game.load.image('heart', 'assets/images/characters/heart.png');
 		this.game.load.image('coin', 'assets/images/characters/yoshicoin.png');
 		this.game.load.image('invaderCollider','assets/images/characters/collider.png');
 		this.game.load.image('invader', 'assets/images/characters/invader.png');
