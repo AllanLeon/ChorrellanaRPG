@@ -1,4 +1,10 @@
 	var States = {};
+	var mama = 'tu';
+
+
+
+
+	// //
 
 // Loads all the necesasary assets before starting the game.
 States.Boot = {
