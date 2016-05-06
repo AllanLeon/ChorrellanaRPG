@@ -20,10 +20,12 @@ States.Play = {
     	game.player = new Player(window.game);
 		game.player.load();
 
+		game.enemyLeo = new EnemyLeo(window.game);
+		game.enemyLeo.load();
+
 		// Sets the camera to follow the player.
 		this.game.camera.follow(this.game.player.colliderSprite);
 
-		//Creates and loads a HUD object
 		game.HUD = new HUD(window.game);
 		game.HUD.load();
 		//Sets the Hud objects fixed to the camera
@@ -31,11 +33,45 @@ States.Play = {
 		game.HUD.availableHealth.fixedToCamera = true;
 		game.HUD.miniMap.fixedToCamera = true;
 
+		//Creates and loads blocks
+		game.obstacle = new Obstacle(window.game);
+		game.obstacle.load();
+
+		// Creates and loads a Enemy.
+		game.enemy = new Enemy(window.game, game.player);
+		game.enemy.load();
+
+
+		game.enemy2 = new Enemy(window.game, game.player);
+		game.enemy2.load();
+
+		game.enemy3 = new Enemy(window.game, game.player);
+		game.enemy3.load();
+
+		game.physics.arcade.enable(game.player);
+		game.physics.arcade.enable(game.enemy);
+		game.physics.arcade.enable(game.enemy2);
+		game.physics.arcade.enable(game.enemy3);
+
 	},
 	// Updates all the game's objects.
 	update: function(){
 		// Updates the player.
 		game.player.update();
 		game.HUD.update();
+
+		game.enemyLeo.update();
+		game.enemy.update();
+		game.enemy2.update();
+		game.enemy3.update();
+
+		game.physics.arcade.overlap(game.player, game.enemy, collisionEnemy, null, this);
 	}
+
 };
+	function collisionEnemy (Player, Enemy) {
+
+    Player.kill();
+    Enemy.kill();
+
+}

@@ -3,34 +3,44 @@ function Player(game)
 {
 	this.game = game;
 	this.health = 100;
+	this.healthText;
 	this.sprite = null;
-	this.colliderSprite = null;
-	this.speed = 200;
+	this.colliderSprite = true;
+	this.speed = 300;
 	this.animation = 'dukeAnim';
 	this.direction = 'Down';
 	this.arrowKeys = null;
 	this.stopped = true;
+	this.weapon = null;
+	this.enableBody = true;
 }
 
 // Info of the player's position.
 var positionData = {
-	initial: { x: 10, y: 230 }, // initial position of the player
+	//initial: { x: 300, y: 300}, // initial position of the player
+	initial: { x: 50, y: 230}, // initial position of the player
 	colliderDifference: {x: 4, y: 3}, // distance from collider sprite to sprite
 };
+
 
 // Initializes the players sprites.
 Player.prototype.render = function(){
 	// loads sprites
-	this.colliderSprite = this.game.add.sprite(positionData.initial.x - positionData.colliderDifference.x, positionData.initial.y - positionData.colliderDifference.y, 'dukeCollider');
-	this.sprite = this.game.add.sprite(positionData.initial.x, positionData.initial.y, 'duke');
+	this.colliderSprite = this.game.add.sprite(30 - positionData.colliderDifference.x, 230 - positionData.colliderDifference.y, 'dukeCollider');
+	this.sprite = this.game.add.sprite(30, 230, 'duke');
 	
 	// sets sprite properties
 	this.colliderSprite.alpha = 0; // invisible collider sprite
 	this.game.physics.arcade.enable(this.colliderSprite); // enables physics on colliderSprite
-	//this.game.physics.arcade.enable(this.sprite); // enables physics on sprite
+	this.game.physics.arcade.enable(this.sprite); // enables physics on sprite
 
 	//this.colliderSprite.immovable = true; // makes it immovable when a collision occurs
 	this.colliderSprite.body.collideWorldBounds = true; // colliderSprite cannot exceed the world bounds
+
+	this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
+
+	 //  The score
+    this.healthText = game.add.text(16, 16, 'Health: 100', { fontSize: '32px', fill: '#000' });
 };
 
 // Defines the player's animations with their respective frames.
@@ -45,6 +55,13 @@ Player.prototype.addAnimations = function () {
 Player.prototype.load = function(){
 	this.render();
 	this.addAnimations();
+	this.loadWeapon();
+}
+
+Player.prototype.loadWeapon = function(){
+	// Creates and loads a weapon object.
+    this.weapon = new Weapon(this.game);
+    this.weapon.load();
 }
 
 // Plays the current animation.
@@ -128,7 +145,12 @@ Player.prototype.handleMovement = function(){
 		this.playAnimation();
 	}
 
-	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.x);
+	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.y);
+
+	if (this.sprite.x == 10){
+		this.health -= 10;
+    	this.healthText.text = 'Score: ' + this.health;
+	}
 }
 
 
@@ -136,6 +158,21 @@ Player.prototype.handleMovement = function(){
 Player.prototype.update = function()
 {
 	this.handleMovement();
+	game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite);
+	this.fireWeapon();
 }
 
+// Checks the input and fires the weapon.
+Player.prototype.fireWeapon = function(){
+	this.weapon.cooldown();
+	if (game.input.keyboard.isDown(Phaser.Keyboard.X)) {
+		this.weapon.fireWeapon();
+	}
+}
+
+function death (){
+	if (this.health <=0){
+		this.sprite.kill();
+	}
+}
 
