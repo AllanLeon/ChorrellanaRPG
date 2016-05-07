@@ -43,6 +43,9 @@ States.Play = {
 		//Sets inventory elements fixed to the camera
 		game.Inventory.keyImage.fixedToCamera = true;
 		game.Inventory.coinImage.fixedToCamera = true;
+		game.Inventory.numberCoinsText.fixedToCamera = true;
+		game.Inventory.numberKeysText.fixedToCamera = true;
+		game.Inventory.inventoryImage.fixedToCamera = true;
 
 
 		//Creates and loads blocks
@@ -71,9 +74,10 @@ States.Play = {
 		// Updates the player.
 		game.player.update();
 		game.HUD.update();
+		game.Inventory.update();
 
 		//game.enemyLeo.update();
-		//	game.enemy.update();
+		//game.enemy.update();
 		//game.enemy2.update();
 		//game.enemy3.update();
 
@@ -85,5 +89,6 @@ States.Play = {
 
     Player.kill();
     Enemy.kill();
+
 
 }
