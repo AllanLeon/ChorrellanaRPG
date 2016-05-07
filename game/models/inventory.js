@@ -16,7 +16,7 @@ var	inventoryData =
 {
 	topRightCorner : {topRightX: 620, topRightY:10},
 	keyCoinSize : 48,
-	inventorySlotSize: 42,
+	inventorySlotSize: 47,
 	inventoryPosition : {inventoryPosX : 190 , inventoryPosY : 123.75} 
 };
 
@@ -61,7 +61,7 @@ Inventory.prototype.showInventory = function()
 }
 
 
-//Functino encharge of updating HUD items
+//Function encharge of updating HUD items
 Inventory.prototype.update = function() 
 {
 	this.showInventory();
