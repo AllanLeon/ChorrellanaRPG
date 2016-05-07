@@ -252,8 +252,10 @@ Obstacle.prototype.render = function(){
 	this.bloque.width = 370;
 	this.bloque.height = 15;
 
-	//Blocks that avoid trees and rocks on island 
 
+
+
+	//Blocks that avoid trees and rocks on island 
 	this.bloque = this.blocks.create(0,160, 'blockH');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 30;

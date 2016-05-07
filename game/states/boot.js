@@ -1,10 +1,4 @@
 	var States = {};
-	var mama = 'tu';
-
-
-
-
-	// //
 
 // Loads all the necesasary assets before starting the game.
 States.Boot = {
@@ -22,6 +16,8 @@ States.Boot = {
 		this.game.load.image('healthBar', 'assets/images/HUD/healthbar.png');
 		this.game.load.image('lifeBar', 'assets/images/HUD/life.png');
 		this.game.load.image('minimap','assets/images/backgrounds/minimap.png');
+		this.game.load.image('coin','assets/images/inventory/coin.png');
+		this.game.load.image('key','assets/images/inventory/key.png');
 
 		for (var i=0; i<2; i++){
 			var iStr = i.toString();
