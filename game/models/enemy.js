@@ -151,7 +151,6 @@ Enemy.prototype.handleMovement = function(){
 Enemy.prototype.update = function(){
 	this.handleMovement();
 	game.physics.arcade.collide(this.sprite,this.player.sprite, this._enemyTouchEnemy,null,this);
-	
 }
 
 //Enemy Attack
