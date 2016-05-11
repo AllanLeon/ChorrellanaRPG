@@ -74,14 +74,17 @@ States.Play = {
 		game.physics.arcade.enable(game.enemy2);
 		game.physics.arcade.enable(game.enemy3);
 
+		//game music
+		game.music = new effects(window.game);
+
+		game.music.load();
 	},
 	// Updates all the game's objects.
 	update: function(){
 		// Updates the player.
 		game.player.update();
-		//game.CollectableItems.update();
 		game.HUD.update();
-
+		//game.music.load();
 		game.enemyLeo.update();
 		game.enemy.update();
 		game.enemy2.update();
