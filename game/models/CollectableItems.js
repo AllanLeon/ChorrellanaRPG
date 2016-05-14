@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 //branch creation//asd
 function CollectableItems(game){
@@ -123,3 +124,49 @@ CollectableItems.prototype.handleMovement = function(){
 
 //branch creation
 //commit test
+=======
+//Declare the Item
+function items(game){
+	this.game = game;
+	this.itemSprite = null;
+	this.height = 0;
+	this.width = 0;
+	this.startingX = 0;
+	this.staringY = 0;
+
+}
+var coins;
+
+//set position for the items
+var positionDataItem = {
+	initial: {x:startingX, y:staringY }//generic position
+
+}
+items.prototype.render = function(){
+	this.coinSprite = this.game.add.sprite(positionDataItem.initial.x, positionDataItem.initial.y, 'coin');
+
+	this.game.physics.arcade.enable(this.coinSprite)
+
+
+
+}
+
+items.prototype.load = function(){
+	this.render();
+}
+
+items.prototype.playAnimation = function(){
+	this.coinSprite.play(this.animation)
+}
+items.prototype.update = function(player)
+	game.physics.arcade.overlap(player, coins, collectCoin, null, this);
+
+
+
+
+}
+ items.prototype.collectCoin = function(){
+ 	coins.kill();
+ 	
+ }
+>>>>>>> 070515561492018b72fc6aec1242676411f7b4f9

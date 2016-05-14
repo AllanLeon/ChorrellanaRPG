@@ -6,6 +6,7 @@ States.Boot = {
 	preload: function(){
 		this.game.load.image('dukeCollider', 'assets/images/characters/collider.png');
 		this.game.load.image('blockH', 'assets/images/backgrounds/blockH.png');
+		this.game.load.image('block', 'assets/images/backgrounds/block.png');
 		this.game.load.spritesheet('duke', 'assets/images/characters/duke.png', 23, 43);
 		this.game.load.spritesheet('cat', 'assets/images/characters/cat.png', 32, 32);
 		this.game.load.image('heart', 'assets/images/characters/heart.png');
@@ -18,7 +19,11 @@ States.Boot = {
 		this.game.load.image('healthBar', 'assets/images/HUD/healthbar.png');
 		this.game.load.image('lifeBar', 'assets/images/HUD/life.png');
 		this.game.load.image('minimap','assets/images/backgrounds/minimap.png');
+<<<<<<< HEAD
 		this.game.load.audio('bossanova', 'assets/music/bossanova.mp3');
+=======
+		this.game.load.spritesheet('coin','assets/images/items/coin.png');
+>>>>>>> 070515561492018b72fc6aec1242676411f7b4f9
 
 		for (var i=0; i<2; i++){
 			var iStr = i.toString();
