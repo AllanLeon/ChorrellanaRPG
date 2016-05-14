@@ -20,6 +20,7 @@ var positionDataHud =
 	availablelife: { lifeBarX: 15 , lifeBarY : 15 }
 };
 
+//Function to render the items in HUD
 HUD.prototype.render = function() 
 {
 	this.healthBar = this.game.add.sprite(positionDataHud.initialHUD.healthBarX, positionDataHud.initialHUD.healthBarY, 'healthBar' );
@@ -30,17 +31,20 @@ HUD.prototype.render = function()
 	this.drawCircle();
 };
 
+//Function to load all assets in HUD
 HUD.prototype.load = function()
 {
 	this.render();
 }
 
+//Fuction to update the amount of life available of the player
 HUD.prototype.lifeBarUpdate = function()
 {
 	this.healthHUD = game.player.health;
 	this.availableHealth.scale.setTo((this.healthHUD/10),1);
 }
 
+//Fuction to draw the initial position of the player
 HUD.prototype.drawCircle = function()
 {
 graphics = game.add.graphics(0, 0);
@@ -53,6 +57,7 @@ graphics = game.add.graphics(0, 0);
     window.graphics = graphics;
 }
 
+//Fuction to update the position of the player
 HUD.prototype.updateCircle = function()
 {
 	graphics.clear();
@@ -67,6 +72,7 @@ HUD.prototype.updateCircle = function()
 
 }
 
+//Functino encharge of updating HUD items
 HUD.prototype.update = function() 
 {
 	this.lifeBarUpdate();
