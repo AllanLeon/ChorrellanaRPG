@@ -146,9 +146,6 @@ items.prototype.render = function(){
 	this.coinSprite = this.game.add.sprite(positionDataItem.initial.x, positionDataItem.initial.y, 'coin');
 
 	this.game.physics.arcade.enable(this.coinSprite)
-
-
-
 }
 
 items.prototype.load = function(){
@@ -158,15 +155,12 @@ items.prototype.load = function(){
 items.prototype.playAnimation = function(){
 	this.coinSprite.play(this.animation)
 }
+
 items.prototype.update = function(player)
 	game.physics.arcade.overlap(player, coins, collectCoin, null, this);
-
-
-
-
 }
+
  items.prototype.collectCoin = function(){
  	coins.kill();
  	
  }
->>>>>>> 070515561492018b72fc6aec1242676411f7b4f9
