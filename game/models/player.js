@@ -173,7 +173,16 @@ Player.prototype.update = function()
 {
 	this.handleMovement();
 	game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite);
-	game.physics.arcade.collide(game.npcs.dukes, this.colliderSprite);
+	if(game.physics.arcade.collide(game.npcs.dukes, this.colliderSprite)){
+		if (game.input.keyboard.isDown(Phaser.Keyboard.C)){
+			//sergio pon aca tu funcion
+		}
+	}
+	if(game.physics.arcade.collide(game.posters.carteles, this.colliderSprite)){
+		if (game.input.keyboard.isDown(Phaser.Keyboard.C)){
+			//sergio pon aca tu otra funcion
+		}	
+	}
 	this.fireWeapon();
 }
 

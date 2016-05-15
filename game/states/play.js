@@ -20,6 +20,9 @@ States.Play = {
     	game.player = new Player(window.game);
 		game.player.load();
 
+		game.writer = new Writer(window.game);
+		game.writer.load();
+
 		//game.enemyLeo = new EnemyLeo(window.game);
 		//game.enemyLeo.load();
 
@@ -41,6 +44,9 @@ States.Play = {
 
 		game.npcs = new Npcs(window.game);
 		game.npcs.load();
+
+		game.posters = new Posters(window.game);
+		game.posters.load();
 
 
 		// Creates and loads an Enemy.
@@ -64,6 +70,7 @@ States.Play = {
 	update: function(){
 		// Updates the player.
 		game.player.update();
+		game.writer.update();
 		game.HUD.update();
 
 		//game.enemyLeo.update();

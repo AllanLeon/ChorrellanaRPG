@@ -23,6 +23,9 @@ States.Boot = {
 		this.game.load.image('lifeBar', 'assets/images/HUD/life.png');
 		this.game.load.image('minimap','assets/images/backgrounds/minimap.png');
 		this.game.load.image('npcs', 'assets/images/characters/npcs1.png');
+		this.game.load.image('poster', 'assets/images/characters/cartel.png');
+		this.game.load.spritesheet('coin','assets/images/items/coin.png');
+		this.game.load.spritesheet('textBox','assets/images/textBox/textBox.png', 600, 200);
 
 		for (var i=0; i<2; i++){
 			var iStr = i.toString();
