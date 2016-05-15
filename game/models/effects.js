@@ -50,7 +50,7 @@ effects.prototype.create = function() {
 
     game.input.onDown.add(clickBoom, this);
 }
-
+/*
 effects.prototype.changeVolume = function(pointer) {
 
     if (pointer.y < 100)
@@ -66,7 +66,7 @@ effects.prototype.changeVolume = function(pointer) {
         music.volume -= 0.1;
     }
 }
-
+*/
 effects.prototype.load = function(){
 	this.create();
 	game.forceSingleUpdate = true;
