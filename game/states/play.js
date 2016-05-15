@@ -16,6 +16,14 @@ States.Play = {
 		// Initialiazes the cursor keys.
 		this.game.cursors = game.input.keyboard.createCursorKeys();
 
+		// Creates and loads a NPC
+		game.npc = new Npc(window.game);
+		game.npc.load();
+
+		// Creates and loads a sign
+		game.sign = new Sign(window.game);
+		game.sign.load();
+
 		// Creates and loads a Player object.
     	game.player = new Player(window.game);
 		game.player.load();
@@ -42,13 +50,6 @@ States.Play = {
 		//Creates and loads blocks
 		game.obstacle = new Obstacle(window.game);
 		game.obstacle.load();
-
-		game.npcs = new Npcs(window.game);
-		game.npcs.load();
-
-		game.posters = new Posters(window.game);
-		game.posters.load();
-
 
 		// Creates and loads an Enemy.
 		//game.enemy = new Enemy(window.game, game.player);

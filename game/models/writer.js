@@ -34,12 +34,14 @@ Writer.prototype.load = function(){
 
 //Used to add NPC messages in a dialogue. 
 Writer.prototype.addText = function(message){
+	if (!this.onScreen){
 	 this.textQueue.enqueue(message);
+	}
 };
 
 //Draws the text box on the screen and begin to write text on it
 Writer.prototype.openTextBox = function(textBoxType){	
-	if (!this.textQueue.isEmpty()){
+	if (!this.onScreen && !this.textQueue.isEmpty()){
 		this.sprite.frame = textBoxType;
 		this.onScreen = true;
 		this.sprite.alpha = 0.8;

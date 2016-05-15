@@ -173,18 +173,29 @@ Player.prototype.update = function()
 {
 	this.handleMovement();
 	game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite);
-	if(game.physics.arcade.collide(game.npcs.dukes, this.colliderSprite)){
-		if (game.input.keyboard.isDown(Phaser.Keyboard.C)){
-			//sergio pon aca tu funcion
-		}
-	}
-	if(game.physics.arcade.collide(game.posters.carteles, this.colliderSprite)){
-		if (game.input.keyboard.isDown(Phaser.Keyboard.C)){
-			//sergio pon aca tu otra funcion
-		}	
-	}
+	this.NPCCollission();
+	this.signCollission();
+	
 	this.fireWeapon();
 }
+
+Player.prototype.NPCCollission = function(){
+	if(game.physics.arcade.collide(game.npc.dukes, this.colliderSprite)){
+		if (game.input.keyboard.isDown(Phaser.Keyboard.X) && !this.game.writer.buttonPressed){
+			this.game.npc.sendMessage();
+			this.game.writer.buttonPressed = true;
+		}
+	}  
+};
+
+Player.prototype.signCollission = function(){
+	if(game.physics.arcade.collide(game.sign.carteles, this.colliderSprite)){
+		if (game.input.keyboard.isDown(Phaser.Keyboard.X) && !this.game.writer.buttonPressed){
+			this.game.sign.sendMessage();
+			this.game.writer.buttonPressed = true;
+		}	
+	} 
+};
 
 // Checks the input and fires the weapon.
 Player.prototype.fireWeapon = function(){
