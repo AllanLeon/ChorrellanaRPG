@@ -43,6 +43,13 @@ States.Play = {
 		game.obstacle = new Obstacle(window.game);
 		game.obstacle.load();
 
+		game.npcs = new Npcs(window.game);
+		game.npcs.load();
+
+		game.posters = new Posters(window.game);
+		game.posters.load();
+
+
 		// Creates and loads an Enemy.
 		//game.enemy = new Enemy(window.game, game.player);
 		//game.enemy.load();

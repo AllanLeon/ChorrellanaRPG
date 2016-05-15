@@ -26,7 +26,7 @@ var positionData = {
 // Initializes the players sprites.
 Player.prototype.render = function(){
 	// loads sprites
-	this.colliderSprite = this.game.add.sprite(30 - positionData.colliderDifference.x, 230 - positionData.colliderDifference.y, 'dukeCollider');
+	this.colliderSprite = this.game.add.sprite(50 - positionData.colliderDifference.x, 230 - positionData.colliderDifference.y, 'dukeCollider');
 	this.sprite = this.game.add.sprite(30, 230, 'duke');
 	
 	// sets sprite properties
@@ -173,6 +173,16 @@ Player.prototype.update = function()
 {
 	this.handleMovement();
 	game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite);
+	if(game.physics.arcade.collide(game.npcs.dukes, this.colliderSprite)){
+		if (game.input.keyboard.isDown(Phaser.Keyboard.C)){
+			//sergio pon aca tu funcion
+		}
+	}
+	if(game.physics.arcade.collide(game.posters.carteles, this.colliderSprite)){
+		if (game.input.keyboard.isDown(Phaser.Keyboard.C)){
+			//sergio pon aca tu otra funcion
+		}	
+	}
 	this.fireWeapon();
 }
 

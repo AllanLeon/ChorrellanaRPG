@@ -16,7 +16,7 @@ function Writer(game)
 Writer.prototype.render = function(){
 	// loads sprites
 	this.sprite = this.game.add.sprite(100, 60, 'textBox');
-	this.sprite.frame = 0;										// 0: NPCs , 1: Signs
+	this.sprite.frame = 1;										// 0: NPCs , 1: Signs
 	
 	// sets sprite properties
 	this.sprite.alpha = 0; 
