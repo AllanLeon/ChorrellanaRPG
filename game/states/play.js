@@ -20,6 +20,7 @@ States.Play = {
     	game.player = new Player(window.game);
 		game.player.load();
 
+		// Creates and loads a Writer object.
 		game.writer = new Writer(window.game);
 		game.writer.load();
 
