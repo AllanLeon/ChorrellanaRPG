@@ -74,7 +74,7 @@ Bomb.prototype.handleMovement = function(initialX, initialY, direction){
 
 
 Bomb.prototype.dissapear = function(){
-	this.sprite.alpha = 0;
+//	this.sprite.alpha = 0;
 }
 
 // Start the shot of the bullet
@@ -85,7 +85,5 @@ Bomb.prototype.throw = function(x, y, direction){
 	this.handleMovement(x, y, direction);
 	this.sprite.alpha = 1;	
 
-	timer.add(500, this.stop, this.game);
-	timer.add(1000, this.dissapear, this.game);
 
 }

@@ -26,9 +26,16 @@ States.Boot = {
 
 		for (var i=0; i<2; i++){
 			var iStr = i.toString();
-			this.game.load.image('bullet'.concat(iStr),'assets/images/weapons/bullet/bullet'.concat(iStr.concat(".png")));
+			//this.game.load.image('bullet'.concat(iStr),'assets/images/weapons/bullet/bullet'.concat(iStr.concat(".png")));
 			this.game.load.image('weapon'.concat(iStr),'assets/images/weapons/weapon'.concat(iStr.concat(".png")));	
 		}
+
+		for (var i = 1; i <= 5; i++)
+		{
+		    this.game.load.image('bullet' + i, 'assets/images/weapons/bullet/bullet' + i + '.png');
+		    //this.game.load.image('weapon' + i, 'assets/images/weapons/weapon' + i + ".png");	
+		}
+
 
 		this.game.load.image('bomb', 'assets/images/weapons/bomb.png');
 

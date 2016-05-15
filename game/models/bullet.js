@@ -9,7 +9,7 @@ function Bullet(game){
 
 // Initializes the bullet sprites.
 Bullet.prototype.render = function(type){
-	this.sprite = this.game.add.sprite(null, null, 'bullet'.concat(type));
+	this.sprite = this.game.add.sprite(null, null, 'bullet' + type);
 
 	// sets sprite properties
 	this.sprite.alpha = 0; // invisible sprite
@@ -65,7 +65,9 @@ Bullet.prototype.handleMovement = function(direction){
 }
 
 // Start the shot of the bullet
-Bullet.prototype.fireBullet = function(x, y, direction){
+Bullet.prototype.fireBullet = function(x, y, direction, weaponType){
+		
+		this.load(weaponType);
 		this.stop();
 		this.setBodyPosition(x, y);
 		this.handleMovement(direction);

@@ -9,21 +9,26 @@ function Weapon(game){
 	this.bulletArray = []; // Array to store our bullets
 	this.weaponType = 1; // The weapon in use
 
-	this.bomb;
+	this.bomb = [];
 	this.bombsOnScreen = 1;
 	this.bombCooldown = 2;
+
+	var timer;
+
 }
 
 // Use the weapon's sprite for the HUD only
 // Initializes the weapon's sprites.
 Weapon.prototype.render = function(x, y){
-	this.sprite = this.game.add.sprite(x, y, 'weapon'.concat(this.weaponType));
+	this.sprite = this.game.add.sprite(x, y, 'weapon' + this.weaponType);
 };
 
 // Loads the weapon's sprites
 Weapon.prototype.load = function(){
 	this.loadBullet();
 	//this.loadBomb();
+	timer = game.time.create(false)
+	timer.start();
 }
 
 // Loads all of the bullets in our bullet array
@@ -45,20 +50,28 @@ Weapon.prototype.loadBullet = function(){
 }
 */
 
-Weapon.prototype.changeWeapon = function(){
-	this.weaponType = (this.weaponType + 1) % 2;
+Weapon.prototype.nextWeapon = function(){
+	
+	console.log(this.player.weapon.weaponType);
+	this.player.weapon.weaponType = (this.player.weapon.weaponType % 5) + 1;
 }
 
 Weapon.prototype.throwBomb = function(){
 	//if(this.)
 	this.bomb.throw(this.game.player.sprite.x, this.game.player.sprite.y, this.game.player.direction);
+
+
+	timer.add(500, this.bomb.stop, this);
+	timer.add(1000, this.bomb.dissapear, this);
 }
 
 // Starts the shot of a bullet. 
 Weapon.prototype.fireWeapon = function(){
 
 	if (this.bulletCooldownTime == this.bulletCooldownMaxTime) {
-		this.bulletArray[this.bulletIndex].fireBullet(this.game.player.sprite.x,this.game.player.sprite.y, this.game.player.direction);		
+		this.bulletArray[this.bulletIndex].fireBullet(this.game.player.sprite.x,this.game.player.sprite.y, this.game.player.direction,
+		 this.game.player.weapon.weaponType);		
+
 		this.bulletIndex = (this.bulletIndex + 1) % this.bulletsOnScreen;
 		this.bulletCooldownTime = 0;	
 	}

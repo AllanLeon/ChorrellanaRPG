@@ -65,6 +65,7 @@ Player.prototype.loadWeapon = function(){
     this.weapon.load();
 }
 
+
 // Plays the current animation.
 Player.prototype.playAnimation = function(){
 	this.sprite.play(this.animation + this.direction);
