@@ -7,7 +7,11 @@ function Weapon(game){
 	this.bulletsOnScreen = 10; // Max number of bullets on screen
 	this.bulletIndex = 0; 
 	this.bulletArray = []; // Array to store our bullets
-	this.weaponType = 0; // The weapon in use
+	this.weaponType = 1; // The weapon in use
+
+	this.bomb;
+	this.bombsOnScreen = 1;
+	this.bombCooldown = 2;
 }
 
 // Use the weapon's sprite for the HUD only
@@ -19,6 +23,7 @@ Weapon.prototype.render = function(x, y){
 // Loads the weapon's sprites
 Weapon.prototype.load = function(){
 	this.loadBullet();
+	//this.loadBomb();
 }
 
 // Loads all of the bullets in our bullet array
@@ -27,6 +32,26 @@ Weapon.prototype.loadBullet = function(){
 		this.bulletArray[i] = new Bullet(this.game);
 		this.bulletArray[i].load(this.weaponType);
 	}
+
+	this.bomb = new Bomb(this.game);
+	this.bomb.load(this.weaponType);
+}
+
+/*Weapon.prototype.loadBomb = function(){
+	for (var i=0; i< this.bombsOnScreen; i++){
+		this.bomb = new Bomb(this.game);
+		this.bomb.load(this.weaponType);
+	}
+}
+*/
+
+Weapon.prototype.changeWeapon = function(){
+	this.weaponType = (this.weaponType + 1) % 2;
+}
+
+Weapon.prototype.throwBomb = function(){
+	//if(this.)
+	this.bomb.throw(this.game.player.sprite.x, this.game.player.sprite.y, this.game.player.direction);
 }
 
 // Starts the shot of a bullet. 

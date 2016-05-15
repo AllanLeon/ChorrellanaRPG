@@ -30,6 +30,8 @@ States.Boot = {
 			this.game.load.image('weapon'.concat(iStr),'assets/images/weapons/weapon'.concat(iStr.concat(".png")));	
 		}
 
+		this.game.load.image('bomb', 'assets/images/weapons/bomb.png');
+
 	},
 	// Starts the next state.
 	create: function(){

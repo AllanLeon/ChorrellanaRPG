@@ -184,17 +184,9 @@ Player.prototype.fireWeapon = function(){
 	if (game.input.keyboard.isDown(Phaser.Keyboard.X)) {
 		this.weapon.fireWeapon();
 	}
-}
 
-	game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite);
-	this.fireWeapon();
-}
-
-// Checks the input and fires the weapon.
-Player.prototype.fireWeapon = function(){
-	this.weapon.cooldown();
-	if (game.input.keyboard.isDown(Phaser.Keyboard.X)) {
-		this.weapon.fireWeapon();
+	if (game.input.keyboard.isDown(Phaser.Keyboard.C)) {
+		this.weapon.throwBomb();
 	}
 }
 
