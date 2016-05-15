@@ -29,13 +29,10 @@ States.Play = {
 		//Creates HUD and its elements
 		game.HUD = new HUD(window.game);
 		game.HUD.load();
-
-		//Sets HUD elements fixed to the camera
+		//Sets the Hud objects fixed to the camera
 		game.HUD.healthBar.fixedToCamera = true;
 		game.HUD.availableHealth.fixedToCamera = true;
 		game.HUD.miniMap.fixedToCamera = true;
-
-
 		
 		//Creates CollectableItems 
 		game.coin1 = new collectableItems(window.game, 100, 200, 'coin');
@@ -68,6 +65,7 @@ States.Play = {
 		game.inventory.inventoryImage.fixedToCamera = true;
 
 
+		//Attempted to use groups but couldnt
 		/*
 		var coins = game.add.group();
 		var keys = game.add.group();
