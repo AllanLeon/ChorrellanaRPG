@@ -36,16 +36,84 @@ States.Play = {
 		game.HUD.miniMap.fixedToCamera = true;
 
 
+		
+		//Creates CollectableItems 
+		game.coin1 = new collectableItems(window.game, 100, 200, 'coin');
+		game.coin1.load();
+
+		game.coin2 = new collectableItems(window.game, 200, 1000, 'coin');
+		game.coin2.load();
+
+		game.firstAid1 = new collectableItems(window.game, 300, 1000, 'firstAid');
+		game.firstAid1.load();
+
+		game.firstAid2 = new collectableItems(window.game, 100, 1200, 'firstAid');
+		game.firstAid2.load();
+
+		game.key1 = new collectableItems(window.game, 700, 900, 'key');
+		game.key1.load();
+
+		game.key2 = new collectableItems(window.game, 150, 900, 'key');
+		game.key2.load();
+		
 		//Creates Inventory Items
-		game.Inventory = new Inventory(window.game);
-		game.Inventory.load();
+		game.inventory = new inventory(window.game);
+		game.inventory.load();
 
 		//Sets inventory elements fixed to the camera
-		game.Inventory.keyImage.fixedToCamera = true;
-		game.Inventory.coinImage.fixedToCamera = true;
-		game.Inventory.numberCoinsText.fixedToCamera = true;
-		game.Inventory.numberKeysText.fixedToCamera = true;
-		game.Inventory.inventoryImage.fixedToCamera = true;
+		game.inventory.keyImage.fixedToCamera = true;
+		game.inventory.coinImage.fixedToCamera = true;
+		game.inventory.numberCoinsText.fixedToCamera = true;
+		game.inventory.numberKeysText.fixedToCamera = true;
+		game.inventory.inventoryImage.fixedToCamera = true;
+
+
+		/*
+		var coins = game.add.group();
+		var keys = game.add.group();
+		var firstAids = game.add.group();
+
+	for(var i = 0; i<6; i++)
+    {
+        if(i == 0)
+        {
+            var coin = new collectableItems(window.game, 100, 200, 'coin');
+            //coin.load();
+            //coins.add(coin);
+        }
+        else if(i == 1)
+        {
+            var coin = new collectableItems(window.game, 200, 1000, 'coin');
+           // coin.load();
+            //coins.add(coin);
+        }
+        else if(i == 2)
+        {
+           	var key = new collectableItems(window.game, 150, 900, 'key');
+           //	key.load();
+           	//keys.add(key);
+        }
+        else if(i == 3)
+        {
+           	var key = new collectableItems(window.game, 700, 900, 'key');
+           //	key.load();
+           	//keys.add(key);
+        }
+        else if(i == 4)
+        {
+           	var firstAid = new collectableItems(window.game, 100, 1200, 'firstAid');
+           	//firstAid.load();
+           //	firstAids.add(firstAid);
+        }
+        else
+        {
+        	var firstAid = new collectableItems(window.game, 300, 1000, 'firstAid');
+        	//firstAid.load();
+        	//	firstAids.add(firstAid);
+        }
+    
+
+    }*/
 
 
 		//Creates and loads blocks
@@ -72,9 +140,16 @@ States.Play = {
 	// Updates all the game's objects.
 	update: function(){
 		// Updates the player.
-		game.player.update();
-		game.HUD.update();
-		game.Inventory.update();
+		game.player.update(game.player);
+		game.HUD.update(game.player);
+		game.inventory.update(game.player);
+		game.coin1.update(game.player);
+		game.coin2.update(game.player);
+		game.key1.update(game.player);
+		game.key2.update(game.player);
+		game.firstAid1.update(game.player);
+		game.firstAid2.update(game.player);
+
 
 		//game.enemyLeo.update();
 		//game.enemy.update();
@@ -85,10 +160,8 @@ States.Play = {
 	}
 
 };
-	function collisionEnemy (Player, Enemy) {
-
-    Player.kill();
-    Enemy.kill();
-
-
-}
+	function collisionEnemy (Player, Enemy) 
+	{
+    	Player.kill();
+    	Enemy.kill();
+	}

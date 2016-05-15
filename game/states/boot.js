@@ -19,6 +19,7 @@ States.Boot = {
 		this.game.load.image('coin','assets/images/inventory/coin.png');
 		this.game.load.image('key','assets/images/inventory/key.png');
 		this.game.load.image('inventory','assets/images/inventory/grid.png');
+		this.game.load.image('firstAid','assets/images/inventory/firstAid.png');
 
 		for (var i=0; i<2; i++){
 			var iStr = i.toString();
