@@ -1,30 +1,33 @@
 // Declaration of Enemy data.
-function Enemy(game,player){
+function Enemy(game){
 	this.game = game;
 	this.health = 100;
 	this.sprite = null;
-	this.colliderSprite = true;
-	this.collide = true;
+	this.colliderSprite = null;
+	//this.collide = false;
 	this.speed = Math.floor(Math.random() * 150);
 	this.animation = 'redEnemy';
 	this.direction = 'Down';
-	this.player = player;
 	this.stopped = true;
 	this.initial = Math.floor(Math.random() * (1356));
 	this.enableBody = true;
+	this.positionData = {
+	colliderDifference: {x: 4, y: 3}, // distance from collider sprite to sprite
+};
 
 }
 
 // Info of the Enemy's position.
-var positionData = {
+
+/*var positionData = {
 	initial: {x: 0, y: 0},
 	colliderDifference: {x: 4, y: 3}, // distance from collider sprite to sprite
-};
+};*/
 
 // Initializes the Enemys sprites.
 Enemy.prototype.render = function(){
 	// loads sprites
-	this.colliderSprite = this.game.add.sprite(this.initial - positionData.colliderDifference.x, this.initial - positionData.colliderDifference.y, 'enemyCollider');
+	this.colliderSprite = this.game.add.sprite(this.initial - this.positionData.colliderDifference.x, this.initial - this.positionData.colliderDifference.y, 'enemyCollider');
 	this.sprite = this.game.add.sprite(this.initial, this.initial, 'enemy');
 	this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 
@@ -94,77 +97,62 @@ Enemy.prototype.handleMovement = function(){
 	//this.stop();
 
 
-	if (this.player.sprite.y > this.sprite.y){
+	if (this.game.player.sprite.y > this.sprite.y){
 		this.direction = "Down";
 		this.move(this.speed, 0);
 	}
 
-	else if (this.player.sprite.y < this.sprite.y){
+	else if (this.game.player.sprite.y < this.sprite.y){
 		this.direction = "Up";
 		this.move(-this.speed, 0);
 	}
 
 
-	if(this.player.sprite.x > this.sprite.x){
+	if(this.game.player.sprite.x > this.sprite.x){
 		this.direction = "Right";
 		this.move(this.speed, 1);
 	}
 
-	else if (this.player.sprite.x < this.sprite.x){
+	else if (this.game.player.sprite.x < this.sprite.x){
 		this.direction = "Left";
 		this.move(-this.speed,1);
 	}
-
-	/*if(this.player.sprite.x == this.sprite.x && this.player.sprite.y > this.sprite.y){
-		this.direction = "Down";
-		this.move(this.speed, 0);
-		this.move(0,1);
-	}
-
-	else if (this.player.sprite.x == this.sprite.x && this.player.sprite.y < this.sprite.y){
-		this.direction = "Up";
-		this.move(-this.speed,0);
-		this.move(0,1)
-	}
-
-	else if (this.player.sprite.y == this.sprite.y && this.player.sprite.x > this.sprite.x){
-		this.direction = "Right";
-		this.move(this.speed,1);
-		this.move(0,0)
-	}
-
-	else if (this.player.sprite.y == this.sprite.y && this.player.sprite.x < this.sprite.x){
-		this.direction = "Left";
-		this.move(-this.speed,1);
-		this.move(0,0)
-	}*/
 
 
 	this.playAnimation();
 
-	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.x);
+	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
 
+
+	this.game.physics.arcade.overlap(this.sprite, this.game.player.sprite, null, this._enemyAttack, this);
+	
 	
 }
 
 // Updates the Enemy.
 Enemy.prototype.update = function(){
 	this.handleMovement();
-	game.physics.arcade.collide(this.sprite,this.player.sprite, this._enemyTouchEnemy,null,this);
+	
 	
 }
 
 //Enemy Attack
-
-Enemy.prototype.enemyAttack = function() {
+var contador = 0;
+Enemy.prototype._enemyAttack = function() {
     
-    this.player.health -= 10;
+	contador += 1;
 
-	this.player.healthText = game.add.text(16, 16, 'Health: ' + this.player.health, { fontSize: '32px', fill: '#000' });
+	if(contador == 10) {
+
+    this.game.player.health -= 5;
+    contador = 0;
+
+	}
 }
 
-Enemy.prototype._enemyTouchEnemy = function (enemySprite1, enemySprite2) {
+Enemy.prototype._enemyTouchPlayer= function (enemySprite, player) {
 
-        // The simple presence of this function avoid enemies to be on the same place
-
+       
+       //this.collide = true;
+       var texto = game.add.text(50, 50, 'CHOQUE', { fontSize: '32px', fill: '#000' });
     }
