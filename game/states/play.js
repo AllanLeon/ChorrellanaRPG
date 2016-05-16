@@ -52,20 +52,35 @@ States.Play = {
 		game.obstacle.load();
 
 		// Creates and loads an Enemy.
-		//game.enemy = new Enemy(window.game, game.player);
-		//game.enemy.load();
+		game.enemy = new Enemy(window.game, game.player);
+		game.enemy.load();
 
+		game.enemy2 = new Enemy(window.game, game.player);
+		game.enemy2.load();
 
-		//game.enemy2 = new Enemy(window.game, game.player);
-		//game.enemy2.load();
-
-		//game.enemy3 = new Enemy(window.game, game.player);
-		//game.enemy3.load();
+		game.enemy3 = new Enemy(window.game, game.player);
+		game.enemy3.load();
 
 		game.physics.arcade.enable(game.player);
 		//game.physics.arcade.enable(game.enemy);
 		//game.physics.arcade.enable(game.enemy2);
-		//game.physics.arcade.enable(game.enemy3);
+	//	game.physics.arcade.enable(game.enemy3);
+
+		game.energyEnemy = new EnergyEnemy(window.game, game.player);
+		game.energyEnemy.load();
+
+
+		game.mina = new Mina1(window.game);
+		game.mina.load();
+
+		game.mina2 = new Mina1(window.game);
+		game.mina2.load();
+		game.mina3 = new Mina1(window.game);
+		game.mina3.load();
+		game.mina4 = new Mina1(window.game);
+		game.mina4.load();
+		game.mina5 = new Mina1(window.game);
+		game.mina5.load();
 
 	},
 	// Updates all the game's objects.
@@ -76,9 +91,16 @@ States.Play = {
 		game.HUD.update();
 
 		//game.enemyLeo.update();
-		//game.enemy.update();
-		//game.enemy2.update();
-		//game.enemy3.update();
+		game.enemy.update();
+		game.enemy2.update();
+		game.enemy3.update();
+		game.energyEnemy.update();
+
+		game.mina.update();
+		game.mina2.update();
+		game.mina3.update();
+		game.mina4.update();
+		game.mina5.update();
 
 		game.physics.arcade.overlap(game.player, game.enemy, collisionEnemy, null, this);
 	}
