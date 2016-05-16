@@ -4,10 +4,10 @@ function collectableItems(game, x , y , image){
 	this.itemSprite = image;
 	this.startingX = x;
 	this.staringY = y;
+	this.item = null;
 
 }
 
-var coins;
 //set position for the items
 //var positionDataItem = {
 //	initial: {x:startingX, y:staringY }//generic position
@@ -16,7 +16,8 @@ var coins;
 collectableItems.prototype.render = function()
 {
 	this.item = this.game.add.sprite(this.startingX, this.staringY, this.itemSprite);
-	this.game.physics.arcade.enable(this.item);
+	this.item.enableBody = true;
+	this.game.physics.enable(this.item, Phaser.Physics.ARCADE);
 }
 
 collectableItems.prototype.load = function(){
@@ -41,32 +42,34 @@ collectableItems.prototype.collectItem = function()
 
  	if(this.itemSprite=='coin')
  	{
- 		game.physics.arcade.overlap(game.player, this.item, this.collectCoin, null, this);
+ 		this.game.physics.arcade.overlap(this.game.player.sprite, this.item, null, this.collectCoin, this);
  	}
  	else if(this.itemSprite == 'key')
  	{
- 		game.physics.arcade.overlap(game.player, this.item, this.collectKey, null, this);
+ 		this.game.physics.arcade.overlap(this.game.player.sprite, this.item, null,this.collectKey, this);
  	}
  	else
  	{
- 		game.physics.arcade.overlap(game.player, this.item, this.collectFirstAid, null, this);
+ 		this.game.physics.arcade.overlap(this.game.player.sprite, this.item, null,this.collectFirstAid, this);
  	}
  }
 
  collectableItems.prototype.collectCoin = function()
  {
  	//var text = game.add.text(100,200, 'tumama', { fontSize: '32px', fill: '#000' });
- 	game.inventory.numberCoins = game.inventory.numberCoins + 1;
- 	//this.collectableItems.kill();
+ 	this.game.inventory.numberCoins = game.inventory.numberCoins + 1;
+ 	this.item.kill();
  }
 
  collectableItems.prototype.collectKey = function()
  {
- 	game.inventory.numberKeys = game.inventory.numberKeys + 1;
- 	//this.collectableItems.kill();
+ 	this.game.inventory.numberKeys = game.inventory.numberKeys + 1;
+ 	this.item.kill();
  }
 
  collectableItems.prototype.collectFirstAid = function()
  {
- 	game.player.health = game.player.health + 30;
+ 	if(this.game.player.health)
+ 	this.game.player.health = game.player.health + 30;
+ 	this.item.kill();
  }
