@@ -22,7 +22,7 @@ function Mina1(game){
 // Initializes the Mina1s sprites.
 Mina1.prototype.render = function(){
 	// loads sprites
-	this.colliderSprite = this.game.add.sprite(this.initial - positionData.colliderDifference.x, this.initial - positionData.colliderDifference.y, 'Mina1Collider');
+	this.colliderSprite = this.game.add.sprite(this.initial - this.positionData.colliderDifference.x, this.initial - this.positionData.colliderDifference.y, 'Mina1Collider');
 	this.sprite = this.game.add.sprite(this.initial, this.initial, 'mina1');
 	this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 

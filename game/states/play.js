@@ -69,8 +69,8 @@ States.Play = {
 		game.obstacle = new Obstacle(window.game);
 		game.obstacle.load();
 
-		game.enemy3 = new Enemy(window.game, game.player);
-		game.enemy3.load();
+		/*game.enemy3 = new Enemy(window.game, game.player);
+		game.enemy3.load();*/
 
 		game.energyEnemy = new EnergyEnemy(window.game, game.player);
 		game.energyEnemy.load();

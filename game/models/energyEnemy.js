@@ -20,7 +20,7 @@ function EnergyEnemy(game){
 // Initializes the EnergyEnemys sprites.
 EnergyEnemy.prototype.render = function(){
 	// loads sprites
-	this.colliderSprite = this.game.add.sprite(this.initial - positionData.colliderDifference.x, this.initial - positionData.colliderDifference.y, 'energyEnemyCollider');
+	this.colliderSprite = this.game.add.sprite(this.initial - this.positionData.colliderDifference.x, this.initial - this.positionData.colliderDifference.y, 'energyEnemyCollider');
 	this.sprite = this.game.add.sprite(this.initial, this.initial, 'energyEnemy');
 	this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 
