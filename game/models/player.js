@@ -5,7 +5,8 @@ function Player(game)
 	this.health = 100;
 	this.healthText;
 	this.sprite = null;
-	this.colliderSprite = true;
+	this.colliderSprite = null;
+
 	this.speed = 300;
 	this.animation = 'dukeAnim';
 	this.direction = 'Down';
@@ -26,7 +27,7 @@ var positionData = {
 // Initializes the players sprites.
 Player.prototype.render = function(){
 	// loads sprites
-	this.colliderSprite = this.game.add.sprite(30 - positionData.colliderDifference.x, 230 - positionData.colliderDifference.y, 'dukeCollider');
+	this.colliderSprite = this.game.add.sprite(50 - positionData.colliderDifference.x, 230 - positionData.colliderDifference.y, 'dukeCollider');
 	this.sprite = this.game.add.sprite(30, 230, 'duke');
 	
 	// sets sprite properties
@@ -165,6 +166,8 @@ Player.prototype.handleMovement = function(){
 		this.health -= 10;
     	this.healthText.text = 'Score: ' + this.health;
 	}
+
+	this.healthText.text = 'Health: ' + this.health;
 }
 
 
@@ -173,8 +176,29 @@ Player.prototype.update = function()
 {
 	this.handleMovement();
 	game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite);
+	this.NPCCollission();
+	this.signCollission();
+	
 	this.fireWeapon();
 }
+
+Player.prototype.NPCCollission = function(){
+	if(game.physics.arcade.collide(game.npc.dukes, this.colliderSprite)){
+		if (game.input.keyboard.isDown(Phaser.Keyboard.X) && !this.game.writer.buttonPressed){
+			this.game.npc.sendMessage();
+			this.game.writer.buttonPressed = true;
+		}
+	}  
+};
+
+Player.prototype.signCollission = function(){
+	if(game.physics.arcade.collide(game.sign.carteles, this.colliderSprite)){
+		if (game.input.keyboard.isDown(Phaser.Keyboard.X) && !this.game.writer.buttonPressed){
+			this.game.sign.sendMessage();
+			this.game.writer.buttonPressed = true;
+		}	
+	} 
+};
 
 // Checks the input and fires the weapon.
 Player.prototype.fireWeapon = function(){
