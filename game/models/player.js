@@ -11,7 +11,8 @@ function Player(game) {
 	this.stopped = true;
 	this.weapon = null;
 	this.enableBody = true;
-	this.positionData = {    // Player's position info.
+
+this.positionData = {    // Player's position info.
 		//initial: { x: 300, y: 300}, // initial position of the player
 		initial: { x: 50, y: 230}, // initial position of the player
 		colliderDifference: {x: 4, y: 3}, // distance from collider sprite to sprite
@@ -30,7 +31,7 @@ Player.prototype.render = function() {
 	this.game.physics.arcade.enable(this.colliderSprite); // enables physics on colliderSprite
 	this.game.physics.arcade.enable(this.sprite); // enables physics on sprite
 
-	//this.colliderSprite.immovable = true; // makes it immovable when a collision occurs
+	this.colliderSprite.immovable = true; // makes it immovable when a collision occurs
 	this.colliderSprite.body.collideWorldBounds = true; // colliderSprite cannot exceed the world bounds
 
 	this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
@@ -56,6 +57,7 @@ Player.prototype.loadWeapon = function() {
     this.weapon = new Weapon(this.game);
     this.weapon.load();
 }
+
 
 // Plays the current animation.
 Player.prototype.playAnimation = function() {
@@ -149,7 +151,13 @@ Player.prototype.handleMovement = function() {
 		this.playAnimation();
 	}
 
+	if (this.sprite.x == 10){
+		this.health -= 10;
+    	this.healthText.text = 'Score: ' + this.health;
+	}
+
 	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.y);
+
 }
 
 
@@ -187,6 +195,10 @@ Player.prototype.fireWeapon = function(){
 	if (game.input.keyboard.isDown(Phaser.Keyboard.X)) {
 		this.weapon.fireWeapon();
 	}
+
+	if (game.input.keyboard.isDown(Phaser.Keyboard.C)) {
+		this.weapon.throwBomb();
+	}
 }
 
 function death (){
@@ -194,4 +206,5 @@ function death (){
 		this.sprite.kill();
 	}
 }
+
 
