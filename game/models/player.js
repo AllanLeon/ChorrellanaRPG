@@ -35,7 +35,7 @@ Player.prototype.render = function(){
 	this.game.physics.arcade.enable(this.colliderSprite); // enables physics on colliderSprite
 	this.game.physics.arcade.enable(this.sprite); // enables physics on sprite
 
-	//this.colliderSprite.immovable = true; // makes it immovable when a collision occurs
+	this.colliderSprite.immovable = true; // makes it immovable when a collision occurs
 	this.colliderSprite.body.collideWorldBounds = true; // colliderSprite cannot exceed the world bounds
 
 	this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
@@ -176,6 +176,7 @@ Player.prototype.handleMovement = function(){
 Player.prototype.update = function()
 {
 	this.handleMovement();
+	game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite);
 	this.fireWeapon();
 }
 
