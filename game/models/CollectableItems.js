@@ -69,7 +69,13 @@ collectableItems.prototype.collectItem = function()
 
  collectableItems.prototype.collectFirstAid = function()
  {
- 	if(this.game.player.health)
- 	this.game.player.health = game.player.health + 30;
+ 	if(this.game.player.health>85)
+ 	{
+ 	this.game.player.health = 100
+ 	}
+ 	else
+ 	{
+ 	this.game.player.health = this.game.player.health + 15
+ 	}	
  	this.item.kill();
  }
