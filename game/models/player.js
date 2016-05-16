@@ -5,7 +5,8 @@ function Player(game)
 	this.health = 100;
 	this.healthText;
 	this.sprite = null;
-	this.colliderSprite = true;
+	this.colliderSprite = null;
+
 	this.speed = 300;
 	this.animation = 'dukeAnim';
 	this.direction = 'Down';
@@ -165,6 +166,8 @@ Player.prototype.handleMovement = function(){
 		this.health -= 10;
     	this.healthText.text = 'Score: ' + this.health;
 	}
+
+	this.healthText.text = 'Health: ' + this.health;
 }
 
 

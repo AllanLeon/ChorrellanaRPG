@@ -41,6 +41,11 @@ States.Play = {
 		//Creates HUD and its elements
 		game.HUD = new HUD(window.game);
 		game.HUD.load();
+		
+		// Creates and loads a Enemy.
+		game.enemy = new Enemy(window.game, game.player);
+		game.enemy.load();
+
 
 		//Sets HUD elements fixed to the camera
 		game.HUD.healthBar.fixedToCamera = true;
@@ -64,10 +69,19 @@ States.Play = {
 		game.obstacle = new Obstacle(window.game);
 		game.obstacle.load();
 
+		game.enemy3 = new Enemy(window.game, game.player);
+		game.enemy3.load();
+
+		game.energyEnemy = new EnergyEnemy(window.game, game.player);
+		game.energyEnemy.load();
+
+
 		// Creates and loads an Enemy.
 		//game.enemy = new Enemy(window.game, game.player);
 		//game.enemy.load();
 
+		game.mina = new Mina1(window.game);
+		game.mina.load();
 
 		//game.enemy2 = new Enemy(window.game, game.player);
 		//game.enemy2.load();
@@ -93,15 +107,20 @@ States.Play = {
 		//game.enemy.update();
 		//game.enemy2.update();
 		//game.enemy3.update();
+		game.enemy.update();
+	/*	game.enemy2.update();
+		game.enemy3.update();*/
+
+		game.energyEnemy.update();
+
+		game.mina.update();
 
 		game.physics.arcade.overlap(game.player, game.enemy, collisionEnemy, null, this);
 	}
 
 };
-	function collisionEnemy (Player, Enemy) {
 
+function collisionEnemy (Player, Enemy) {
     Player.kill();
     Enemy.kill();
-
-
 }
