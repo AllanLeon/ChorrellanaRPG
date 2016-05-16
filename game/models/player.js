@@ -4,13 +4,15 @@ function Player(game){
 	this.health = 100;
 	this.healthText;
 	this.sprite = null;
-	this.colliderSprite = true;
+	this.colliderSprite = null;
+
 	this.speed = 300;
 	this.animation = 'dukeAnim';
 	this.direction = 'Down';
 	this.arrowKeys = null;
 	this.stopped = true;
 	this.enableBody = true;
+
 
 }
 
@@ -137,11 +139,9 @@ Player.prototype.handleMovement = function(){
 
 	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.x);
 
-	if (this.sprite.x == 10){
-		this.health -= 10;
-    	this.healthText.text = 'Score: ' + this.health;
-		//this.sprite.kill();
-	}
+
+	this.healthText.text = 'Health: ' + this.health;
+
 }
 
 // Updates the player.

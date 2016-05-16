@@ -26,20 +26,20 @@ States.Play = {
 		// Creates and loads a Enemy.
 		game.enemy = new Enemy(window.game, game.player);
 		game.enemy.load();
-
+/*
 
 		game.enemy2 = new Enemy(window.game, game.player);
 		game.enemy2.load();
 
 		game.enemy3 = new Enemy(window.game, game.player);
 		game.enemy3.load();
-
-		game.physics.arcade.enable(game.player);
-		game.physics.arcade.enable(game.enemy);
-		game.physics.arcade.enable(game.enemy2);
-		game.physics.arcade.enable(game.enemy3);
+*/
+		game.energyEnemy = new EnergyEnemy(window.game, game.player);
+		game.energyEnemy.load();
 
 
+		game.mina = new Mina1(window.game);
+		game.mina.load();
 
 	},
 	// Updates all the game's objects.
@@ -47,19 +47,15 @@ States.Play = {
 		// Updates the player.
 		game.player.update();
 		game.enemy.update();
-		game.enemy2.update();
-		game.enemy3.update();
+	/*	game.enemy2.update();
+		game.enemy3.update();*/
 
-		game.physics.arcade.overlap(game.player, game.enemy, collisionEnemy, null, this);
+		game.energyEnemy.update();
+
+		game.mina.update();
 
 	}
 
 
 	
 };
-	function collisionEnemy (Player, Enemy) {
-
-    Player.kill();
-    Enemy.kill();
-
-}
