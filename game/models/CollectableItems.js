@@ -2,8 +2,6 @@
 function collectableItems(game, x , y , image){
 	this.game = game;
 	this.itemSprite = image;
-	//this.height = 0;
-	//this.width = 0;
 	this.startingX = x;
 	this.staringY = y;
 
@@ -17,9 +15,8 @@ var coins;
 //}
 collectableItems.prototype.render = function()
 {
-	this.coinSprite = this.game.add.sprite(this.startingX, this.staringY, this.itemSprite);
-
-	this.game.physics.arcade.enable(this.coinSprite);
+	this.item = this.game.add.sprite(this.startingX, this.staringY, this.itemSprite);
+	this.game.physics.arcade.enable(this.item);
 }
 
 collectableItems.prototype.load = function(){
@@ -44,15 +41,15 @@ collectableItems.prototype.collectItem = function()
 
  	if(this.itemSprite=='coin')
  	{
- 		game.physics.arcade.overlap(game.player, this.collectableItems, this.collectCoin, null, this);
+ 		game.physics.arcade.overlap(game.player, this.item, this.collectCoin, null, this);
  	}
  	else if(this.itemSprite == 'key')
  	{
- 		game.physics.arcade.overlap(game.player, this.collectableItems, this.collectKey, null, this);
+ 		game.physics.arcade.overlap(game.player, this.item, this.collectKey, null, this);
  	}
  	else
  	{
- 		game.physics.arcade.overlap(game.player, this.collectableItems, this.collectFirstAid, null, this);
+ 		game.physics.arcade.overlap(game.player, this.item, this.collectFirstAid, null, this);
  	}
  }
 

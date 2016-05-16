@@ -57,7 +57,6 @@ HUD.prototype.drawPlayerPos = function()
 
 //Fuction to update the position of the player
 HUD.prototype.updatePlayerPos = function()
->>>>>>> aa6c53cd38912f51fcdcb14e795bce27a3cf0f36:game/hud.js
 {
 	graphics.clear();
 	this.playerPosMiniMapX = game.player.sprite.x/10;
