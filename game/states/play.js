@@ -47,6 +47,19 @@ States.Play = {
 		game.HUD.availableHealth.fixedToCamera = true;
 		game.HUD.miniMap.fixedToCamera = true;
 
+
+		//Creates Inventory Items
+		game.Inventory = new Inventory(window.game);
+		game.Inventory.load();
+
+		//Sets inventory elements fixed to the camera
+		game.Inventory.keyImage.fixedToCamera = true;
+		game.Inventory.coinImage.fixedToCamera = true;
+		game.Inventory.numberCoinsText.fixedToCamera = true;
+		game.Inventory.numberKeysText.fixedToCamera = true;
+		game.Inventory.inventoryImage.fixedToCamera = true;
+
+
 		//Creates and loads blocks
 		game.obstacle = new Obstacle(window.game);
 		game.obstacle.load();
@@ -74,6 +87,7 @@ States.Play = {
 		game.player.update();
 		game.writer.update();
 		game.HUD.update();
+		game.Inventory.update();
 
 		//game.enemyLeo.update();
 		//game.enemy.update();
@@ -88,5 +102,6 @@ States.Play = {
 
     Player.kill();
     Enemy.kill();
+
 
 }

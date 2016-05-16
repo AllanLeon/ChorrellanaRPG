@@ -47,9 +47,7 @@ HUD.prototype.lifeBarUpdate = function()
 //Fuction to draw the initial position of the player
 HUD.prototype.drawCircle = function()
 {
-graphics = game.add.graphics(0, 0);
-
-
+	graphics = game.add.graphics(0, 0);
     graphics.beginFill(0x0000FF);
     graphics.drawCircle(this.playerPosMiniMapX+this.miniMap.x, this.playerPosMiniMapY+this.miniMap.y, 5);
     graphics.endFill();
