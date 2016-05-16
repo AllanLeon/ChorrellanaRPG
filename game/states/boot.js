@@ -16,6 +16,11 @@ States.Boot = {
 		this.game.load.image('healthBar', 'assets/images/HUD/healthbar.png');
 		this.game.load.image('lifeBar', 'assets/images/HUD/life.png');
 		this.game.load.image('minimap','assets/images/backgrounds/minimap.png');
+		//this.game.load.spritesheet('coin','assets/images/items/coin.png');
+		this.game.load.image('coin','assets/images/inventory/coin.png');
+		this.game.load.image('key','assets/images/inventory/key.png');
+		this.game.load.image('firstAid','assets/images/inventory/firstaid.png');
+		this.game.load.image('inventory','assets/images/inventory/grid.png');
 		this.game.load.image('npcs', 'assets/images/characters/npcs1.png');
 		this.game.load.image('poster', 'assets/images/textBox/sign.png');
 		//this.game.load.spritesheet('coin','assets/images/items/coin.png');
