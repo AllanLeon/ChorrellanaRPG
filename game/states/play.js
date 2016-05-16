@@ -16,9 +16,21 @@ States.Play = {
 		// Initialiazes the cursor keys.
 		this.game.cursors = game.input.keyboard.createCursorKeys();
 
+		// Creates and loads a NPC
+		game.npc = new Npc(window.game);
+		game.npc.load();
+
+		// Creates and loads a sign
+		game.sign = new Sign(window.game);
+		game.sign.load();
+
 		// Creates and loads a Player object.
     	game.player = new Player(window.game);
 		game.player.load();
+
+		// Creates and loads a Writer object.
+		game.writer = new Writer(window.game);
+		game.writer.load();
 
 		//game.enemyLeo = new EnemyLeo(window.game);
 		//game.enemyLeo.load();
@@ -73,6 +85,7 @@ States.Play = {
 	update: function(){
 		// Updates the player.
 		game.player.update();
+		game.writer.update();
 		game.HUD.update();
 		game.Inventory.update();
 
