@@ -82,6 +82,9 @@ States.Play = {
 		game.mina5 = new Mina1(window.game);
 		game.mina5.load();
 
+		game.bluedragon = new BlueDragon(window.game);
+		game.bluedragon.load();
+
 	},
 	// Updates all the game's objects.
 	update: function(){
@@ -102,13 +105,7 @@ States.Play = {
 		game.mina4.update();
 		game.mina5.update();
 
-		game.physics.arcade.overlap(game.player, game.enemy, collisionEnemy, null, this);
+		game.bluedragon.update();
 	}
 
 };
-	function collisionEnemy (Player, Enemy) {
-
-    Player.kill();
-    Enemy.kill();
-
-}
