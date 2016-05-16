@@ -84,20 +84,6 @@ Player.prototype.stopAnimation = function(direction){
 	}
 }
 
-//FUncion para probar el lifeBarUpdate del hud
-Player.prototype.drainLife = function()
-{
-	if(this.sprite.x>400)
-	{
-		this.health = 20;
-	}
-	else
-	{
-		this.health = 100;
-	}
-}
-
-
 // Stops the player's movement.
 Player.prototype.stop = function() {
 	this.stopped = true;
