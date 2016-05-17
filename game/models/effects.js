@@ -1,5 +1,5 @@
 //branch creation//asd
-function effects(game){
+function Effects(game){
 	this.game = game;
 }
 
@@ -8,49 +8,45 @@ var manager = null;
 var emitter = null;
 var image = null;
 
-effects.prototype.clickBoom = function(pointer) {
-
-    var x = pointer.x;
-    var y = pointer.y;
-
-    //  This will apply the radiateFrom to only those particles emitted in this call
-    emitter.emit('basic', x - 48, y - 40, { zone: image, full: true, spacing: 8, setColor: true, radiateFrom: { x: x, y: y, velocity: 1 } });
-}
-
-effects.prototype.render = function() {
-
-    emitter.debug(432, 522);
-}
-
-effects.prototype.create = function() {
-
-    this.game.stage.backgroundColor = '#182d3b';
-    this.game.input.touch.preventDefault = false;
-
+Effects.prototype.create = function() {
+    
     music = this.game.add.audio('bossanova');
-
     music.play();
 
     manager = this.game.plugins.add(Phaser.ParticleStorm);
-
+    
     var data = {
-        lifespan: 3000
+        lifespan: 3000,
+        image: 'rain',
+        vy: 1,
+        alpha: { value: 1, delta: -0.007 }
     };
 
     manager.addData('basic', data);
 
-    emitter = manager.createEmitter(Phaser.ParticleStorm.PIXEL);
+    var ellipse = manager.createEllipseZone(400, 100);
 
-    emitter.renderer.pixelSize = 8;
+    emitter = manager.createEmitter();
+
+    emitter.force.y = 0.02;
 
     emitter.addToWorld();
 
-    //  12 x 10 = 96 x 80 px
-    image = manager.createImageZone('heart');
-
-    game.input.onDown.add(clickBoom, this);
+    emitter.emit('basic', 400, 160, { zone: ellipse, total: 16, repeat: -1, frequency: 40 });
 }
-effects.prototype.load = function(){
+
+Effects.prototype.update = function() {
+
+}
+
+Effects.prototype.render= function(){
+
+    emitter.debug(432, 522);
+}
+
+Effects.prototype.load = function(){
 	this.create();
-	game.forceSingleUpdate = true;
+	this.game.forceSingleUpdate = true;
+    this.render();
+
 }

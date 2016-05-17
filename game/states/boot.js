@@ -22,7 +22,10 @@ States.Boot = {
 		this.game.load.image('healthBar', 'assets/images/HUD/healthbar.png');
 		this.game.load.image('lifeBar', 'assets/images/HUD/life.png');
 		this.game.load.image('minimap','assets/images/backgrounds/minimap.png');
+		
 		this.game.load.audio('bossanova','assets/audio/bossanova.mp3');
+		this.game.load.image('rain','assets/images/effects/rain.png');
+		
 		//this.game.load.spritesheet('coin','assets/images/items/coin.png');
 		this.game.load.image('coin','assets/images/inventory/coin.png');
 		this.game.load.image('key','assets/images/inventory/key.png');
