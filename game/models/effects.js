@@ -13,40 +13,28 @@ Effects.prototype.create = function() {
     music = this.game.add.audio('bossanova');
     music.play();
 
-    manager = this.game.plugins.add(Phaser.ParticleStorm);
-    
-    var data = {
-        lifespan: 3000,
-        image: 'rain',
-        vy: 1,
-        alpha: { value: 1, delta: -0.007 }
-    };
+    var emitter = game.add.emitter(game.world.centerX, 0, 800);
 
-    manager.addData('basic', data);
+    emitter.width = game.world.width;
+    emitter.height = game.world.height;
+    // emitter.angle = 30; // uncomment to set an angle for the rain.
 
-    var ellipse = manager.createEllipseZone(400, 100);
+    emitter.makeParticles('rain');
 
-    emitter = manager.createEmitter();
+    emitter.minParticleScale = 0.85;
+    emitter.maxParticleScale = 0.85;
 
-    emitter.force.y = 0.02;
+    emitter.setYSpeed(300, 500);
+    emitter.setXSpeed(-5, 5);
 
-    emitter.addToWorld();
+    emitter.minRotation = 0;
+    emitter.maxRotation = 0;
 
-    emitter.emit('basic', 400, 160, { zone: ellipse, total: 16, repeat: -1, frequency: 40 });
-}
-
-Effects.prototype.update = function() {
-
-}
-
-Effects.prototype.render= function(){
-
-    emitter.debug(432, 522);
+    emitter.start(false, 1600, 5, 0);
 }
 
 Effects.prototype.load = function(){
 	this.create();
 	this.game.forceSingleUpdate = true;
-    this.render();
 
 }

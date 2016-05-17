@@ -25,6 +25,7 @@ States.Boot = {
 		
 		this.game.load.audio('bossanova','assets/audio/bossanova.mp3');
 		this.game.load.image('rain','assets/images/effects/rain.png');
+		this.game.load.image('leaf','assets/images/effects/leaf.png');
 		
 		//this.game.load.spritesheet('coin','assets/images/items/coin.png');
 		this.game.load.image('coin','assets/images/inventory/coin.png');
