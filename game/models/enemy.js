@@ -121,7 +121,7 @@ Enemy.prototype.handleMovement = function(){
 
 	this.playAnimation();
 
-	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.x);
+	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
 
 
 	this.game.physics.arcade.overlap(this.sprite, this.game.player.sprite, null, this._enemyAttack, this);

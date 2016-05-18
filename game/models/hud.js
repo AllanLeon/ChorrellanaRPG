@@ -28,7 +28,7 @@ HUD.prototype.render = function()
 	this.availableHealth.scale.setTo((this.healthHUD/10),1);
 	this.miniMap = this.game.add.sprite(this.miniMapPosX, this.miniMapPosY, 'minimap');
 	this.miniMap.scale.setTo(0.10,0.10);		
-	this.drawCircle();
+	this.drawPlayerPos();
 };
 
 //Function to load all assets in HUD
@@ -45,7 +45,7 @@ HUD.prototype.lifeBarUpdate = function()
 }
 
 //Fuction to draw the initial position of the player
-HUD.prototype.drawCircle = function()
+HUD.prototype.drawPlayerPos = function()
 {
 	graphics = game.add.graphics(0, 0);
     graphics.beginFill(0x0000FF);
@@ -56,14 +56,14 @@ HUD.prototype.drawCircle = function()
 }
 
 //Fuction to update the position of the player
-HUD.prototype.updateCircle = function()
+HUD.prototype.updatePlayerPos = function()
 {
 	graphics.clear();
 	this.playerPosMiniMapX = game.player.sprite.x/10;
 	this.playerPosMiniMapY = game.player.sprite.y/10;
 
 	graphics.beginFill(0x0000FF);
-    graphics.drawCircle(this.playerPosMiniMapX+this.miniMap.x+4, this.playerPosMiniMapY+this.miniMap.y+3, 5);
+    graphics.drawCircle(this.playerPosMiniMapX+this.miniMap.x+3, this.playerPosMiniMapY+this.miniMap.y+2, 5);
     graphics.endFill();
 
     window.graphics = graphics;
@@ -74,6 +74,6 @@ HUD.prototype.updateCircle = function()
 HUD.prototype.update = function() 
 {
 	this.lifeBarUpdate();
-	this.updateCircle();
+	this.updatePlayerPos();
 };
 

@@ -174,7 +174,7 @@ var ballDistance = Math.sqrt(Math.pow(this.sprite.x - this.energyBall.x,2) + Mat
 
 	this.playAnimation();
 
-	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.x);
+	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
 
 
 }

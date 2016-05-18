@@ -56,7 +56,7 @@ Mina1.prototype.setBodyPosition = function(x, y){
 Mina1.prototype.handleMovement = function(){
 
 
-	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.x);
+	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
 
 
 	this.game.physics.arcade.overlap(this.sprite, this.game.player.sprite, null, this._Mina1Attack, this);
