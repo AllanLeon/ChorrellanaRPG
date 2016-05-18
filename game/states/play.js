@@ -161,6 +161,9 @@ States.Play = {
 		//game.physics.arcade.enable(game.enemy2);
 		//game.physics.arcade.enable(game.enemy3);
 
+		game.music = new Effects(window.game);
+		game.music.load();
+
 		var changeKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
         changeKey.onDown.add(this.game.player.weapon.nextWeapon, game);
 
