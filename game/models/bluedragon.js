@@ -4,7 +4,7 @@ function BlueDragon(game){
 	this.health = 300;
 	this.sprite = null;
 	this.colliderSprite = null;
-	this.speed = 200;
+	this.speed = 150;
 	this.animation = 'BlueDragon';
 	this.direction = 'Down';
 	this.stopped = true;
@@ -20,7 +20,7 @@ function BlueDragon(game){
 // Initializes the BlueDragons sprites.
 BlueDragon.prototype.render = function(){
 	// loads sprites
-	this.colliderSprite = this.game.add.sprite(this.initial - positionData.colliderDifference.x, this.initial - positionData.colliderDifference.y, 'BlueDragonCollider');
+	this.colliderSprite = this.game.add.sprite(this.initial - this.positionData.colliderDifference.x, this.initial - this.positionData.colliderDifference.y, 'BlueDragonCollider');
 	this.sprite = this.game.add.sprite(this.initial, this.initial, 'bluedragon');
 	this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 
@@ -38,10 +38,10 @@ BlueDragon.prototype.render = function(){
 
 // Defines the BlueDragon's animations with their respective frames.
 BlueDragon.prototype.addAnimations = function () {
-	this.sprite.animations.add(this.animation + 'Left', [3,4, 5,], 8, true);
-	this.sprite.animations.add(this.animation + 'Right', [6, 7, 8], 8, true);
-	this.sprite.animations.add(this.animation + 'Up', [9,10,11], 8, true);
-	this.sprite.animations.add(this.animation + 'Down', [0, 1, 2], 8, true);
+	this.sprite.animations.add(this.animation + 'Left', [3,4, 5,], 5, true);
+	this.sprite.animations.add(this.animation + 'Right', [6, 7, 8], 5, true);
+	this.sprite.animations.add(this.animation + 'Up', [9,10,11], 5, true);
+	this.sprite.animations.add(this.animation + 'Down', [0, 1, 2], 5, true);
 
 }
 
@@ -103,27 +103,28 @@ BlueDragon.prototype.handleMovement = function(){
 	//this.stop();
 
 
-	// busca al jugador de manera lineal
-	if (this.game.player.sprite.y -30 > this.sprite.y){
-		this.direction = "Down";
-		this.move(this.speed, 0);
-		this.move(0,1);
-	}
-
-	else if (this.game.player.sprite.y - 50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x < this.sprite.x){
-		this.direction = "Left";
-		this.move(0, 0);
-		this.move(-this.speed,1);
-	}
-
-
+	// busca al jugador de manera lineal hacia arriba
 
 	if (this.game.player.sprite.y -30 < this.sprite.y){
 		this.direction = "Up";
 		this.move(-this.speed, 0);
 		this.move(0,1);
 	}
+	//una vez encontrado puede ir a la izquierda
+	else if (this.game.player.sprite.y - 50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x < this.sprite.x){
+		this.direction = "Left";
+		this.move(0, 0);
+		this.move(-this.speed,1);
+	}
 
+	// busca al jugador de manera lineal hacia abajo
+	if (this.game.player.sprite.y -30 > this.sprite.y){
+		this.direction = "Down";
+		this.move(this.speed, 0);
+		this.move(0,1);
+	}
+
+	//una vez encontrado puede ir a la izquierda
 	else if (this.game.player.sprite.y - 50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x < this.sprite.x){
 		this.direction = "Left";
 		this.move(0, 0);
@@ -131,8 +132,7 @@ BlueDragon.prototype.handleMovement = function(){
 	}
 
 
-
-
+	//una vez encontrado puede ir a la derecha
 	if (this.game.player.sprite.y - 50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x > this.sprite.x){
 		this.direction = "Right";
 		this.move(0, 0);
@@ -142,13 +142,14 @@ BlueDragon.prototype.handleMovement = function(){
 	//Distance of Player to Enemy
 	var enemyDistance = Math.sqrt(Math.pow(this.game.player.sprite.x - this.sprite.x,2) + Math.pow(this.game.player.sprite.y - this.sprite.y,2));
 	
-	if(enemyDistance <= 150){
+	if(enemyDistance <= 250){
 		this.stop();
 
-		if(this.stopped){
-			this.stopAnimation();
-		}
-		
+		this.circularMove();
+
+		this.viewControl(enemyDistance);
+
+		/*	
 		/*if (this.energyBall == null)
 		{
 			this.attack();
@@ -167,10 +168,10 @@ var ballDistance = Math.sqrt(Math.pow(this.sprite.x - this.energyBall.x,2) + Mat
 
 	this.game.physics.arcade.overlap(this.energyBall, this.game.player.sprite, null, this.energyBallCollition, this);
 	*/
-
+}
 	this.playAnimation();
 
-	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.x);
+	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
 
 
 }
@@ -206,7 +207,7 @@ BlueDragon.prototype.attack = function(direction){
 	this.energyBall.animations.add('ball',[0,1,2,3],10,true);
 
 
-	//Distance of Player to initiallyAttack
+	//Variables to increise the velocity of the ball atack (depend of the distance)
 	var ballAttackX = (this.game.player.sprite.x - this.sprite.x)/100;
 	var ballAttackY = (this.game.player.sprite.y - this.sprite.y)/100;
 	
@@ -240,6 +241,34 @@ BlueDragon.prototype.attack = function(direction){
 	this.energyBall.animations.play('ball');
 }
 
+//Circular move of the BlueDragon, around of player.
+BlueDragon.prototype.circularMove = function(){
+
+
+}
+
+//Acomoda la vista del enemigo sobre el jugador.
+BlueDragon.prototype.viewControl = function(distanceToPlayer){
+
+	var rangeDistance = (distanceToPlayer/Math.sqrt(2));
+
+	if(this.sprite.x > this.game.player.sprite.x - rangeDistance && this.sprite.x < this.game.player.sprite.x + rangeDistance && this.sprite.y < this.game.player.sprite.y){
+		this.direction = "Down";
+	}
+
+	if(this.sprite.x > this.game.player.sprite.x - rangeDistance && this.sprite.x < this.game.player.sprite.x + rangeDistance && this.sprite.y > this.game.player.sprite.y){
+		this.direction = "Up";
+	}
+
+	if(this.sprite.y > this.game.player.sprite.y - rangeDistance && this.sprite.y < this.game.player.sprite.y + rangeDistance && this.sprite.x < this.game.player.sprite.x){
+		this.direction = "Right";
+	}
+
+	if(this.sprite.y > this.game.player.sprite.y - rangeDistance && this.sprite.y < this.game.player.sprite.y + rangeDistance && this.sprite.x > this.game.player.sprite.x){
+		this.direction = "Left";
+	}	
+
+}
 
 
 

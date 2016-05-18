@@ -24,10 +24,6 @@ EnergyEnemy.prototype.render = function(){
 	this.sprite = this.game.add.sprite(this.initial, this.initial, 'energyEnemy');
 	this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 
-
-	//this.game.physics.startSystem(Phaser.Physics.BOX2D);
-	//var circle = game.physics.box2d.createCircle(initial + 32, initial + 32, 32);
-
 	// sets sprite properties
 	this.colliderSprite.alpha = 0; // invisible collider sprite
 	this.game.physics.arcade.enable(this.colliderSprite); // enables physics on colliderSprite
@@ -196,7 +192,7 @@ EnergyEnemy.prototype.attack = function(direction){
 			this.energyBall = this.game.add.sprite(this.sprite.x - 16 ,this.sprite.y + 32,'energyBall');
 			break;
 		case 'Right':
-			this.energyBall = this.game.add.sprite(this.sprite.x + 80 ,this.sprite.y + 32,'energyBall');
+			this.energyBall = this.game.add.sprite(this.sprite.x + 60 ,this.sprite.y + 32,'energyBall');
 			break;
 		case 'Up':
 			this.energyBall = this.game.add.sprite(this.sprite.x + 20 ,this.sprite.y - 18,'energyBall');
@@ -207,6 +203,7 @@ EnergyEnemy.prototype.attack = function(direction){
 	}
 
 	this.game.physics.enable(this.energyBall, Phaser.Physics.ARCADE);
+	
 	this.energyBall.animations.add('ball',[0,1,2,3],10,true);
 
 

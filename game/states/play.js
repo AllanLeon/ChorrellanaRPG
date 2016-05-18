@@ -27,6 +27,7 @@ States.Play = {
 		// Creates and loads a Player object.
     	game.player = new Player(window.game);
 		game.player.load();
+		game.physics.arcade.enable(game.player);
 
 		// Creates and loads a Writer object.
 		game.writer = new Writer(window.game);
@@ -52,7 +53,7 @@ States.Play = {
 		game.obstacle.load();
 
 		// Creates and loads an Enemy.
-		game.enemy = new Enemy(window.game, game.player);
+		/*game.enemy = new Enemy(window.game, game.player);
 		game.enemy.load();
 
 		game.enemy2 = new Enemy(window.game, game.player);
@@ -61,10 +62,6 @@ States.Play = {
 		game.enemy3 = new Enemy(window.game, game.player);
 		game.enemy3.load();
 
-		game.physics.arcade.enable(game.player);
-		//game.physics.arcade.enable(game.enemy);
-		//game.physics.arcade.enable(game.enemy2);
-	//	game.physics.arcade.enable(game.enemy3);
 
 		game.energyEnemy = new EnergyEnemy(window.game, game.player);
 		game.energyEnemy.load();
@@ -81,7 +78,7 @@ States.Play = {
 		game.mina4.load();
 		game.mina5 = new Mina1(window.game);
 		game.mina5.load();
-
+*/
 		game.bluedragon = new BlueDragon(window.game);
 		game.bluedragon.load();
 
@@ -94,7 +91,7 @@ States.Play = {
 		game.HUD.update();
 
 		//game.enemyLeo.update();
-		game.enemy.update();
+		/*game.enemy.update();
 		game.enemy2.update();
 		game.enemy3.update();
 		game.energyEnemy.update();
@@ -103,7 +100,7 @@ States.Play = {
 		game.mina2.update();
 		game.mina3.update();
 		game.mina4.update();
-		game.mina5.update();
+		game.mina5.update();*/
 
 		game.bluedragon.update();
 	}
