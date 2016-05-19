@@ -24,8 +24,6 @@ Weapon.prototype.render = function(x, y) {
 Weapon.prototype.load = function() {
 	this.loadBullet();
 	//this.loadBomb();
-	//timer = game.time.create(false)
-	//timer.start();
 }
 
 // Loads all of the bullets in our bullet array
@@ -47,10 +45,8 @@ Weapon.prototype.loadBullet = function() {
 }
 */
 
-
 // Changes the current weapon
 Weapon.prototype.nextWeapon = function() {
-	
 	console.log(this.player.weapon.weaponType);
 	this.player.weapon.weaponType = (this.player.weapon.weaponType % 5) + 1;
 }
