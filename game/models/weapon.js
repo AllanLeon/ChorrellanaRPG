@@ -1,5 +1,5 @@
 // Declaration of weapon data.
-function Weapon(game){
+function Weapon(game) {
 	this.game = game;
 	this.sprite = null; // Use for HUD only
 	this.bulletCooldownMaxTime = 10; // Max time between shots
@@ -12,27 +12,24 @@ function Weapon(game){
 	this.bomb = [];
 	this.bombsOnScreen = 1;
 	this.bombCooldown = 2;
-
-	var timer;
-
 }
 
 // Use the weapon's sprite for the HUD only
 // Initializes the weapon's sprites.
-Weapon.prototype.render = function(x, y){
+Weapon.prototype.render = function(x, y) {
 	this.sprite = this.game.add.sprite(x, y, 'weapon' + this.weaponType);
-};
+}
 
 // Loads the weapon's sprites
-Weapon.prototype.load = function(){
+Weapon.prototype.load = function() {
 	this.loadBullet();
 	//this.loadBomb();
-	timer = game.time.create(false)
-	timer.start();
+	//timer = game.time.create(false)
+	//timer.start();
 }
 
 // Loads all of the bullets in our bullet array
-Weapon.prototype.loadBullet = function(){
+Weapon.prototype.loadBullet = function() {
 	for (var i=0; i < this.bulletsOnScreen; i++){
 		this.bulletArray[i] = new Bullet(this.game);
 		this.bulletArray[i].load(this.weaponType);
@@ -50,23 +47,22 @@ Weapon.prototype.loadBullet = function(){
 }
 */
 
-Weapon.prototype.nextWeapon = function(){
+
+// Changes the current weapon
+Weapon.prototype.nextWeapon = function() {
 	
 	console.log(this.player.weapon.weaponType);
 	this.player.weapon.weaponType = (this.player.weapon.weaponType % 5) + 1;
 }
 
-Weapon.prototype.throwBomb = function(){
+// Throws the bomb
+Weapon.prototype.throwBomb = function() {
 	//if(this.)
 	this.bomb.throw(this.game.player.sprite.x, this.game.player.sprite.y, this.game.player.direction);
-
-
-	timer.add(500, this.bomb.stop, this);
-	timer.add(1000, this.bomb.dissapear, this);
 }
 
 // Starts the shot of a bullet. 
-Weapon.prototype.fireWeapon = function(){
+Weapon.prototype.fireWeapon = function() {
 
 	if (this.bulletCooldownTime == this.bulletCooldownMaxTime) {
 		this.bulletArray[this.bulletIndex].fireBullet(this.game.player.sprite.x,this.game.player.sprite.y, this.game.player.direction,
@@ -79,7 +75,7 @@ Weapon.prototype.fireWeapon = function(){
 }
 
 // Controls the time between shots
-Weapon.prototype.cooldown = function(){
+Weapon.prototype.cooldown = function() {
 	if (this.bulletCooldownTime < this.bulletCooldownMaxTime){
 		this.bulletCooldownTime++;
 	}
