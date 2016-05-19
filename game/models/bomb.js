@@ -1,30 +1,28 @@
 // Declaration of bullet data.
-function Bomb(game){
+function Bomb(game) {
 	this.game = game;
 	this.sprite = null;
 	this.speed = 350;
 	this.type = null;
 	this.maxDistance = 750;
 	this.explosionTime = 3;
-
-	var timer;
+	this.timer = null;
 }
 
 
 // Initializes the bullet sprites.
-Bomb.prototype.render = function(type){
+Bomb.prototype.render = function(type) {
 	this.sprite = this.game.add.sprite(null, null, 'bomb');
 
 	// sets sprite properties
 	this.sprite.alpha = 0; // invisible sprite
 	this.game.physics.arcade.enable(this.sprite); // enables physics on sprite
-};
+}
 
-// Loads the bomb sprite
-Bomb.prototype.load = function(type){
+// Loads the bomb sprite and initializes the timer.
+Bomb.prototype.load = function(type) {
 	this.render(type);
-	timer = game.time.create(false)
-	timer.start();
+	this.initializeTimer();
 }
 
 // Stops the bomb movement.
@@ -34,7 +32,7 @@ Bomb.prototype.stop = function(){
 }
 
 // Moves the bomb's sprite with a given speed and direction.
-Bomb.prototype.move = function(speed, direction){
+Bomb.prototype.move = function(speed, direction) {
 	switch (direction) {
 		//Vertical=0; Horizontal=1
 		case 0:
@@ -46,16 +44,14 @@ Bomb.prototype.move = function(speed, direction){
 	}
 }
 
-// Set the initial position of the bullet's sprite.
-Bomb.prototype.setBodyPosition = function(x, y){
+// Set the initial position of the bomb's sprite.
+Bomb.prototype.setBodyPosition = function(x, y) {
 	this.sprite.x = x;
 	this.sprite.y = y;
 }
 
 // Checks the direction and handles the movement.
-Bomb.prototype.handleMovement = function(initialX, initialY, direction){
-	
-
+Bomb.prototype.handleMovement = function(initialX, initialY, direction) {
 	switch(direction){
 		case "Up":
 			this.move(-this.speed, 0);
@@ -72,18 +68,27 @@ Bomb.prototype.handleMovement = function(initialX, initialY, direction){
 	}
 }
 
-
-Bomb.prototype.dissapear = function(){
-//	this.sprite.alpha = 0;
+// Initializes the bomb's timer.
+Bomb.prototype.initializeTimer = function() {
+	this.timer = this.game.time.create(false);
 }
 
-// Start the shot of the bullet
-Bomb.prototype.throw = function(x, y, direction){
+// Hides the bomb and stops the timer.
+Bomb.prototype.dissapear = function() {
+	this.sprite.alpha = 0;
+	this.timer.stop();
+}
 
-	this.stop();
-	this.setBodyPosition(x, y);
-	this.handleMovement(x, y, direction);
-	this.sprite.alpha = 1;	
+// Start the shot of the bullet and starts the timer.
+Bomb.prototype.throw = function(x, y, direction) {
+	if (!this.timer.running) {
+		this.stop();
+		this.setBodyPosition(x, y);
+		this.handleMovement(x, y, direction);
+		this.sprite.alpha = 1;	
 
-
+		this.timer.add(500, this.stop, this);
+		this.timer.add(2000, this.dissapear, this);
+		this.timer.start();
+	}
 }
