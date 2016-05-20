@@ -16,13 +16,11 @@ function Mina1(game){
 
 }
 
-// Info of the Mina1's position
-
-
 // Initializes the Mina1s sprites.
 Mina1.prototype.render = function(){
 	// loads sprites
-	this.colliderSprite = this.game.add.sprite(this.initial - positionData.colliderDifference.x, this.initial - positionData.colliderDifference.y, 'Mina1Collider');
+
+	this.colliderSprite = this.game.add.sprite(this.initial - this.positionData.colliderDifference.x, this.initial - this.positionData.colliderDifference.y, 'Mina1Collider');
 	this.sprite = this.game.add.sprite(this.initial, this.initial, 'mina1');
 	this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 
@@ -33,7 +31,7 @@ Mina1.prototype.render = function(){
 
 	//this.colliderSprite.immovable = true; // makes it immovable when a collision occurs
 	this.colliderSprite.body.collideWorldBounds = true; // colliderSprite cannot exceed the world bounds
-	//this.collider.body.collider
+
 
 	
 
@@ -56,7 +54,8 @@ Mina1.prototype.setBodyPosition = function(x, y){
 Mina1.prototype.handleMovement = function(){
 
 
-	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.x);
+	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
+
 
 
 	this.game.physics.arcade.overlap(this.sprite, this.game.player.sprite, null, this._Mina1Attack, this);

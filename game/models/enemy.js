@@ -3,7 +3,7 @@ function Enemy(game){
 	this.game = game;
 	this.health = 100;
 	this.sprite = null;
-	this.colliderSprite = true;
+	this.colliderSprite = null;
 	//this.collide = false;
 	this.speed = Math.floor(Math.random() * 150);
 	this.animation = 'redEnemy';
@@ -17,13 +17,10 @@ function Enemy(game){
 
 }
 
-// Info of the Enemy's position.
-
-
 // Initializes the Enemys sprites.
 Enemy.prototype.render = function(){
 	// loads sprites
-	this.colliderSprite = this.game.add.sprite(this.initial - positionData.colliderDifference.x, this.initial - positionData.colliderDifference.y, 'enemyCollider');
+	this.colliderSprite = this.game.add.sprite(this.initial - this.positionData.colliderDifference.x, this.initial - this.positionData.colliderDifference.y, 'enemyCollider');
 	this.sprite = this.game.add.sprite(this.initial, this.initial, 'enemy');
 	this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 
@@ -117,7 +114,8 @@ Enemy.prototype.handleMovement = function(){
 
 	this.playAnimation();
 
-	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.x);
+	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
+
 
 
 	this.game.physics.arcade.overlap(this.sprite, this.game.player.sprite, null, this._enemyAttack, this);
@@ -143,6 +141,8 @@ Enemy.prototype._enemyAttack = function() {
     this.game.player.health -= 5;
     contador = 0;
 
+
 	}
 }
+
 

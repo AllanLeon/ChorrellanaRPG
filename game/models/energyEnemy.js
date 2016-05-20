@@ -20,7 +20,8 @@ function EnergyEnemy(game){
 // Initializes the EnergyEnemys sprites.
 EnergyEnemy.prototype.render = function(){
 	// loads sprites
-	this.colliderSprite = this.game.add.sprite(this.initial - positionData.colliderDifference.x, this.initial - positionData.colliderDifference.y, 'energyEnemyCollider');
+
+	this.colliderSprite = this.game.add.sprite(this.initial - this.positionData.colliderDifference.x, this.initial - this.positionData.colliderDifference.y, 'energyEnemyCollider');
 	this.sprite = this.game.add.sprite(this.initial, this.initial, 'energyEnemy');
 	this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 
@@ -31,7 +32,7 @@ EnergyEnemy.prototype.render = function(){
 
 	//this.colliderSprite.immovable = true; // makes it immovable when a collision occurs
 	this.colliderSprite.body.collideWorldBounds = true; // colliderSprite cannot exceed the world bounds
-	//this.collider.body.collider
+
 
 	
 };
@@ -170,7 +171,9 @@ var ballDistance = Math.sqrt(Math.pow(this.sprite.x - this.energyBall.x,2) + Mat
 
 	this.playAnimation();
 
-	this.setBodyPosition(this.colliderSprite.x - positionData.colliderDifference.x, this.colliderSprite.y - positionData.colliderDifference.x);
+
+	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
+
 
 
 }
@@ -203,7 +206,7 @@ EnergyEnemy.prototype.attack = function(direction){
 	}
 
 	this.game.physics.enable(this.energyBall, Phaser.Physics.ARCADE);
-	
+
 	this.energyBall.animations.add('ball',[0,1,2,3],10,true);
 
 
