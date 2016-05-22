@@ -100,54 +100,24 @@ BlueDragon.prototype.setBodyPosition = function(x, y){
 
 // Checks the input and handles the movement.
 BlueDragon.prototype.handleMovement = function(){
-	//this.stop();
 
-
-	// busca al jugador de manera lineal hacia arriba
-
-	if (this.game.player.sprite.y -30 < this.sprite.y){
-		this.direction = "Up";
-		this.move(-this.speed, 0);
-		this.move(0,1);
-	}
-	//una vez encontrado puede ir a la izquierda
-	else if (this.game.player.sprite.y - 50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x < this.sprite.x){
-		this.direction = "Left";
-		this.move(0, 0);
-		this.move(-this.speed,1);
-	}
-
-	// busca al jugador de manera lineal hacia abajo
-	if (this.game.player.sprite.y -30 > this.sprite.y){
-		this.direction = "Down";
-		this.move(this.speed, 0);
-		this.move(0,1);
-	}
-
-	//una vez encontrado puede ir a la izquierda
-	else if (this.game.player.sprite.y - 50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x < this.sprite.x){
-		this.direction = "Left";
-		this.move(0, 0);
-		this.move(-this.speed,1);
-	}
-
-
-	//una vez encontrado puede ir a la derecha
-	if (this.game.player.sprite.y - 50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x > this.sprite.x){
-		this.direction = "Right";
-		this.move(0, 0);
-		this.move(this.speed,1);
-	}
-
+	
 	//Distance of Player to Enemy
 	var enemyDistance = Math.sqrt(Math.pow(this.game.player.sprite.x - this.sprite.x,2) + Math.pow(this.game.player.sprite.y - this.sprite.y,2));
 	
-	if(enemyDistance <= 250){
+
+
+		this.lookingForPlayer();	
+
+
+		if(enemyDistance <= 200){
 		this.stop();
 
-		this.circularMove();
+		//this.circularMove();
 
 		this.viewControl(enemyDistance);
+
+		this.circularMove(enemyDistance);
 
 		/*	
 		/*if (this.energyBall == null)
@@ -173,6 +143,46 @@ var ballDistance = Math.sqrt(Math.pow(this.sprite.x - this.energyBall.x,2) + Mat
 
 	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
 
+
+}
+
+
+BlueDragon.prototype.lookingForPlayer = function(){
+	// busca al jugador de manera lineal hacia arriba
+
+	if (this.game.player.sprite.y -30 < this.sprite.y){
+		this.direction = "Up";
+		this.move(-this.speed, 0);
+		this.move(0,1);
+	}
+	//una vez encontrado puede ir a la izquierda
+	else if (this.game.player.sprite.y -50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x < this.sprite.x){
+		this.direction = "Left";
+		this.move(0, 0);
+		this.move(-this.speed,1);
+	}
+
+	// busca al jugador de manera lineal hacia abajo
+	if (this.game.player.sprite.y -30 > this.sprite.y){
+		this.direction = "Down";
+		this.move(this.speed, 0);
+		this.move(0,1);
+	}
+
+	//una vez encontrado puede ir a la izquierda
+	else if (this.game.player.sprite.y -50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x < this.sprite.x){
+		this.direction = "Left";
+		this.move(0, 0);
+		this.move(-this.speed,1);
+	}
+
+
+	//una vez encontrado puede ir a la derecha
+	if (this.game.player.sprite.y - 50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x > this.sprite.x){
+		this.direction = "Right";
+		this.move(0, 0);
+		this.move(this.speed,1);
+	}
 
 }
 
@@ -242,9 +252,28 @@ BlueDragon.prototype.attack = function(direction){
 }
 
 //Circular move of the BlueDragon, around of player.
-BlueDragon.prototype.circularMove = function(){
+BlueDragon.prototype.circularMove = function(radio){
 
+    this.speed = 100;
+	if(this.sprite.x <= this.game.player.sprite.x  && this.sprite.y <= this.game.player.sprite.y){
+		this.move(-this.speed, 0);
+		this.move(Math.sqrt(Math.pow(radio,2) - Math.pow(this.speed,2)) ,1);
+	}
 
+	if(this.sprite.x > this.game.player.sprite.x && this.sprite.y <= this.game.player.sprite.y){
+		this.move(Math.sqrt(Math.pow(radio,2) - Math.pow(this.speed,2)) , 0);
+		this.move(this.speed,1);
+	}
+
+	if(this.sprite.x <= this.game.player.sprite.x  && this.sprite.y > this.game.player.sprite.y ){
+		this.move(-(Math.sqrt(Math.pow(radio,2) - Math.pow(this.speed,2))) , 0);
+		this.move(-this.speed,1);
+	}
+
+	if(this.sprite.x > this.game.player.sprite.x  && this.sprite.y > this.game.player.sprite.y ){
+		this.move( this.speed , 0);
+		this.move(-(Math.sqrt(Math.pow(radio,2) - Math.pow(this.speed,2))),1);
+	}
 }
 
 //Acomoda la vista del enemigo sobre el jugador.

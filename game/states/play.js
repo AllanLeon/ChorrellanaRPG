@@ -43,11 +43,6 @@ States.Play = {
 		game.HUD = new HUD(window.game);
 		game.HUD.load();
 		
-		// Creates and loads a Enemy.
-		game.enemy = new Enemy(window.game, game.player);
-		game.enemy.load();
-
-
 		//Sets HUD elements fixed to the camera
 		game.HUD.healthBar.fixedToCamera = true;
 		game.HUD.availableHealth.fixedToCamera = true;
@@ -140,12 +135,9 @@ States.Play = {
 		/*game.enemy3 = new Enemy(window.game, game.player);
 		game.enemy3.load();*/
 
-		game.energyEnemy = new EnergyEnemy(window.game, game.player);
-		game.energyEnemy.load();
-
 
 		// Creates and loads an Enemy.
-		/*game.enemy = new Enemy(window.game, game.player);
+	/*	game.enemy = new Enemy(window.game, game.player);
 		game.enemy.load();
 
 		game.enemy2 = new Enemy(window.game, game.player);
@@ -198,7 +190,7 @@ States.Play = {
 
 		//game.enemyLeo.update();
 
-		/*game.enemy.update();
+	/*	game.enemy.update();
 		game.enemy2.update();
 		game.enemy3.update();
 		game.energyEnemy.update();
@@ -207,8 +199,8 @@ States.Play = {
 		game.mina2.update();
 		game.mina3.update();
 		game.mina4.update();
-		game.mina5.update();*/
-
+		game.mina5.update();
+*/
 		game.bluedragon.update();
 	}
 
