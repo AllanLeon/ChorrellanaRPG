@@ -119,8 +119,8 @@ BlueDragon.prototype.handleMovement = function(){
 
 		this.circularMove(enemyDistance);
 
-		/*	
-		/*if (this.energyBall == null)
+			
+		if (this.energyBall == null)
 		{
 			this.attack();
 		}
@@ -137,8 +137,8 @@ var ballDistance = Math.sqrt(Math.pow(this.sprite.x - this.energyBall.x,2) + Mat
 	}
 
 	this.game.physics.arcade.overlap(this.energyBall, this.game.player.sprite, null, this.energyBallCollition, this);
-	*/
-}
+	
+
 	this.playAnimation();
 
 	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
@@ -200,21 +200,21 @@ BlueDragon.prototype.attack = function(direction){
 	//create Attack
 	switch (this.direction){
 		case 'Left':
-			this.energyBall = this.game.add.sprite(this.sprite.x - 16 ,this.sprite.y + 32,'energyBall');
+			this.energyBall = this.game.add.sprite(this.sprite.x - 16 ,this.sprite.y + 32,'giantEnergyBall');
 			break;
 		case 'Right':
-			this.energyBall = this.game.add.sprite(this.sprite.x + 80 ,this.sprite.y + 32,'energyBall');
+			this.energyBall = this.game.add.sprite(this.sprite.x + 80 ,this.sprite.y + 32,'giantEnergyBall');
 			break;
 		case 'Up':
-			this.energyBall = this.game.add.sprite(this.sprite.x + 20 ,this.sprite.y - 18,'energyBall');
+			this.energyBall = this.game.add.sprite(this.sprite.x + 20 ,this.sprite.y - 18,'giantEnergyBall');
 			break;
 		case 'Down':
-			this.energyBall = this.game.add.sprite(this.sprite.x + 20 ,this.sprite.y + 40,'energyBall');
+			this.energyBall = this.game.add.sprite(this.sprite.x + 20 ,this.sprite.y + 40,'giantEnergyBall');
 			break;
 	}
 
 	this.game.physics.enable(this.energyBall, Phaser.Physics.ARCADE);
-	this.energyBall.animations.add('ball',[0,1,2,3],10,true);
+	this.energyBall.animations.add('ball',[0,1,2,3,4,5,6,7,8,9],10,true);
 
 
 	//Variables to increise the velocity of the ball atack (depend of the distance)

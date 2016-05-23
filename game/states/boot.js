@@ -18,6 +18,7 @@ States.Boot = {
 		this.game.load.spritesheet('mina1', 'assets/images/enemys/mina1.png',24,24);
 		this.game.load.spritesheet('explotion', 'assets/images/attacks/explosion.png',64,64);
 		this.game.load.spritesheet('bluedragon', 'assets/images/enemys/bluedragon.png',65,65);
+		this.game.load.spritesheet('giantEnergyBall', 'assets/images/attacks/giantEnergyBall.png',38,37);
 
 		this.game.load.image('map', 'assets/images/backgrounds/yourmommasmap.png');
 		this.game.load.image('healthBar', 'assets/images/HUD/healthbar.png');
