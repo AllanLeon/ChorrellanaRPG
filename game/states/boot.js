@@ -37,7 +37,7 @@ States.Boot = {
 		//this.game.load.spritesheet('coin','assets/images/items/coin.png');
 		this.game.load.spritesheet('textBox','assets/images/textBox/textBox.png', 600, 200);
 
-		this.game.load.image('portal', 'assets/images/misc/portal.png');
+		this.game.load.spritesheet('portal', 'assets/images/misc/portal.png', 123, 123);
 
 		for (var i=0; i<2; i++){
 			var iStr = i.toString();

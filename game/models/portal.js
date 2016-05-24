@@ -10,6 +10,7 @@
 function Portal(game, x, y, nextStage) {
 	this.game = game;
 	this.sprite = null;
+	this.animation = 'portalAnim'
 	this.startingX = x;
 	this.startingY = y;
 	this.nextStage = nextStage;
@@ -22,8 +23,17 @@ function Portal(game, x, y, nextStage) {
  */
 Portal.prototype.render = function() {
 	this.sprite = this.game.add.sprite(this.startingX, this.startingY, 'portal');
-	this.game.physics.arcade.enable(this.sprite);
 	this.sprite.immovable = true;
+	this.sprite.alpha = 0.9;
+	this.sprite.scale.set(0.5, 0.5);
+	this.game.physics.arcade.enable(this.sprite);
+}
+
+/**
+ * Initializes the portal animation.
+ */
+Portal.prototype.initializeAnimation = function () {
+	this.sprite.animations.add(this.animation, [0, 1, 2, 3], 10, true);
 }
 
 /**
@@ -31,6 +41,8 @@ Portal.prototype.render = function() {
  */
 Portal.prototype.load = function() {
 	this.render();
+	this.initializeAnimation();
+	this.sprite.play(this.animation);
 }
 
 /**
