@@ -170,6 +170,16 @@ States.Play = {
 		game.music = new Effects(window.game);
 		game.music.load();
 
+		game.portals = [];
+		game.portals.push(new Portal(window.game, 200, 200, 'Play'));
+		game.portals.push(new Portal(window.game, 300, 300, 'Play'));
+		game.portals.push(new Portal(window.game, 400, 400, 'Play'));
+		game.portals.push(new Portal(window.game, 500, 500, 'Play'));
+		game.portals.push(new Portal(window.game, 600, 600, 'Play'));
+		game.portals.push(new Portal(window.game, 700, 700, 'Play'));
+		game.portals.push(new Portal(window.game, 800, 800, 'TestStage'));
+
+
 		var changeKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
         changeKey.onDown.add(this.game.player.weapon.nextWeapon, game);
 
@@ -196,12 +206,18 @@ States.Play = {
 		game.energyEnemy.update();
 
 		game.mina.update();
+
 		game.mina2.update();
 		game.mina3.update();
 		game.mina4.update();
 		game.mina5.update();
 */
 		game.bluedragon.update();
+
+		game.portals.every(portal => portal.update());
+
+		game.physics.arcade.overlap(game.player, game.enemy, collisionEnemy, null, this);
+
 	}
 
 };
