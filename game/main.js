@@ -12,5 +12,8 @@ window.game = game = new Phaser.Game(800, 600, Phaser.AUTO, '');
 game.state.add('Boot', Game.States.Boot);
 game.state.add('Play', Game.States.Play);
 
+// Adds the different stages of the game as states.
+game.state.add('TestStage', Game.States.TestStage);
+
 // Starts the initial state.
 game.state.start('Boot');

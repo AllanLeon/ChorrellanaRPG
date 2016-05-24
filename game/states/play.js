@@ -171,7 +171,7 @@ States.Play = {
 		game.portals.push(new Portal(window.game, 500, 500, 'Play'));
 		game.portals.push(new Portal(window.game, 600, 600, 'Play'));
 		game.portals.push(new Portal(window.game, 700, 700, 'Play'));
-		game.portals.push(new Portal(window.game, 800, 800, 'Play'));
+		game.portals.push(new Portal(window.game, 800, 800, 'TestStage'));
 
 
 		var changeKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
