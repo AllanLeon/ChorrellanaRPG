@@ -27,7 +27,7 @@ HUD.prototype.render = function()
 	this.availableHealth = this.game.add.sprite(positionDataHud.availablelife.lifeBarX, positionDataHud.availablelife.lifeBarY, 'lifeBar');
 	this.availableHealth.scale.setTo((this.healthHUD/10),1);
 	this.miniMap = this.game.add.sprite(this.miniMapPosX, this.miniMapPosY, 'minimap');
-	this.miniMap.scale.setTo(0.10,0.10);		
+	this.miniMap.scale.setTo(0.50,0.50);		
 	this.drawPlayerPos();
 };
 
