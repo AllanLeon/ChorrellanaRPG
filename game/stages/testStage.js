@@ -1,20 +1,33 @@
-States.TestStage = {
-	// Sets the game's basic configurations.
-	init: function(){
-	},
-	// Starts the game.
-	create: function(){
-		// Sets the world bounds.
-		this.game.world.setBounds(0, 0, 800, 600);
+/**
+ * Test state for demostration purposes.
+ */
+function TestStage() {}
 
-		// Creates and loads a Player object.
-    	game.player = new Player(window.game);
-		game.player.load();
-	},
-	// Updates all the game's objects.
-	update: function(){
-		// Updates the player.
-		game.player.update(game.player);
-	}
+/**
+ * Sets the state's basic configurations.
+ */
+TestStage.prototype.init = function() {};
 
-};
+/**
+ * Initializes the stage objects.
+ */
+TestStage.prototype.create = function() {
+	// Sets the world bounds.
+	this.game.world.setBounds(0, 0, 800, 600);
+
+	// Creates and loads a Player object.
+	game.player = new Player(window.game);
+	game.player.load();
+}
+
+/**
+ * Updates all the stages's objects.
+ */
+TestStage.prototype.update = function(){
+	// Updates the player.
+	game.player.update(game.player);
+}
+
+
+// Adds this stage to the game's states.
+States.TestStage = new TestStage();
