@@ -13,6 +13,8 @@ function Portal(game, x, y, nextStage) {
 	this.startingX = x;
 	this.startingY = y;
 	this.nextStage = nextStage;
+
+	this.load();
 }
 
 /**
@@ -33,21 +35,26 @@ Portal.prototype.load = function() {
 
 /**
  * Updates the portal.
+ *
+ * @return     true  for Array.prototype.every() implementation
  */
 Portal.prototype.update = function() {
 	this.checkPlayerCollision();
+	return true;
 }
 
 /**
  * Checks collision between this portal and the player.
  */
 Portal.prototype.checkPlayerCollision = function() {
-	this.game.physics.arcade.overlap(this.game.player.sprite, this.sprite, this.changeStage, null, this);
+	this.game.physics.arcade.overlap(this.game.player.colliderSprite, this.sprite, this.changeStage, null, this);
 }
 
 /**
  * Changes the game state to the next stage defined in the portal declaration.
  */
 Portal.prototype.changeStage = function() {
-	this.game.state.start(this.nextStage);
+	this.game.input.reset();
+	this.game.sound.stopAll();
+	this.game.state.start(this.nextStage, true);
 }
