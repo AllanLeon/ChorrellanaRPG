@@ -171,7 +171,7 @@ States.Play = {
 		game.portals.push(new Portal(window.game, 1200, 1300, 'Play')); //Maf
 		game.portals.push(new Portal(window.game, 400, 1000, 'Play')); //Fabio
 		game.portals.push(new Portal(window.game, 1300, 560, 'Play')); //Vane
-		game.portals.push(new Portal(window.game, 1350, 100, 'TestStage')); //Jhoto
+		game.portals.push(new Portal(window.game, 1350, 100, 'Play')); //Jhoto
 
 		var changeKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
         changeKey.onDown.add(this.game.player.weapon.nextWeapon, game);
