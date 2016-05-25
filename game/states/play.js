@@ -43,8 +43,8 @@ States.Play = {
 		game.HUD.load();
 		
 		// Creates and loads a Enemy.
-		game.enemy = new Enemy(window.game, game.player);
-		game.enemy.load();
+		/*game.enemy = new Enemy(window.game, game.player);
+		game.enemy.load();*/
 
 
 		//Sets HUD elements fixed to the camera
@@ -139,16 +139,16 @@ States.Play = {
 		/*game.enemy3 = new Enemy(window.game, game.player);
 		game.enemy3.load();*/
 
-		game.energyEnemy = new EnergyEnemy(window.game, game.player);
-		game.energyEnemy.load();
+		/*game.energyEnemy = new EnergyEnemy(window.game, game.player);
+		game.energyEnemy.load();*/
 
 
 		// Creates and loads an Enemy.
 		//game.enemy = new Enemy(window.game, game.player);
 		//game.enemy.load();
 
-		game.mina = new Mina1(window.game);
-		game.mina.load();
+		//game.mina = new Mina1(window.game);
+		//game.mina.load();
 
 		//game.enemy2 = new Enemy(window.game, game.player);
 		//game.enemy2.load();
@@ -195,13 +195,13 @@ States.Play = {
 		//game.enemy.update();
 		//game.enemy2.update();
 		//game.enemy3.update();
-		game.enemy.update();
+		//game.enemy.update();
 	/*	game.enemy2.update();
 		game.enemy3.update();*/
 
-		game.energyEnemy.update();
+		//game.energyEnemy.update();
 
-		game.mina.update();
+		//game.mina.update();
 
 		game.portals.every(portal => portal.update());
 
