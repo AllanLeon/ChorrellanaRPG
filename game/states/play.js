@@ -165,14 +165,13 @@ States.Play = {
 		game.music.load();
 
 		game.portals = [];
-		game.portals.push(new Portal(window.game, 200, 200, 'Play'));
-		game.portals.push(new Portal(window.game, 300, 300, 'Play'));
-		game.portals.push(new Portal(window.game, 400, 400, 'Play'));
-		game.portals.push(new Portal(window.game, 500, 500, 'Play'));
-		game.portals.push(new Portal(window.game, 600, 600, 'Play'));
-		game.portals.push(new Portal(window.game, 700, 700, 'Play'));
-		game.portals.push(new Portal(window.game, 800, 800, 'TestStage'));
-
+		game.portals.push(new Portal(window.game, 50, 280, 'Play')); //Vale
+		game.portals.push(new Portal(window.game, 230, 180, 'Play')); //Robe
+		game.portals.push(new Portal(window.game, 400, 400, 'Play')); //Sergio
+		game.portals.push(new Portal(window.game, 1200, 1300, 'Play')); //Maf
+		game.portals.push(new Portal(window.game, 400, 1000, 'Play')); //Fabio
+		game.portals.push(new Portal(window.game, 1300, 560, 'Play')); //Vane
+		game.portals.push(new Portal(window.game, 1350, 100, 'TestStage')); //Jhoto
 
 		var changeKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
         changeKey.onDown.add(this.game.player.weapon.nextWeapon, game);
