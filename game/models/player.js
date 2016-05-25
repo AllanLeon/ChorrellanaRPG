@@ -137,10 +137,10 @@ Player.prototype.handleMovement = function() {
 		this.playAnimation();
 	}
 
-	if (this.sprite.x == 10){
+	/*if (this.sprite.x == 10){
 		this.health -= 10;
     	this.healthText.text = 'Score: ' + this.health;
-	}
+	}*/
 
 	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.y);
 
@@ -149,6 +149,8 @@ Player.prototype.handleMovement = function() {
 
 // Updates the player.
 Player.prototype.update = function() {
+	this.checkDeath();
+
 	this.handleMovement();
 	game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite);
 	this.NPCCollission();
@@ -187,9 +189,14 @@ Player.prototype.fireWeapon = function(){
 	}
 }
 
-function death (){
-	if (this.health <=0){
-		this.sprite.kill();
+/**
+ * Checks the player's health. If the player is dead, the game state changes to game over.
+ */
+Player.prototype.checkDeath = function() {
+	if (this.health <= 0) {
+		this.game.input.reset();
+		this.game.sound.stopAll();
+		this.game.state.start('GameOver', true);
 	}
 }
 
