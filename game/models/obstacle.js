@@ -111,9 +111,9 @@ Obstacle.prototype.render = function(){
 	this.bloque.width = 25;
 	this.bloque.height = 15;
 
-	this.bloque = this.blocks.create(430,460, 'blockH');
+	this.bloque = this.blocks.create(460,460, 'blockH');
 	this.bloque.body.immovable = true;
-	this.bloque.width = 90;
+	this.bloque.width = 60;
 	this.bloque.height = 15;
 
 	this.bloque = this.blocks.create(520,485, 'blockH');
