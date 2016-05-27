@@ -104,41 +104,8 @@ EnergyEnemy.prototype.handleMovement = function(){
 	//this.stop();
 
 
-	// busca al jugador de manera lineal
-	if (this.game.player.sprite.y -30 > this.sprite.y){
-		this.direction = "Down";
-		this.move(this.speed, 0);
-		this.move(0,1);
-	}
-
-	else if (this.game.player.sprite.y - 50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x < this.sprite.x){
-		this.direction = "Left";
-		this.move(0, 0);
-		this.move(-this.speed,1);
-	}
-
-
-
-	if (this.game.player.sprite.y -30 < this.sprite.y){
-		this.direction = "Up";
-		this.move(-this.speed, 0);
-		this.move(0,1);
-	}
-
-	else if (this.game.player.sprite.y - 50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x < this.sprite.x){
-		this.direction = "Left";
-		this.move(0, 0);
-		this.move(-this.speed,1);
-	}
-
-
-
-
-	if (this.game.player.sprite.y - 50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x > this.sprite.x){
-		this.direction = "Right";
-		this.move(0, 0);
-		this.move(this.speed,1);
-	}
+	this.lookingForPlayer();
+	
 
 	//Distance of Player to Enemy
 	var enemyDistance = Math.sqrt(Math.pow(this.game.player.sprite.x - this.sprite.x,2) + Math.pow(this.game.player.sprite.y - this.sprite.y,2));
@@ -177,7 +144,47 @@ var ballDistance = Math.sqrt(Math.pow(this.sprite.x - this.energyBall.x,2) + Mat
 
 
 }
+	//busca al jugador
+EnergyEnemy.prototype.lookingForPlayer = function(){
 
+	// busca al jugador de manera lineal
+	if (this.game.player.sprite.y -30 > this.sprite.y){
+		this.direction = "Down";
+		this.move(this.speed, 0);
+		this.move(0,1);
+	}
+
+	else if (this.game.player.sprite.y - 50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x < this.sprite.x){
+		this.direction = "Left";
+		this.move(0, 0);
+		this.move(-this.speed,1);
+	}
+
+
+
+	if (this.game.player.sprite.y -30 < this.sprite.y){
+		this.direction = "Up";
+		this.move(-this.speed, 0);
+		this.move(0,1);
+	}
+
+	else if (this.game.player.sprite.y - 50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x < this.sprite.x){
+		this.direction = "Left";
+		this.move(0, 0);
+		this.move(-this.speed,1);
+	}
+
+
+
+
+	if (this.game.player.sprite.y - 50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x > this.sprite.x){
+		this.direction = "Right";
+		this.move(0, 0);
+		this.move(this.speed,1);
+	}
+}
+
+	//attack collition
 EnergyEnemy.prototype.energyBallCollition = function(){
 	this.game.player.health -=20;
 	this.energyBall.kill();
@@ -215,6 +222,7 @@ EnergyEnemy.prototype.attack = function(direction){
 	var ballAttackY = (this.game.player.sprite.y - this.sprite.y)/100;
 	
 
+	//direction and velocity of attack
 	if (this.game.player.sprite.y > this.energyBall.y){
 
 		//"Down"
@@ -252,9 +260,8 @@ EnergyEnemy.prototype.update = function(){
 	this.handleMovement();
 }
 
-// Stops all the animations and sets the currect frame to the default based on the player's direction.
+// look to the rigth side
 EnergyEnemy.prototype.stopAnimation = function(direction){
-	//this.sprite.animations.stop();
 
 	switch (this.direction) {
 		case 'Left':

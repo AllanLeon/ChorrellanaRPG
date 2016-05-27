@@ -4,7 +4,6 @@ function Enemy(game){
 	this.health = 100;
 	this.sprite = null;
 	this.colliderSprite = null;
-	//this.collide = false;
 	this.speed = Math.floor(Math.random() * 150);
 	this.animation = 'redEnemy';
 	this.direction = 'Down';
@@ -33,9 +32,6 @@ Enemy.prototype.render = function(){
 	this.colliderSprite.body.collideWorldBounds = true; // colliderSprite cannot exceed the world bounds
 	//this.collider.body.collider
 
-	
-
-	//this.game.physics.arcade.enable(this.sprite);
 };
 
 // Defines the Enemy's animations with their respective frames.
@@ -87,8 +83,21 @@ Enemy.prototype.setBodyPosition = function(x, y){
 
 // Checks the input and handles the movement.
 Enemy.prototype.handleMovement = function(){
-	//this.stop();
+	
+	this.lookingForPlayer();
 
+	this.playAnimation();
+
+	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
+
+
+
+	this.game.physics.arcade.overlap(this.sprite, this.game.player.sprite, null, this._enemyAttack, this);
+	
+	
+}
+	//busca al jugador
+Enemy.prototype.lookingForPlayer = function(){
 
 	if (this.game.player.sprite.y > this.sprite.y){
 		this.direction = "Down";
@@ -110,17 +119,6 @@ Enemy.prototype.handleMovement = function(){
 		this.direction = "Left";
 		this.move(-this.speed,1);
 	}
-
-
-	this.playAnimation();
-
-	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
-
-
-
-	this.game.physics.arcade.overlap(this.sprite, this.game.player.sprite, null, this._enemyAttack, this);
-	
-	
 }
 
 // Updates the Enemy.

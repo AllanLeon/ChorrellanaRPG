@@ -30,7 +30,6 @@ BlueDragon.prototype.render = function(){
 	this.game.physics.arcade.enable(this.colliderSprite); // enables physics on colliderSprite
 	this.game.physics.arcade.enable(this.sprite); // enables physics on sprite
 
-	//this.colliderSprite.immovable = true; // makes it immovable when a collision occurs
 	this.colliderSprite.body.collideWorldBounds = true; // colliderSprite cannot exceed the world bounds
 	
 	
@@ -113,8 +112,6 @@ BlueDragon.prototype.handleMovement = function(){
 		if(enemyDistance <= 200){
 		this.stop();
 
-		//this.circularMove();
-
 		this.viewControl(enemyDistance);
 
 		this.circularMove(enemyDistance);
@@ -137,7 +134,6 @@ var ballDistance = Math.sqrt(Math.pow(this.sprite.x - this.energyBall.x,2) + Mat
 	}
 
 	this.game.physics.arcade.overlap(this.energyBall, this.game.player.sprite, null, this.energyBallCollition, this);
-	
 
 	this.playAnimation();
 
@@ -146,7 +142,7 @@ var ballDistance = Math.sqrt(Math.pow(this.sprite.x - this.energyBall.x,2) + Mat
 
 }
 
-
+	//Metodo para buscar al jugador
 BlueDragon.prototype.lookingForPlayer = function(){
 	// busca al jugador de manera lineal hacia arriba
 
@@ -185,7 +181,7 @@ BlueDragon.prototype.lookingForPlayer = function(){
 	}
 
 }
-
+	//colision del ataque del dragon
 BlueDragon.prototype.energyBallCollition = function(){
 	this.game.player.health -=20;
 	this.energyBall.kill();
@@ -222,6 +218,7 @@ BlueDragon.prototype.attack = function(direction){
 	var ballAttackY = (this.game.player.sprite.y - this.sprite.y)/100;
 	
 
+	//attack direction
 	if (this.game.player.sprite.y > this.energyBall.y){
 
 		//"Down"

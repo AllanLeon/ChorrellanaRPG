@@ -214,9 +214,9 @@ States.Play = {
 */
 		game.bluedragon.update();
 
-		game.portals.every(portal => portal.update());
+		//game.portals.every(portal => portal.update());
 
-		game.physics.arcade.overlap(game.player, game.enemy, collisionEnemy, null, this);
+		//game.physics.arcade.overlap(game.player, game.enemy, collisionEnemy, null, this);
 
 	}
 

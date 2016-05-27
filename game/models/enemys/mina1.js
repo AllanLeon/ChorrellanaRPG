@@ -29,13 +29,8 @@ Mina1.prototype.render = function(){
 	this.game.physics.arcade.enable(this.colliderSprite); // enables physics on colliderSprite
 	this.game.physics.arcade.enable(this.sprite); // enables physics on sprite
 
-	//this.colliderSprite.immovable = true; // makes it immovable when a collision occurs
 	this.colliderSprite.body.collideWorldBounds = true; // colliderSprite cannot exceed the world bounds
 
-
-	
-
-	//this.game.physics.arcade.enable(this.sprite);
 };
 
 // Loads the Mina1's sprites and defines it's animations.
