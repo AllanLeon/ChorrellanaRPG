@@ -136,6 +136,7 @@ States.Play = {
 		game.enemy3.load();*/
 
 
+
 		// Creates and loads an Enemy.
 	/*	game.enemy = new Enemy(window.game, game.player);
 		game.enemy.load();
@@ -155,6 +156,7 @@ States.Play = {
 		game.mina = new Mina1(window.game);
 		game.mina.load();
 
+
 		game.mina2 = new Mina1(window.game);
 		game.mina2.load();
 		game.mina3 = new Mina1(window.game);
@@ -171,14 +173,13 @@ States.Play = {
 		game.music.load();
 
 		game.portals = [];
-		game.portals.push(new Portal(window.game, 200, 200, 'Play'));
-		game.portals.push(new Portal(window.game, 300, 300, 'Play'));
-		game.portals.push(new Portal(window.game, 400, 400, 'Play'));
-		game.portals.push(new Portal(window.game, 500, 500, 'Play'));
-		game.portals.push(new Portal(window.game, 600, 600, 'Play'));
-		game.portals.push(new Portal(window.game, 700, 700, 'Play'));
-		game.portals.push(new Portal(window.game, 800, 800, 'TestStage'));
-
+		game.portals.push(new Portal(window.game, 50, 280, 'Play')); //Vale
+		game.portals.push(new Portal(window.game, 230, 180, 'Play')); //Robe
+		game.portals.push(new Portal(window.game, 420, 420, 'Play')); //Sergio
+		game.portals.push(new Portal(window.game, 1200, 1300, 'Play')); //Maf
+		game.portals.push(new Portal(window.game, 400, 1000, 'Play')); //Fabio
+		game.portals.push(new Portal(window.game, 1300, 560, 'Play')); //Vane
+		game.portals.push(new Portal(window.game, 1350, 100, 'Play')); //Jhoto
 
 		var changeKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
         changeKey.onDown.add(this.game.player.weapon.nextWeapon, game);
@@ -200,12 +201,14 @@ States.Play = {
 
 		//game.enemyLeo.update();
 
+
 	/*	game.enemy.update();
 		game.enemy2.update();
 		game.enemy3.update();
 		game.energyEnemy.update();
 
-		game.mina.update();
+
+		//game.mina.update();
 
 		game.mina2.update();
 		game.mina3.update();
