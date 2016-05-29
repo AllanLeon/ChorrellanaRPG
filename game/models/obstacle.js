@@ -13,16 +13,15 @@ Obstacle.prototype.render = function(){
 	this.blocks.enableBody = true;
 
 	//visibility of blocks
-
-	this.blocks.alpha =0;
+	this.blocks.alpha = 0;
 	
 	//Group of blocks for the island to avoid water
-	this.bloque = this.blocks.create(0, 155, 'blockH');
+	this.bloque = this.blocks.create(0, 120, 'blockH');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 270;
 	this.bloque.height = 15;
 
-	this.bloque = this.blocks.create(270,155, 'blockH');
+	this.bloque = this.blocks.create(270,135, 'blockH');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
 	this.bloque.height = 30;
@@ -31,11 +30,6 @@ Obstacle.prototype.render = function(){
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
 	this.bloque.height = 182;
-
-	this.bloque = this.blocks.create(270,370, 'blockH');
-	this.bloque.body.immovable = true;
-	this.bloque.width = 15;
-	this.bloque.height = 20;
 
 	this.bloque = this.blocks.create(270,370, 'blockH');
 	this.bloque.body.immovable = true;
@@ -72,125 +66,105 @@ Obstacle.prototype.render = function(){
 	this.bloque.width = 40;
 	this.bloque.height = 15;
 
-	this.bloque = this.blocks.create(105,510, 'blockH');
-	this.bloque.body.immovable = true;
-	this.bloque.width = 15;
-	this.bloque.height = 40;
-
-	this.bloque = this.blocks.create(115,550, 'blockH');
+	this.bloque = this.blocks.create(115,510, 'blockH');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
 	this.bloque.height = 15;
 
-	this.bloque = this.blocks.create(130,565, 'blockH');
+	this.bloque = this.blocks.create(105,520, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 15;
+	this.bloque.height = 5;
+
+	this.bloque = this.blocks.create(115,515, 'blockH');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
 	this.bloque.height = 15;
 
-	this.bloque = this.blocks.create(145,580, 'blockH');
+	this.bloque = this.blocks.create(130,530, 'blockH');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
 	this.bloque.height = 15;
 
-	this.bloque = this.blocks.create(160,595, 'blockH');
+	this.bloque = this.blocks.create(145,545, 'blockH');
 	this.bloque.body.immovable = true;
-	this.bloque.width = 185;
+	this.bloque.width = 15;
 	this.bloque.height = 15;
 
-	this.bloque = this.blocks.create(160,595, 'blockH');
+	this.bloque = this.blocks.create(160,560, 'blockH');
 	this.bloque.body.immovable = true;
-	this.bloque.width = 185;
+	this.bloque.width = 195;
 	this.bloque.height = 15;
 
-	this.bloque = this.blocks.create(350,580, 'blockH');
+	this.bloque = this.blocks.create(355,535, 'blockH');
 	this.bloque.body.immovable = true;
-	this.bloque.width = 15;
-	this.bloque.height = 20;
-
-	this.bloque = this.blocks.create(370,555, 'blockH');
-	this.bloque.body.immovable = true;
-	this.bloque.width = 15;
-	this.bloque.height = 20;
-
-	this.bloque = this.blocks.create(390,530, 'blockH');
-	this.bloque.body.immovable = true;
-	this.bloque.width = 15;
-	this.bloque.height = 20;
-
-	this.bloque = this.blocks.create(410,505, 'blockH');
-	this.bloque.body.immovable = true;
-	this.bloque.width = 15;
-	this.bloque.height = 20;
-
-	this.bloque = this.blocks.create(420,490, 'blockH');
-	this.bloque.body.immovable = true;
-	this.bloque.width = 100;
+	this.bloque.width = 25;
 	this.bloque.height = 15;
 
-	this.bloque = this.blocks.create(515,510, 'blockH');
+	this.bloque = this.blocks.create(380,510, 'blockH');
 	this.bloque.body.immovable = true;
-	this.bloque.width = 15;
-	this.bloque.height = 20;
-
-	this.bloque = this.blocks.create(535,525, 'blockH');
-	this.bloque.body.immovable = true;
-	this.bloque.width = 15;
-	this.bloque.height = 20;
-
-	this.bloque = this.blocks.create(550,550, 'blockH');
-	this.bloque.body.immovable = true;
-	this.bloque.width = 15;
-	this.bloque.height = 20;
-
-	this.bloque = this.blocks.create(575,565, 'blockH');
-	this.bloque.body.immovable = true;
-	this.bloque.width = 65;
+	this.bloque.width = 25;
 	this.bloque.height = 15;
 
-	this.bloque = this.blocks.create(630,580, 'blockH');
+	this.bloque = this.blocks.create(405,485, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 25;
+	this.bloque.height = 15;
+
+	this.bloque = this.blocks.create(460,460, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 60;
+	this.bloque.height = 15;
+
+	this.bloque = this.blocks.create(520,485, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 25;
+	this.bloque.height = 15;
+
+	this.bloque = this.blocks.create(545,510, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 25;
+	this.bloque.height = 15;
+
+	this.bloque = this.blocks.create(570,535, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 70;
+	this.bloque.height = 15;
+
+	this.bloque = this.blocks.create(640,550, 'blockH');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
 	this.bloque.height = 45;
 
-	this.bloque = this.blocks.create(640,610, 'blockH');
+	this.bloque = this.blocks.create(655,580, 'blockH');
 	this.bloque.body.immovable = true;
-	this.bloque.width = 15;
+	this.bloque.width = 20;
 	this.bloque.height = 15;
 
-	this.bloque = this.blocks.create(640,610, 'blockH');
+	this.bloque = this.blocks.create(670,605, 'blockH');
 	this.bloque.body.immovable = true;
-	this.bloque.width = 15;
+	this.bloque.width = 40;
 	this.bloque.height = 15;
 
-	this.bloque = this.blocks.create(655,625, 'blockH');
-	this.bloque.body.immovable = true;
-	this.bloque.width = 15;
-	this.bloque.height = 25;
-
-	this.bloque = this.blocks.create(675,640, 'blockH');
-	this.bloque.body.immovable = true;
-	this.bloque.width = 30;
-	this.bloque.height = 15;
-
-	this.bloque = this.blocks.create(705,650, 'blockH');
+	this.bloque = this.blocks.create(710,625, 'blockH');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
 	this.bloque.height = 45;
 
-	this.bloque = this.blocks.create(720,690, 'blockH');
+	this.bloque = this.blocks.create(720,655, 'blockH');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
 	this.bloque.height = 15;
 
-	this.bloque = this.blocks.create(735,710, 'blockH');
+	this.bloque = this.blocks.create(735,675, 'blockH');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
 	this.bloque.height = 15;
 
-	this.bloque = this.blocks.create(755,725, 'blockH');
+	this.bloque = this.blocks.create(755,820, 'blockH');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
-	this.bloque.height = 157;
+	this.bloque.height = 60;
 
 	this.bloque = this.blocks.create(745,880, 'blockH');
 	this.bloque.body.immovable = true;
@@ -251,8 +225,6 @@ Obstacle.prototype.render = function(){
 	this.bloque.body.immovable = true;
 	this.bloque.width = 370;
 	this.bloque.height = 15;
-
-
 
 
 	//Blocks that avoid trees and rocks on island 
@@ -417,7 +389,6 @@ Obstacle.prototype.render = function(){
 	this.bloque.width = 15;
 	this.bloque.height = 70;
 
-
 	this.bloque = this.blocks.create(950,55,'block');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
@@ -428,25 +399,30 @@ Obstacle.prototype.render = function(){
 	this.bloque.width = 15;
 	this.bloque.height = 60;
 
-	this.bloque = this.blocks.create(1000,180,'block');
+	this.bloque = this.blocks.create(995,145,'block');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
 	this.bloque.height = 360;
 
-	this.bloque = this.blocks.create(975,550,'block');
+	this.bloque = this.blocks.create(975,525,'block');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
 	this.bloque.height = 60;
 
-	this.bloque = this.blocks.create(950,610,'block');
+	this.bloque = this.blocks.create(950,585,'block');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
 	this.bloque.height = 70;
 
-	this.bloque = this.blocks.create(923,680,'block');
+	this.bloque = this.blocks.create(930,655,'block');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
-	this.bloque.height = 240;
+	this.bloque.height = 40;
+
+	this.bloque = this.blocks.create(925,820,'block');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 15;
+	this.bloque.height = 90;
 
 	this.bloque = this.blocks.create(950,910,'block');
 	this.bloque.body.immovable = true;
@@ -513,14 +489,14 @@ Obstacle.prototype.render = function(){
 	this.bloque = this.blocks.create(1002,670,'block');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
-	this.bloque.height = 230;
+	this.bloque.height = 200;
 
-	this.bloque = this.blocks.create(1002,885,'block');
+	this.bloque = this.blocks.create(1002,855,'block');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 97;
 	this.bloque.height = 15;
 
-	this.bloque = this.blocks.create(1142,885,'block');
+	this.bloque = this.blocks.create(1142,855,'block');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 215;
 	this.bloque.height = 15;
@@ -560,12 +536,12 @@ Obstacle.prototype.render = function(){
 	this.bloque = this.blocks.create(1075,590,'block');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
-	this.bloque.height = 290;
+	this.bloque.height = 255;
 
 	this.bloque = this.blocks.create(1150,790,'block');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 15;
-	this.bloque.height = 100;
+	this.bloque.height = 75;
 
 	this.bloque = this.blocks.create(1290,785,'block');
 	this.bloque.body.immovable = true;
@@ -674,6 +650,18 @@ Obstacle.prototype.render = function(){
 	this.bloque.body.immovable = true;
 	this.bloque.width = 24;	
 	this.bloque.height = 24;
+
+	//BRIDGE
+
+	this.bloque = this.blocks.create(750, 685,'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 180;
+	this.bloque.height = 15;
+
+	this.bloque = this.blocks.create(760, 815,'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 180;	
+	this.bloque.height = 15;
 	
 	//Collision with the 'bloques' group
 

@@ -43,8 +43,8 @@ States.Play = {
 		game.HUD.load();
 		
 		// Creates and loads a Enemy.
-		game.enemy = new Enemy(window.game, game.player);
-		game.enemy.load();
+		/*game.enemy = new Enemy(window.game, game.player);
+		game.enemy.load();*/
 
 
 		//Sets HUD elements fixed to the camera
@@ -139,16 +139,16 @@ States.Play = {
 		/*game.enemy3 = new Enemy(window.game, game.player);
 		game.enemy3.load();*/
 
-		game.energyEnemy = new EnergyEnemy(window.game, game.player);
-		game.energyEnemy.load();
+		/*game.energyEnemy = new EnergyEnemy(window.game, game.player);
+		game.energyEnemy.load();*/
 
 
 		// Creates and loads an Enemy.
 		//game.enemy = new Enemy(window.game, game.player);
 		//game.enemy.load();
 
-		game.mina = new Mina1(window.game);
-		game.mina.load();
+		//game.mina = new Mina1(window.game);
+		//game.mina.load();
 
 		//game.enemy2 = new Enemy(window.game, game.player);
 		//game.enemy2.load();
@@ -160,6 +160,18 @@ States.Play = {
 		//game.physics.arcade.enable(game.enemy);
 		//game.physics.arcade.enable(game.enemy2);
 		//game.physics.arcade.enable(game.enemy3);
+
+		game.music = new Effects(window.game);
+		game.music.load();
+
+		game.portals = [];
+		game.portals.push(new Portal(window.game, 50, 280, 'Play')); //Vale
+		game.portals.push(new Portal(window.game, 230, 180, 'Play')); //Robe
+		game.portals.push(new Portal(window.game, 420, 420, 'Play')); //Sergio
+		game.portals.push(new Portal(window.game, 1200, 1300, 'Play')); //Maf
+		game.portals.push(new Portal(window.game, 400, 1000, 'Play')); //Fabio
+		game.portals.push(new Portal(window.game, 1300, 560, 'Play')); //Vane
+		game.portals.push(new Portal(window.game, 1350, 100, 'Play')); //Jhoto
 
 		var changeKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
         changeKey.onDown.add(this.game.player.weapon.nextWeapon, game);
@@ -183,13 +195,15 @@ States.Play = {
 		//game.enemy.update();
 		//game.enemy2.update();
 		//game.enemy3.update();
-		game.enemy.update();
+		//game.enemy.update();
 	/*	game.enemy2.update();
 		game.enemy3.update();*/
 
-		game.energyEnemy.update();
+		//game.energyEnemy.update();
 
-		game.mina.update();
+		//game.mina.update();
+
+		game.portals.every(portal => portal.update());
 
 		game.physics.arcade.overlap(game.player, game.enemy, collisionEnemy, null, this);
 	}

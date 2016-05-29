@@ -22,6 +22,12 @@ States.Boot = {
 		this.game.load.image('healthBar', 'assets/images/HUD/healthbar.png');
 		this.game.load.image('lifeBar', 'assets/images/HUD/life.png');
 		this.game.load.image('minimap','assets/images/backgrounds/minimap.png');
+		
+		this.game.load.audio('bossanova','assets/audio/bossanova.mp3');
+		this.game.load.image('rain','assets/images/effects/rain.png');
+		this.game.load.image('leaf','assets/images/effects/leaf.png');
+		
+		//this.game.load.spritesheet('coin','assets/images/items/coin.png');
 		this.game.load.image('coin','assets/images/inventory/coin.png');
 		this.game.load.image('key','assets/images/inventory/key.png');
 		this.game.load.image('firstAid','assets/images/inventory/firstaid.png');
@@ -30,6 +36,8 @@ States.Boot = {
 		this.game.load.image('poster', 'assets/images/textBox/sign.png');
 		//this.game.load.spritesheet('coin','assets/images/items/coin.png');
 		this.game.load.spritesheet('textBox','assets/images/textBox/textBox.png', 600, 200);
+
+		this.game.load.spritesheet('portal', 'assets/images/misc/portal.png', 123, 123);
 
 		for (var i=0; i<2; i++){
 			var iStr = i.toString();
