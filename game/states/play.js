@@ -39,7 +39,7 @@ States.Play = {
 		this.game.camera.follow(this.game.player.colliderSprite);
 
 		//Creates HUD and its elements
-		game.HUD = new HUD(window.game);
+		game.HUD = new HUD(window.game, 'minimap');
 		game.HUD.load();
 		
 		// Creates and loads a Enemy.
@@ -83,57 +83,8 @@ States.Play = {
 		game.inventory.inventoryImage.fixedToCamera = true;
 
 
-		//Attempted to use groups but couldnt
-		/*
-		var coins = game.add.group();
-		var keys = game.add.group();
-		var firstAids = game.add.group();
-
-	for(var i = 0; i<6; i++)
-    {
-        if(i == 0)
-        {
-            var coin = new collectableItems(window.game, 100, 200, 'coin');
-            //coin.load();
-            //coins.add(coin);
-        }
-        else if(i == 1)
-        {
-            var coin = new collectableItems(window.game, 200, 1000, 'coin');
-           // coin.load();
-            //coins.add(coin);
-        }
-        else if(i == 2)
-        {
-           	var key = new collectableItems(window.game, 150, 900, 'key');
-           //	key.load();
-           	//keys.add(key);
-        }
-        else if(i == 3)
-        {
-           	var key = new collectableItems(window.game, 700, 900, 'key');
-           //	key.load();
-           	//keys.add(key);
-        }
-        else if(i == 4)
-        {
-           	var firstAid = new collectableItems(window.game, 100, 1200, 'firstAid');
-           	//firstAid.load();
-           //	firstAids.add(firstAid);
-        }
-        else
-        {
-        	var firstAid = new collectableItems(window.game, 300, 1000, 'firstAid');
-        	//firstAid.load();
-        	//	firstAids.add(firstAid);
-        }
-    
-
-    }*/
-
-
 		//Creates and loads blocks
-		game.obstacle = new Obstacle(window.game);
+		game.obstacle = new Obstacle(window.game, 'play');
 		game.obstacle.load();
 
 		/*game.enemy3 = new Enemy(window.game, game.player);
@@ -166,7 +117,7 @@ States.Play = {
 
 		game.portals = [];
 		game.portals.push(new Portal(window.game, 50, 280, 'Play')); //Vale
-		game.portals.push(new Portal(window.game, 230, 180, 'Play')); //Robe
+		game.portals.push(new Portal(window.game, 230, 180, 'Roberto')); //Robe
 		game.portals.push(new Portal(window.game, 420, 420, 'Play')); //Sergio
 		game.portals.push(new Portal(window.game, 1200, 1300, 'Play')); //Maf
 		game.portals.push(new Portal(window.game, 400, 1000, 'Play')); //Fabio
