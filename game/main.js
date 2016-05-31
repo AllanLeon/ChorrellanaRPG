@@ -15,6 +15,7 @@ game.state.add('GameOver', Game.States.GameOver);
 
 // Adds the different stages of the game as states.
 game.state.add('TestStage', Game.States.TestStage);
+game.state.add('HouseStage', Game.States.HouseStage);
 
 // Starts the initial state.
 game.state.start('Boot');
