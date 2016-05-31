@@ -36,8 +36,16 @@ HouseStage.prototype.create = function() {
 HouseStage.prototype.update = function(){
 	// Updates the player.
 	game.player.update(game.player);
+	game.physics.arcade.collide(game.houseObstacle.blocks, game.player.colliderSprite);
 }
 
+/*
 
+HouseStage.prototype.update = function(){
+	// Updates the player.
+	game.player.update(game.player);
+	game.physics.arcade.collide(game.houseObstacle.blocks, game.player.colliderSprite);
+}
+*/
 // Adds this stage to the game's states.
 States.HouseStage = new HouseStage();
