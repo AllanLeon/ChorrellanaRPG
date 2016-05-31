@@ -1,0 +1,158 @@
+// Declaration of player data.
+function HouseObstacle(game){
+	this.game = game;
+	this.sprite = null;
+}
+//Declaration of variables
+
+	var blocks;
+	var block;
+
+HouseObstacle.prototype.render = function(){
+	this.blocks = game.add.group();
+	this.blocks.enableBody = true;
+
+	//visibility of blocks
+	//this.blocks.alpha = 0;
+	
+	//Group of blocks border of house
+	//UP border
+	this.block = this.blocks.create(0, 0, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 1066;
+	this.block.height = 40;
+
+	//Left border
+	this.block = this.blocks.create(0, 0, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 33;
+	this.block.height = 167;
+
+	this.block = this.blocks.create(0, 252, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 32;
+	this.block.height = 550;
+
+	//Bottom border
+	this.block = this.blocks.create(0, 760, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 1066;
+	this.block.height = 40;
+
+	//Right border
+	this.block = this.blocks.create(1056, 0, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 10;
+	this.block.height = 800;
+
+	//House's Walls
+	//Bedroom - library
+	this.block = this.blocks.create(288, 0, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 35;
+	this.block.height = 295;
+
+	//library - hall
+	this.block = this.blocks.create(353, 252, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 351;
+	this.block.height = 42;
+
+	//Library-kitchen
+	this.block = this.blocks.create(670, 0, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 35;
+	this.block.height = 292;
+
+	//Room-hall (top)
+	this.block = this.blocks.create(672, 380, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 33;
+	this.block.height = 250;
+
+	//Kitchen - room
+	this.block = this.blocks.create(700, 420, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 380;
+	this.block.height = 82;
+
+	//room - hall (bottom)
+	this.block = this.blocks.create(672, 677, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 33;
+	this.block.height = 100;
+
+	//Throne room -> right
+	this.block = this.blocks.create(577, 420, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 31;
+	this.block.height = 340;
+
+	//Throne room -> top right
+	this.block = this.blocks.create(485, 420, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 100;
+	this.block.height = 33;
+
+	//Throne room -> top left
+	this.block = this.blocks.create(288, 420, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 160;
+	this.block.height = 33;
+
+	//Throne room -> left
+	this.block = this.blocks.create(288, 420, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 31;
+	this.block.height = 340;
+
+	//Bathroom (top)
+	this.block = this.blocks.create(30, 254, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 162;
+	this.block.height = 38;
+
+	//Bathroom (right)
+	this.block = this.blocks.create(160, 282, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 31;
+	this.block.height = 137;
+
+	//Treasure room top
+	this.block = this.blocks.create(30, 460, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 162;
+	this.block.height = 42;
+
+	//Treasure room right
+	this.block = this.blocks.create(160, 500, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 32;
+	this.block.height = 212;
+
+
+/*
+	this.block = this.blocks.create(, , 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = ;
+	this.block.height = ;
+*/
+
+	
+
+	
+	
+	//Collision with the 'block' group
+
+	game.physics.enable(this.block, Phaser.Physics.ARCADE);
+	this.block.body.collideWorldBounds = true;
+	this.block.body.checkCollision.up = true;
+	this.block.body.checkCollision.down = true;
+	this.block.body.checkCollision.right = true;
+	this.block.body.checkCollision.left = true;
+};
+
+// Loads the player's sprites and defines it's animations.
+HouseObstacle.prototype.load = function(){
+	this.render();
+}
