@@ -13,7 +13,7 @@ HouseObstacle.prototype.render = function(){
 	this.blocks.enableBody = true;
 
 	//visibility of blocks
-	//this.blocks.alpha = 0;
+	this.blocks.alpha = 0;
 	
 	//Group of blocks border of house
 	//UP border
@@ -304,16 +304,104 @@ HouseObstacle.prototype.render = function(){
 	this.block.body.immovable = true;
 	this.block.width = 15;
 	this.block.height = 15;
-/*
-	this.block = this.blocks.create(, , 'blockH');
+
+	//Bottom room
+	//Table night 1
+	this.block = this.blocks.create(738, 500, 'blockH');
 	this.block.body.immovable = true;
-	this.block.width = ;
-	this.block.height = ;
-*/
+	this.block.width = 20;
+	this.block.height = 20;
 
-	
+	//Bed 1
+	this.block = this.blocks.create(770, 500, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 30;
+	this.block.height = 65;
 
-	
+	//Closet1
+	this.block = this.blocks.create(810, 495, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 25;
+	this.block.height = 25;
+
+	//Closet1
+	this.block = this.blocks.create(840, 495, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 25;
+	this.block.height = 25;
+
+	//Closet2
+	this.block = this.blocks.create(930, 495, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 25;
+	this.block.height = 25;
+
+	//Closet2
+	this.block = this.blocks.create(965, 495, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 25;
+	this.block.height = 25;
+
+	//Bed 2
+	this.block = this.blocks.create(990, 500, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 30;
+	this.block.height = 65;
+
+	//Table night 1
+	this.block = this.blocks.create(1035, 500, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 20;
+	this.block.height = 20;
+
+	//flower on conner 
+	this.block = this.blocks.create(1035, 730, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 15;
+	this.block.height = 16;
+
+	//Table with books
+	this.block = this.blocks.create(700, 710, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 130;
+	this.block.height = 40;
+
+	//Throne Room
+	//Throne
+	this.block = this.blocks.create(500, 450, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 60;
+	this.block.height = 50;
+
+	//chimney
+	this.block = this.blocks.create(340, 450, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 100;
+	this.block.height = 70;
+
+	//weapons
+	this.block = this.blocks.create(320, 710, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 160;
+	this.block.height = 40;
+
+	//table
+	this.block = this.blocks.create(550, 600, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 25;
+	this.block.height = 150;	
+
+	//chair1
+	this.block = this.blocks.create(525, 600, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 15;
+	this.block.height = 15;
+
+	//chair2
+	this.block = this.blocks.create(525, 725, 'blockH');
+	this.block.body.immovable = true;
+	this.block.width = 15;
+	this.block.height = 15;
 	
 	//Collision with the 'block' group
 
