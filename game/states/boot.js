@@ -39,6 +39,9 @@ States.Boot = {
 
 		this.game.load.spritesheet('portal', 'assets/images/misc/portal.png', 123, 123);
 
+		this.game.load.tilemap('boatMap','assets/tilemaps/boatMap.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.image('boatMapTS', 'assets/images/tilesets/boatMap.png');
+
 		for (var i=0; i<2; i++){
 			var iStr = i.toString();
 			//this.game.load.image('bullet'.concat(iStr),'assets/images/weapons/bullet/bullet'.concat(iStr.concat(".png")));
