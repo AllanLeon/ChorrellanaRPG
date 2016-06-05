@@ -2,21 +2,24 @@
 function BoatPlayer(game) {
 	this.game = game;
 	this.sprite = null;
-	this.speed = 100;
-	this.rotation = 5;
+	this.speed = 400;
+	this.rotation = 60;
 	this.angle = 0;
-	this.animation = 'dukeAnim';
+	this.direction = 'Right';
 	this.arrowKeys = null;
 	this.stopped = true;
-	this.weapon = null;
-	this.enableBody = true;
+	this.timer = null;
+	this.positionData = {    // Player's position info.
+		initial: { x: 30, y: 230}, // initial position of the player
+	};
+
 }
 
 // Initializes the boat player's sprite.
 BoatPlayer.prototype.render = function() {
 	// loads sprites
-	this.sprite = this.game.add.sprite(30, 230, 'boat');
-	
+	this.sprite = this.game.add.sprite(this.positionData.initial.x, this.positionData.initial.y, 'boat');
+
 	// sets sprite properties
 	this.game.physics.arcade.enable(this.sprite); // enables physics on sprite
 
@@ -24,32 +27,32 @@ BoatPlayer.prototype.render = function() {
 	this.sprite.body.collideWorldBounds = true; // sprite cannot exceed the world bounds
 
 	this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
+
+	this.timer = this.game.time.create(true);
+
+	this.timer.add(5000, this.fixMessage, this);
 };
 
 // Loads the boat player's sprites and defines it's animations.
 BoatPlayer.prototype.load = function() {
 	this.render();
-	//this.addAnimations();
 }
 
 // Change the sprite's frame based on the boat player angle
 BoatPlayer.prototype.changeFrame = function(direction){
-	if ((this.angle >= 0 && this.angle < 22.5) || this.angle >= 337.5) { // RIGHT
-		this.sprite.frame = 5;
-	} else if ((this.angle >= 22.5 && (this.angle - 45) < 22.5)) { // UP - RIGHT
-		this.sprite.frame = 2;
-	} else if ((this.angle >= 67.5 && (this.angle - 45) < 67.5)) { // UP
-		this.sprite.frame = 1;
-	} else if ((this.angle >= 112.5 && (this.angle - 45) < 112.5)) { // UP - LEFT
-		this.sprite.frame = 0;
-	} else if ((this.angle >= 157.5 && (this.angle - 45) < 157.5)) { // LEFT
-		this.sprite.frame = 3;
-	} else if ((this.angle >= 202.5 && (this.angle - 45) < 202.5)) { // DOWN - LEFT
-		this.sprite.frame = 6;
-	} else if ((this.angle >= 247.5 && (this.angle - 45) < 247.5)) { // DOWN
-		this.sprite.frame = 7;
-	} else if ((this.angle >= 292.5 && (this.angle - 45) < 292.5)) { // DOWN - RIGHT
-		this.sprite.frame = 8;
+	switch (this.direction) {
+		case 'Left':
+			this.sprite.frame = 3;
+			break;
+		case 'Right':
+			this.sprite.frame = 0;
+			break;
+		case 'Up':
+			this.sprite.frame = 1;
+			break;
+		case 'Down':
+			this.sprite.frame = 2;
+			break;
 	}
 }
 
@@ -63,6 +66,7 @@ BoatPlayer.prototype.stop = function() {
 // Moves the boat player's sprite with a given value and direction.
 BoatPlayer.prototype.move = function(moveValue, direction) {
 	this.stopped = false;
+	this.timer.start();
 	switch (direction) {
 		//Vertical=0; Horizontal=1
 		case 0:
@@ -79,7 +83,6 @@ BoatPlayer.prototype.move = function(moveValue, direction) {
 // Checks the input and handles the movement.
 BoatPlayer.prototype.handleMovement = function() {
 	this.stop();
-	this.changeFrame();
 
 	if (this.game.cursors.up.isDown) {
 		this.move(this.speed, 0);
@@ -92,16 +95,59 @@ BoatPlayer.prototype.handleMovement = function() {
 	} else if (this.game.cursors.right.isDown) {
 		this.move(-this.rotation, 1);
 	}
+
+	if ((this.angle >= 0 && this.angle < 45) || this.angle >= 315) { // RIGHT
+		this.direction = 'Right';
+	} else if ((this.angle >= 45 && (this.angle - 90) < 45)) { // UP
+		this.direction = 'Up';
+	} else if ((this.angle >= 135 && (this.angle - 90) < 135)) { // LEFT
+		this.direction = 'Left';
+	} else if ((this.angle >= 225 && (this.angle - 90) < 225)) { // DOWN
+		this.direction = 'Down';
+	}
+	this.changeFrame();
 }
 
 
 // Updates the boat player.
 BoatPlayer.prototype.update = function() {
-	this.handleMovement();
+	if(!this.game.writer.onScreen){
+		this.handleMovement();	
+	} else {
+		this.game.writer.update();
+	}
 	//this.game.debug.bodyInfo(this.sprite, 32, 32);
 	//this.game.debug.text(this.angle.toString(), 32, 400);
 
 
 }
+
+
+// Message at the begining of the stage
+BoatPlayer.prototype.adviceMessage = function(){
+	 this.game.writer.addText("Alright kid\nThis is a new boat, my dear 'advance_wars.png',\nso you know what that means...");
+	 this.game.writer.addText("It's time to teach you how to pilot this thing");
+	 this.game.writer.addText("Press UP to go forward");
+	 this.game.writer.addText("Press DOWN to go backward");
+	 this.game.writer.addText("Press LEFT and RIGHT to steer");
+	 this.game.writer.addText("You have to go to the deep waters in this place");
+	 this.game.writer.addText("Once we're there, just press X to enter");
+	 this.game.writer.addText("When I was your age, I did all of this by myself.\nWe never had those tutorials or the stuff you kids are into,\n" + 
+	 	"just pressing buttons randomly would take us everywhere...\n(He keeps talking.. You decide to pilot now)");
+	 this.game.writer.openTextBox(0);
+};
+
+// After 5 seconds of the first pressed key
+BoatPlayer.prototype.fixMessage = function(){
+	 this.stop();
+	 this.game.writer.addText("WOAAAA............. STOP!!\nASDFGHJKJKSASDJHAKSJASDASDASDNAKJSNDJJAKSNDA\n"+ 
+	 	"!  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  ");
+	 this.game.writer.addText("Let me pilot this thing, I guess we won't die if that's the case");
+	 this.game.writer.addText("Just focus on your mission");
+	 this.game.writer.openTextBox(0);
+	 this.speed = 200;
+	 this.rotation = 10;
+};
+
 
 

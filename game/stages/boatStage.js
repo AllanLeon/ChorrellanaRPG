@@ -28,14 +28,34 @@ BoatStage.prototype.create = function() {
 	this.layer = this.map.createLayer('BoatMap Layer');
 	this.layer.resizeWorld();
 
-	//Sets the colliders of the tilemap
-	this.map.setCollisionBetween(1,7);
-	this.map.setCollisionBetween(9,11);
+	this.deepWaters = this.game.add.group();
+	this.deepWaters.enableBody = true;
 
+	this.map.createFromObjects('Deep', 8, 'deepWater', 0, true, false, this.deepWaters);
+
+	this.deepWaters.callAll('animations.add', 'animations', 'shine', [0, 1, 2, 3], 10, true);
+    this.deepWaters.callAll('animations.play', 'animations', 'shine');
+	
 	// Creates and loads a Player object.
 	this.game.player = new BoatPlayer(window.game);
 	this.game.player.load();
 	this.game.camera.follow(this.game.player.sprite);
+
+	//Creates the layer that will be drawn over the player
+	this.layerUpper = this.map.createLayer('Upper');
+	this.layerUpper.resizeWorld();
+
+	//Sets the colliders of the tilemap
+	this.map.setCollisionBetween(4,7);
+	this.map.setCollisionBetween(9,11);
+
+	//this.hidingTiles.callAll('animations.add', 'animations', 'shine', [0, 1, 2, 3], 10, true);
+
+	// Creates and loads a Writer object.
+	game.writer = new Writer(window.game);
+	game.writer.load();
+
+	this.game.player.adviceMessage();
 }
 
 /**
@@ -44,11 +64,11 @@ BoatStage.prototype.create = function() {
 BoatStage.prototype.update = function(){
 	
 	this.game.physics.arcade.collide(game.player.sprite, this.layer);
+	this.game.physics.arcade.overlap(game.player.sprite, this.deepWaters);
 
 	// Updates the player.
 	this.game.player.update();
 }
-
 
 // Adds this stage to the game's states.
 States.BoatStage = new BoatStage();
