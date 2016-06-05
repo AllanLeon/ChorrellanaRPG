@@ -133,7 +133,7 @@ States.Play = {
 
 
 		//Creates and loads blocks
-		game.obstacle = new Obstacle(window.game);
+		game.obstacle = new Obstacle(window.game, 'play');
 		game.obstacle.load();
 
 		/*game.enemy3 = new Enemy(window.game, game.player);
@@ -165,7 +165,7 @@ States.Play = {
 		game.music.load();
 
 		game.portals = [];
-		game.portals.push(new Portal(window.game, 50, 280, 'Play')); //Vale
+		game.portals.push(new Portal(window.game, 50, 280, 'TestStage')); //Vale
 		game.portals.push(new Portal(window.game, 230, 180, 'Play')); //Robe
 		game.portals.push(new Portal(window.game, 420, 420, 'Play')); //Sergio
 		game.portals.push(new Portal(window.game, 1200, 1300, 'Play')); //Maf

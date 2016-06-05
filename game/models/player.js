@@ -200,4 +200,8 @@ Player.prototype.checkDeath = function() {
 	}
 }
 
+Player.prototype.addGravity = function(){
+	this.colliderSprite.body.gravity.y = 12000;
+}
+
 
