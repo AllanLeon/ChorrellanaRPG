@@ -33,9 +33,9 @@ BoatStage.prototype.create = function() {
 	this.map.setCollisionBetween(9,11);
 
 	// Creates and loads a Player object.
-	this.game.player = new Player(window.game);
+	this.game.player = new BoatPlayer(window.game);
 	this.game.player.load();
-	this.game.camera.follow(this.game.player.colliderSprite);
+	this.game.camera.follow(this.game.player.sprite);
 }
 
 /**
@@ -43,10 +43,10 @@ BoatStage.prototype.create = function() {
  */
 BoatStage.prototype.update = function(){
 	
-	this.game.physics.arcade.collide(game.player.colliderSprite, this.layer);
+	this.game.physics.arcade.collide(game.player.sprite, this.layer);
 
 	// Updates the player.
-	this.game.player.update(game.player);
+	this.game.player.update();
 }
 
 
