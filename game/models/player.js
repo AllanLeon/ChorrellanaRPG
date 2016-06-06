@@ -12,6 +12,9 @@ function Player(game) {
 	this.weapon = null;
 	this.enableBody = true;
 
+	this.usualMovement = true;
+	this.grounded = false;
+
 this.positionData = {    // Player's position info.
 		//initial: { x: 300, y: 300}, // initial position of the player
 		initial: { x: 50, y: 230}, // initial position of the player
@@ -114,13 +117,24 @@ Player.prototype.setBodyPosition = function(x, y) {
 // Checks the input and handles the movement.
 Player.prototype.handleMovement = function() {
 	this.stop();
-
-	if (this.game.cursors.up.isDown) {
-		this.direction = "Up";
-		this.move(-this.speed, 0);
-	} else if (this.game.cursors.down.isDown) {
-		this.direction = "Down";
-		this.move(this.speed, 0);
+    
+	if(this.usualMovement)
+	{
+		if (this.game.cursors.up.isDown) {
+			this.direction = "Up";
+			this.move(-this.speed, 0);
+		} else if (this.game.cursors.down.isDown) {
+			this.direction = "Down";
+			this.move(this.speed, 0);
+		}
+	} else
+	{
+		if (this.game.cursors.up.isDown && this.grounded)
+		{
+		    this.direction = "Up";
+			this.move(-this.speed, 0);
+		    console.log("Salta salta");
+		}
 	}
 
 	if (this.game.cursors.left.isDown) {
@@ -152,12 +166,19 @@ Player.prototype.update = function() {
 	this.checkDeath();
 
 	this.handleMovement();
-	game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite);
+	this.obstacleCollision();
 	this.NPCCollission();
 	this.signCollission();
 	
 	this.fireWeapon();
 }
+
+Player.prototype.obstacleCollision = function() {
+	if(game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite)){
+		this.grounded = true;
+		console.log("grounded");
+	}
+};
 
 Player.prototype.NPCCollission = function(){
 	if(game.physics.arcade.collide(game.npc.dukes, this.colliderSprite)){
@@ -200,4 +221,10 @@ Player.prototype.checkDeath = function() {
 	}
 }
 
+Player.prototype.addGravity = function(){
+	this.colliderSprite.body.gravity.y = 10000;
+}
 
+Player.prototype.changeMovement = function() {
+	this.usualMovement = !this.usualMovement;
+};
