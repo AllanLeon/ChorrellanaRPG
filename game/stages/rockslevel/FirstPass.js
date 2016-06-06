@@ -33,6 +33,12 @@ FirstPass.prototype.create = function() {
 	this.game.bluedragon.stop();
 	this.game.bluedragon.setBodySprite(140,600);
 
+
+	this.game.orangedragon = new OrangeDragon(window.game);
+	this.game.orangedragon.load();
+	this.game.orangedragon.stop();
+	this.game.orangedragon.setBodySprite(610,650);
+
 	//Creates HUD and its elements
 	/*this.game.HUD = new HUD(window.game, 'Minimap');
 	this.game.HUD.load();*/
@@ -51,6 +57,7 @@ FirstPass.prototype.update = function(){
 	// Updates the player.
 	game.player.update(game.player);
 	game.bluedragon.update();
+	game.orangedragon.update();
 	//game.HUD.update(game.player);
 
 //	game.portals.every(portal => portal.update());
