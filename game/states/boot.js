@@ -25,6 +25,8 @@ States.Boot = {
 
 		//House Stage background
 		this.game.load.image('houseStage', 'assets/images/backgrounds/homeStage.png');
+		this.game.load.image('basement', 'assets/images/backgrounds/basement.png');
+
 		
 		this.game.load.audio('bossanova','assets/audio/bossanova.mp3');
 		this.game.load.image('rain','assets/images/effects/rain.png');
