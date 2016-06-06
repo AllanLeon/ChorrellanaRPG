@@ -104,6 +104,7 @@ MiniGreenDragon.prototype.handleMovement = function(){
 	var enemyDistance = Math.sqrt(Math.pow(this.game.player.sprite.x - this.sprite.x,2) + Math.pow(this.game.player.sprite.y - this.sprite.y,2));
 	this.viewControl(enemyDistance);
 	
+	//si es que dormir es falso empieza a moverse
 	if(this.sleep == false)
 	{
 	//Distance of Player to Enemy
