@@ -673,7 +673,7 @@ Obstacle.prototype.render = function(){
 	}
 	else 
 	{
-		this.bloque = this.blocks.create(24, 932,'blockH');
+		this.bloque = this.blocks.create(10, 932,'blockH');
 		this.bloque.body.immovable = true;
 		this.bloque.width = 800;
 		this.bloque.height = 2;

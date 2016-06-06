@@ -132,7 +132,7 @@ Player.prototype.handleMovement = function() {
 		if (this.game.cursors.up.isDown && this.grounded)
 		{
 		    this.direction = "Up";
-			this.move(-this.speed*100000, 0);
+			this.move(-this.speed, 0);
 		    console.log("Salta salta");
 		}
 	}
@@ -176,6 +176,7 @@ Player.prototype.update = function() {
 Player.prototype.obstacleCollision = function() {
 	if(game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite)){
 		this.grounded = true;
+		console.log("grounded");
 	}
 };
 
