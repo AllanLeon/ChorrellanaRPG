@@ -15,6 +15,7 @@ function Portal(game, x, y, nextStage) {
 	this.startingY = y;
 	this.nextStage = nextStage;
 
+
 	this.load();
 }
 

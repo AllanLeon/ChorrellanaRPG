@@ -58,6 +58,7 @@ EnergyEnemy.prototype.load = function(){
 // Plays the current animation.
 EnergyEnemy.prototype.playAnimation = function(){
 	this.sprite.play(this.animation + this.direction);
+	this.playAnimation();
 }
 
 

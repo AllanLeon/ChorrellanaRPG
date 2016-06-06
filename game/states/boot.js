@@ -17,10 +17,8 @@ States.Boot = {
 		this.game.load.spritesheet('enemy', 'assets/images/characters/enemy1.png',32,32);
 		this.game.load.spritesheet('energyEnemy', 'assets/images/characters/enemy2.png',64,80);
 		this.game.load.spritesheet('energyBall', 'assets/images/attacks/energyBall.png',32,32);
-		
 		this.game.load.spritesheet('mina1', 'assets/images/characters/mina1.png',24,24);
 		this.game.load.spritesheet('explotion', 'assets/images/attacks/explosion.png',64,64);
-
 		this.game.load.image('map', 'assets/images/backgrounds/yourmommasmap.png');
 		this.game.load.image('healthBar', 'assets/images/HUD/healthbar.png');
 		this.game.load.image('lifeBar', 'assets/images/HUD/life.png');
@@ -32,7 +30,7 @@ States.Boot = {
 
 		
 		this.game.load.audio('bossanova','assets/audio/bossanova.mp3');
-		this.game.load.image('rain','assets/images/effects/rain.png');
+		this.game.load.image('rain','assets/images/effects/rain1.png');
 		this.game.load.image('leaf','assets/images/effects/leaf.png');
 		
 		//this.game.load.spritesheet('coin','assets/images/items/coin.png');
@@ -80,6 +78,17 @@ States.Boot = {
 
 		this.game.load.image('cloudsback', 'assets/images/backgrounds/cloudsbg1_corto.jpg');
 		this.game.load.image('spearow', 'assets/images/characters/minspearow.png');		
+		this.game.load.image('robertoMap', 'assets/images/roberto/robertoDessert.png');
+		this.game.load.image('robertoMinimap','assets/images/roberto/desertMinimap.png');
+		this.game.load.image('robertoMap2', 'assets/images/roberto/desert2.png');
+		this.game.load.image('robertoMinimap2','assets/images/roberto/desert2Minimap.png');
+		this.game.load.audio('mgs','assets/images/roberto/mgs2.mp3');
+		this.game.load.image('sand','assets/images/roberto/sand.png');
+		this.game.load.image('rBullet','assets/images/roberto/rightBullet.png');
+		this.game.load.image('lBullet','assets/images/roberto/leftBullet.png');
+		this.game.load.spritesheet('scorpion','assets/images/roberto/scorpion2.png',110,50);
+		this.game.load.spritesheet('snake','assets/images/roberto/snake.png',42,51);
+		this.game.load.spritesheet('snakeCollider','assets/images/roberto/snakecollider.png',42,51);
 
 	},
 	// Starts the next state.
