@@ -22,6 +22,11 @@ States.Boot = {
 		this.game.load.image('healthBar', 'assets/images/HUD/healthbar.png');
 		this.game.load.image('lifeBar', 'assets/images/HUD/life.png');
 		this.game.load.image('minimap','assets/images/backgrounds/minimap.png');
+
+		//House Stage background
+		this.game.load.image('houseStage', 'assets/images/backgrounds/homeStage.png');
+		this.game.load.image('basement', 'assets/images/backgrounds/basement.png');
+
 		
 		this.game.load.audio('bossanova','assets/audio/bossanova.mp3');
 		this.game.load.image('rain','assets/images/effects/rain.png');
