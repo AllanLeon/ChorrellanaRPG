@@ -104,6 +104,8 @@ States.Boot = {
 		this.game.load.spritesheet('bluedragon', 'assets/images/enemys/bluedragon.png',65,65);
 		this.game.load.spritesheet('giantEnergyBall', 'assets/images/attacks/giantEnergyBall.png',38,37);
 		this.game.load.spritesheet('orangedragon', 'assets/images/enemys/orangedragon.png',75,75);
+		this.game.load.spritesheet('minigreendragon', 'assets/images/enemys/minigreendragon.png',80,64);
+
 		
 
 
