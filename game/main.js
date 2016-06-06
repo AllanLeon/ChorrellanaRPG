@@ -21,6 +21,8 @@ game.state.add('BasementStage', Game.States.BasementStage); //Skups
 game.state.add('BoatStage', Game.States.BoatStage); //Zergio
 game.state.add('UnderwaterStage', Game.States.UnderwaterStage); //Zergio
 game.state.add('DockStage', Game.States.DockStage); //Zergio
+game.state.add('Roberto', Game.States.Roberto);
+game.state.add('RobertoSecond', Game.States.RobertoSecond);
 
 // Starts the initial state.
 game.state.start('Boot');
