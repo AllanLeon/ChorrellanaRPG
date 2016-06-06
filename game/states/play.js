@@ -116,10 +116,10 @@ States.Play = {
 		game.mina4.load();
 		game.mina5 = new Mina1(window.game);
 		game.mina5.load();
-*/
+
 		game.bluedragon = new BlueDragon(window.game);
 		game.bluedragon.load();
-
+*/
 		game.music = new Effects(window.game, 'bossanova','rain');
 		game.music.load();
 
@@ -130,7 +130,7 @@ States.Play = {
 		game.portals.push(new Portal(window.game, 1200, 1300, 'mauricioStage')); //Maf
 		game.portals.push(new Portal(window.game, 400, 1000, 'LvlCesped')); //Fabio
 		game.portals.push(new Portal(window.game, 1300, 560, 'HouseStage')); //Vane
-		game.portals.push(new Portal(window.game, 1350, 100, 'Play')); //Jhoto
+		game.portals.push(new Portal(window.game, 1350, 100, 'FirstPass')); //Jhoto
 
 		var changeKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
         changeKey.onDown.add(this.game.player.weapon.nextWeapon, game);
@@ -166,11 +166,9 @@ States.Play = {
 		game.mina4.update();
 		game.mina5.update();
 */
-		game.bluedragon.update();
+		//game.bluedragon.update();
 
-		//game.portals.every(portal => portal.update());
-
-		//game.physics.arcade.overlap(game.player, game.enemy, collisionEnemy, null, this);
+		game.portals.every(portal => portal.update());
 
 	}
 

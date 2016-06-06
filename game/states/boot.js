@@ -18,10 +18,10 @@ States.Boot = {
 
 
 
-		this.game.load.spritesheet('enemy', 'assets/images/characters/enemy1.png',32,32);
-		this.game.load.spritesheet('energyEnemy', 'assets/images/characters/enemy2.png',64,80);
+		this.game.load.spritesheet('enemy', 'assets/images/enemys/enemy1.png',32,32);
+		this.game.load.spritesheet('energyEnemy', 'assets/images/enemys/enemy2.png',64,80);
 		this.game.load.spritesheet('energyBall', 'assets/images/attacks/energyBall.png',32,32);
-		this.game.load.spritesheet('mina1', 'assets/images/characters/mina1.png',24,24);
+		this.game.load.spritesheet('mina1', 'assets/images/enemys/mina1.png',24,24);
 		this.game.load.spritesheet('explotion', 'assets/images/attacks/explosion.png',64,64);
 
 		this.game.load.image('map', 'assets/images/backgrounds/yourmommasmap.png');
@@ -96,6 +96,13 @@ States.Boot = {
 		this.game.load.spritesheet('scorpion','assets/images/roberto/scorpion2.png',110,50);
 		this.game.load.spritesheet('snake','assets/images/roberto/snake.png',42,51);
 		this.game.load.spritesheet('snakeCollider','assets/images/roberto/snakecollider.png',42,51);
+
+		//Aqui empiezo nivel de piedra
+		this.game.load.image('rockpassagemap', 'assets/images/backgrounds/rockpassage.png');
+		this.game.load.image('rockmap', 'assets/images/backgrounds/rocklevel.png');
+		this.game.load.image('monster', 'assets/images/enemys/monster.png',64,64);
+
+
 
 	},
 	// Starts the next state.

@@ -4,7 +4,7 @@ function Player(game) {
 	this.health = 100;
 	this.sprite = null;
 	this.colliderSprite = null;
-	this.speed = 300;
+	this.speed = 600;
 	this.animation = 'dukeAnim';
 	this.direction = 'Down';
 	this.arrowKeys = null;
@@ -230,3 +230,8 @@ Player.prototype.addGravity = function(){
 Player.prototype.changeMovement = function() {
 	this.usualMovement = !this.usualMovement;
 };
+
+Player.prototype.setBodySprite = function(x, y) {
+	this.colliderSprite.x = x;
+	this.colliderSprite.y = y;
+}
