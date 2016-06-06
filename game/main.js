@@ -14,6 +14,7 @@ game.state.add('Play', Game.States.Play);
 game.state.add('GameOver', Game.States.GameOver);
 
 // Adds the different stages of the game as states.
+game.state.add('forestStage', Game.States.forestStage);
 game.state.add('TestStage', Game.States.TestStage);
 
 // Starts the initial state.

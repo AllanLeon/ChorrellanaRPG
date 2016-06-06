@@ -165,8 +165,8 @@ States.Play = {
 		game.music.load();
 
 		game.portals = [];
-		game.portals.push(new Portal(window.game, 50, 280, 'Play')); //Vale
-		game.portals.push(new Portal(window.game, 230, 180, 'Play')); //Robe
+		game.portals.push(new Portal(window.game, 50, 280, 'forestStage')); //Vale
+		game.portals.push(new Portal(window.game, 230, 180, 'TestStage')); //Robe
 		game.portals.push(new Portal(window.game, 420, 420, 'Play')); //Sergio
 		game.portals.push(new Portal(window.game, 1200, 1300, 'Play')); //Maf
 		game.portals.push(new Portal(window.game, 400, 1000, 'Play')); //Fabio
