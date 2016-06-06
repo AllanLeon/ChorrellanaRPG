@@ -251,7 +251,7 @@ BlueDragon.prototype.attack = function(direction){
 //Circular move of the BlueDragon, around of player.
 BlueDragon.prototype.circularMove = function(radio){
 
-    this.speed = 100;
+    this.speed = 400;
 	if(this.sprite.x <= this.game.player.sprite.x  && this.sprite.y <= this.game.player.sprite.y){
 		this.move(-this.speed, 0);
 		this.move(Math.sqrt(Math.pow(radio,2) - Math.pow(this.speed,2)) ,1);
