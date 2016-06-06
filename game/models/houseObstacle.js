@@ -205,8 +205,8 @@ HouseObstacle.prototype.render = function(){
 	//Library room (clock)
 	this.block = this.blocks.create(618, 45, 'blockH');
 	this.block.body.immovable = true;
-	this.block.width = 18;
-	this.block.height = 50;
+	this.block.width = 12;
+	this.block.height = 46;
 
 	//Library room (chair)
 	this.block = this.blocks.create(645, 45, 'blockH');
