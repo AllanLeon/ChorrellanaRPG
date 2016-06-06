@@ -112,7 +112,7 @@ States.Play = {
 		//game.physics.arcade.enable(game.enemy2);
 		//game.physics.arcade.enable(game.enemy3);
 
-		game.music = new Effects(window.game);
+		game.music = new Effects(window.game, 'bossanova','rain');
 		game.music.load();
 
 		game.portals = [];

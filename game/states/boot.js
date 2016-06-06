@@ -22,7 +22,7 @@ States.Boot = {
 		this.game.load.image('minimap','assets/images/backgrounds/minimap.png');
 		
 		this.game.load.audio('bossanova','assets/audio/bossanova.mp3');
-		this.game.load.image('rain','assets/images/effects/rain.png');
+		this.game.load.image('rain','assets/images/effects/rain1.png');
 		this.game.load.image('leaf','assets/images/effects/leaf.png');
 		
 		//this.game.load.spritesheet('coin','assets/images/items/coin.png');
@@ -53,8 +53,13 @@ States.Boot = {
 		this.game.load.image('bomb', 'assets/images/weapons/bomb.png');
 
 		//My levels images Roberto
-		this.game.load.image('robertoMap', 'assets/images/roberto/robertodesert.png');
+		this.game.load.image('robertoMap', 'assets/images/roberto/robertoDessert.png');
 		this.game.load.image('robertoMinimap','assets/images/roberto/desertMinimap.png');
+		this.game.load.image('robertoMap2', 'assets/images/roberto/desert2.png');
+		this.game.load.image('robertoMinimap2','assets/images/roberto/desert2Minimap.png');
+		this.game.load.audio('mgs','assets/images/roberto/mgs2.mp3');
+		this.game.load.image('sand','assets/images/roberto/sand.png');
+		this.game.load.spritesheet('scorpion','assets/images/roberto/scorpion2.png',110,50);
 
 
 

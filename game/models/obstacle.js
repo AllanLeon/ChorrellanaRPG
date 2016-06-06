@@ -19,9 +19,13 @@ Obstacle.prototype.render = function(){
 	{
 		this.playBlocks();
 	}
-	else
+	else if(this.level == 'roberto')
 	{
 		this.robertoBlocks();
+	}
+	else if(this.level == 'robertosecond')
+	{
+		this.robertosecondBlocks();
 	}
 	
 
@@ -1685,6 +1689,125 @@ Obstacle.prototype.robertoBlocks = function(){
 	this.bloque.body.immovable = true;
 	this.bloque.width = 30;
 	this.bloque.height = 20;
+
+}
+
+Obstacle.prototype.robertosecondBlocks = function()
+{
+	this.bloque = this.blocks.create(95,200, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 30;
+	this.bloque.height = 20;
+
+	this.bloque = this.blocks.create(610,320, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 40;
+	this.bloque.height = 20;
+
+	//Right side
+	this.bloque = this.blocks.create(760,0, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 40;
+	this.bloque.height = 20;
+
+	this.bloque = this.blocks.create(800,0, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 40;
+	this.bloque.height = 50;
+
+	this.bloque = this.blocks.create(830,50, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 10;
+	this.bloque.height = 80;
+
+	this.bloque = this.blocks.create(830,130, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 70;
+	this.bloque.height = 10;
+
+	this.bloque = this.blocks.create(830,130, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 70;
+	this.bloque.height = 10;
+
+	this.bloque = this.blocks.create(890,130, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 10;
+	this.bloque.height = 50;
+
+	this.bloque = this.blocks.create(880,190, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 10;
+	this.bloque.height = 60;
+
+	this.bloque = this.blocks.create(878,255, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 40;
+	this.bloque.height = 10;
+
+	this.bloque = this.blocks.create(925,255, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 10;
+	this.bloque.height = 460;
+
+	this.bloque = this.blocks.create(885,715, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 40;
+	this.bloque.height = 10;
+
+	this.bloque = this.blocks.create(875,735, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 10;
+	this.bloque.height = 30;
+
+	this.bloque = this.blocks.create(865,755, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 10;
+	this.bloque.height = 60;
+
+	this.bloque = this.blocks.create(865,810, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 40;
+	this.bloque.height = 10;	
+
+	this.bloque = this.blocks.create(890,810, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 10;
+	this.bloque.height = 230;	
+
+	//STAGES BOTTOM
+	this.bloque = this.blocks.create(0,1005, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 954;
+	this.bloque.height = 10;
+
+	//RiGHT MIDDLE ISLAND
+	this.bloque = this.blocks.create(540,760, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width =115;
+	this.bloque.height = 30;
+
+	this.bloque = this.blocks.create(590,800, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width =90;
+	this.bloque.height = 70;
+
+	this.bloque = this.blocks.create(640,825, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 90;
+	this.bloque.height = 80;
+
+	//LEFT ISLAND
+	this.bloque = this.blocks.create(65,540, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 120;
+	this.bloque.height = 160;
+
+	this.bloque = this.blocks.create(50,560, 'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 180;
+	this.bloque.height = 120;	
+
 
 }
 

@@ -1,12 +1,12 @@
 /**
  * Test state for demostration purposes.
  */
-function Roberto() {}
+function RobertoSecond() {}
 
 /**
  * Sets the state's basic configurations.
  */
-Roberto.prototype.init = function() {
+RobertoSecond.prototype.init = function() {
 	this.game.renderer.renderSession.roundPixels = true;
 	this.physics.startSystem(Phaser.Physics.ARCADE);
 };
@@ -14,12 +14,12 @@ Roberto.prototype.init = function() {
 /**
  * Initializes the stage objects.
  */
-Roberto.prototype.create = function() {
+RobertoSecond.prototype.create = function() {
 	// Sets the world bounds.
-	this.game.background = this.game.add.sprite(0, 0, 'robertoMap');
+	this.game.background = this.game.add.sprite(0, 0, 'robertoMap2');
 
 	// Sets the world bounds.
-	this.game.world.setBounds(0, 0, 1024, 1024);
+	this.game.world.setBounds(0, 0, 954, 1024);
 
 
 	// Creates and loads a Player object.
@@ -36,7 +36,7 @@ Roberto.prototype.create = function() {
 	
 
 	//Creates HUD and its elements
-	this.game.HUD = new HUD(window.game, 'robertoMinimap');
+	this.game.HUD = new HUD(window.game, 'robertoMinimap2');
 	this.game.HUD.load();
 
 	game.HUD.healthBar.fixedToCamera = true;
@@ -46,33 +46,24 @@ Roberto.prototype.create = function() {
 	
 
 	//Creates and loads blocks
-	game.obstacle = new Obstacle(window.game, 'roberto');
+	game.obstacle = new Obstacle(window.game, 'robertosecond');
 	game.obstacle.load();
 
 	//Loads ambient music
 	game.music = new Effects(window.game,'mgs', 'sand');
 	game.music.load();
 
-	game.portals.push(new Portal(window.game, 720, 130, 'RobertoSecond')); //Robe
-
-	game.enemyScorpion = new EnemyScorpion(window.game,250,500);
-	game.enemyScorpion.load();
-	
 }	
 
 /**
  * Updates all the stages's objects.
  */
-Roberto.prototype.update = function(){
+RobertoSecond.prototype.update = function(){
 	// Updates the player.
 	game.player.update(game.player);
 	game.HUD.update(game.player);
 
-	game.portals.every(portal => portal.update());
-
 	game.physics.arcade.overlap(game.player, game.enemy, collisionEnemy, null, this);
-
-	game.enemyScorpion.update();
 }
 
 function collisionEnemy (Player, Enemy) {
@@ -81,4 +72,4 @@ function collisionEnemy (Player, Enemy) {
 }
 
 // Adds this stage to the game's states.
-States.Roberto = new Roberto();
+States.RobertoSecond = new RobertoSecond();
