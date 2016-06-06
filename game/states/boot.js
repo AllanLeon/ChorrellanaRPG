@@ -20,6 +20,7 @@ States.Boot = {
 		this.game.load.spritesheet('mina1', 'assets/images/characters/mina1.png',24,24);
 		this.game.load.spritesheet('explotion', 'assets/images/attacks/explosion.png',64,64);
 		this.game.load.image('map', 'assets/images/backgrounds/yourmommasmap.png');
+		this.game.load.image('forest', 'assets/images/backgrounds/forestgump.png');
 		this.game.load.image('healthBar', 'assets/images/HUD/healthbar.png');
 		this.game.load.image('lifeBar', 'assets/images/HUD/life.png');
 		this.game.load.image('minimap','assets/images/backgrounds/minimap.png');
@@ -30,6 +31,7 @@ States.Boot = {
 
 		
 		this.game.load.audio('bossanova','assets/audio/bossanova.mp3');
+		this.game.load.audio('awesome','assets/audio/onepunch.mp3');
 		this.game.load.image('rain','assets/images/effects/rain1.png');
 		this.game.load.image('leaf','assets/images/effects/leaf.png');
 		

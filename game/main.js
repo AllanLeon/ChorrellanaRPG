@@ -14,15 +14,16 @@ game.state.add('Play', Game.States.Play);
 game.state.add('GameOver', Game.States.GameOver);
 
 // Adds the different stages of the game as states.
-game.state.add('LvlCesped', Game.States.LvlCesped); //Squirtle
-game.state.add('mauricioStage', Game.States.mauricioStage); //Zhuku
 game.state.add('HouseStage', Game.States.HouseStage); //Skups
 game.state.add('BasementStage', Game.States.BasementStage); //Skups
+game.state.add('mauricioStage', Game.States.mauricioStage); //Zhuku
 game.state.add('BoatStage', Game.States.BoatStage); //Zergio
 game.state.add('UnderwaterStage', Game.States.UnderwaterStage); //Zergio
 game.state.add('DockStage', Game.States.DockStage); //Zergio
-game.state.add('Roberto', Game.States.Roberto);
-game.state.add('RobertoSecond', Game.States.RobertoSecond);
+game.state.add('LvlCesped', Game.States.LvlCesped); //Squirtle
+game.state.add('Roberto', Game.States.Roberto); //Shapy
+game.state.add('RobertoSecond', Game.States.RobertoSecond); //Shapy
+game.state.add('forestStage', Game.States.forestStage); //Baleh
 
 // Starts the initial state.
 game.state.start('Boot');
