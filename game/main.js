@@ -17,6 +17,9 @@ game.state.add('GameOver', Game.States.GameOver);
 game.state.add('mauricioStage', Game.States.mauricioStage); //Zhuku
 game.state.add('HouseStage', Game.States.HouseStage); //Skups
 game.state.add('BasementStage', Game.States.BasementStage); //Skups
+game.state.add('BoatStage', Game.States.BoatStage); //Zergio
+game.state.add('UnderwaterStage', Game.States.UnderwaterStage); //Zergio
+game.state.add('DockStage', Game.States.DockStage); //Zergio
 
 // Starts the initial state.
 game.state.start('Boot');
