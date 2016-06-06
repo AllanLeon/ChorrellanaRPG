@@ -49,7 +49,6 @@ FirstPass.prototype.update = function(){
 	//game.HUD.update(game.player);
 
 //	game.portals.every(portal => portal.update());
-
 }
 
 // Adds this stage to the game's states.
