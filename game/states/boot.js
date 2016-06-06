@@ -54,7 +54,8 @@ States.Boot = {
 
 		this.game.load.image('bomb', 'assets/images/weapons/bomb.png');
 
-		this.game.load.image('cloudsback', 'assets/images/backgrounds/cloudsbg1_corto.jpg');		
+		this.game.load.image('cloudsback', 'assets/images/backgrounds/cloudsbg1_corto.jpg');
+		this.game.load.image('spearow', 'assets/images/characters/minspearow.png');		
 
 	},
 	// Starts the next state.
