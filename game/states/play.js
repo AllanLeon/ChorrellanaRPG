@@ -167,7 +167,7 @@ States.Play = {
 		game.portals = [];
 		game.portals.push(new Portal(window.game, 50, 280, 'Play')); //Vale
 		game.portals.push(new Portal(window.game, 230, 180, 'Play')); //Robe
-		game.portals.push(new Portal(window.game, 420, 420, 'Play')); //Sergio
+		game.portals.push(new Portal(window.game, 420, 420, 'DockStage')); //Sergio
 		game.portals.push(new Portal(window.game, 1200, 1300, 'mauricioStage')); //Maf
 		game.portals.push(new Portal(window.game, 400, 1000, 'LvlCesped')); //Fabio
 		game.portals.push(new Portal(window.game, 1300, 560, 'HouseStage')); //Vane
