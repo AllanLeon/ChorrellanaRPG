@@ -34,6 +34,11 @@ States.Boot = {
 		this.game.load.image('inventory','assets/images/inventory/grid.png');
 		this.game.load.image('npcs', 'assets/images/characters/npcs1.png');
 		this.game.load.image('poster', 'assets/images/textBox/sign.png');
+		
+		this.game.load.image('cesped', 'assets/images/LevelCesped/cesped1.png');
+		this.game.load.image('cesped4_20', 'assets/images/LevelCesped/cesped4_20.png');
+		this.game.load.image('plant', 'assets/images/LevelCesped/Npcs/npcsC1.png');
+
 		//this.game.load.spritesheet('coin','assets/images/items/coin.png');
 		this.game.load.spritesheet('textBox','assets/images/textBox/textBox.png', 600, 200);
 

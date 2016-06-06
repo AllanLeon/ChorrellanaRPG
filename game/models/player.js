@@ -153,11 +153,14 @@ Player.prototype.update = function() {
 
 	this.handleMovement();
 	game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite);
+	
 	this.NPCCollission();
 	this.signCollission();
 	
 	this.fireWeapon();
 }
+
+
 
 Player.prototype.NPCCollission = function(){
 	if(game.physics.arcade.collide(game.npc.dukes, this.colliderSprite)){
