@@ -14,7 +14,9 @@ game.state.add('Play', Game.States.Play);
 game.state.add('GameOver', Game.States.GameOver);
 
 // Adds the different stages of the game as states.
-game.state.add('mauricioStage', Game.States.mauricioStage);
+game.state.add('mauricioStage', Game.States.mauricioStage); //Zhuku
+game.state.add('HouseStage', Game.States.HouseStage); //Skups
+game.state.add('BasementStage', Game.States.BasementStage); //Skups
 
 // Starts the initial state.
 game.state.start('Boot');
