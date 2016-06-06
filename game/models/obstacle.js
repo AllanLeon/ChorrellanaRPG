@@ -15,7 +15,7 @@ Obstacle.prototype.render = function(){
 	this.blocks.enableBody = true;
 
 	//visibility of blocks
-	this.blocks.alpha = 1;
+	this.blocks.alpha = 0;
 
 	if(this.stage == 'play')
 	{
@@ -678,6 +678,45 @@ Obstacle.prototype.render = function(){
 		this.bloque.width = 800;
 		this.bloque.height = 2;
 
+		this.bloque = this.blocks.create(85, 767,'blockH');
+		this.bloque.body.immovable = true;
+		this.bloque.width = 300;
+		this.bloque.height = 2;
+
+		this.bloque = this.blocks.create(560, 810,'blockH');
+		this.bloque.body.immovable = true;
+		this.bloque.width = 300;
+		this.bloque.height = 2;
+
+		this.bloque = this.blocks.create(420, 690,'blockH');
+		this.bloque.body.immovable = true;
+		this.bloque.width = 300;
+		this.bloque.height = 2;
+
+		this.bloque = this.blocks.create(310, 530,'blockH');
+		this.bloque.body.immovable = true;
+		this.bloque.width = 300;
+		this.bloque.height = 2;
+
+		this.bloque = this.blocks.create(320, 380,'blockH');
+		this.bloque.body.immovable = true;
+		this.bloque.width = 300;
+		this.bloque.height = 2;
+
+		this.bloque = this.blocks.create(630, 300,'blockH');
+		this.bloque.body.immovable = true;
+		this.bloque.width = 300;
+		this.bloque.height = 2;
+
+		this.bloque = this.blocks.create(50, 170,'blockH');
+		this.bloque.body.immovable = true;
+		this.bloque.width = 450;
+		this.bloque.height = 2;
+
+		this.bloque = this.blocks.create(580, 85,'blockH');
+		this.bloque.body.immovable = true;
+		this.bloque.width = 300;
+		this.bloque.height = 2;
 	}
 
 	game.physics.enable(this.bloque, Phaser.Physics.ARCADE);
