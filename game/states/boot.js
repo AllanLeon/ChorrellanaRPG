@@ -101,6 +101,8 @@ States.Boot = {
 		this.game.load.image('rockpassagemap', 'assets/images/backgrounds/rockpassage.png');
 		this.game.load.image('rockmap', 'assets/images/backgrounds/rocklevel.png');
 		this.game.load.image('monster', 'assets/images/enemys/monster.png',64,64);
+		this.game.load.spritesheet('bluedragon', 'assets/images/enemys/bluedragon.png',65,65);
+		this.game.load.spritesheet('giantEnergyBall', 'assets/images/attacks/giantEnergyBall.png',38,37);
 
 
 

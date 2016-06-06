@@ -28,6 +28,10 @@ FirstPass.prototype.create = function() {
 	// Sets the camera to follow the player.
 	this.game.camera.follow(this.game.player.colliderSprite);
 	
+	this.game.bluedragon = new BlueDragon(window.game);
+	this.game.bluedragon.load();
+	this.game.bluedragon.stop();
+	this.game.bluedragon.setBodySprite(140,600);
 
 	//Creates HUD and its elements
 	/*this.game.HUD = new HUD(window.game, 'Minimap');
@@ -46,6 +50,7 @@ FirstPass.prototype.create = function() {
 FirstPass.prototype.update = function(){
 	// Updates the player.
 	game.player.update(game.player);
+	game.bluedragon.update();
 	//game.HUD.update(game.player);
 
 //	game.portals.every(portal => portal.update());
