@@ -167,6 +167,8 @@ Player.prototype.update = function() {
 
 	this.handleMovement();
 	this.obstacleCollision();
+	//game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite);
+	
 	this.NPCCollission();
 	this.signCollission();
 	

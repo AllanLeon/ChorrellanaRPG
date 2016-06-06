@@ -15,6 +15,7 @@ game.state.add('GameOver', Game.States.GameOver);
 
 // Adds the different stages of the game as states.
 game.state.add('mauricioStage', Game.States.mauricioStage);
+game.state.add('LvlCesped', Game.States.LvlCesped);
 
 // Starts the initial state.
 game.state.start('Boot');
