@@ -8,6 +8,9 @@ States.Boot = {
 		this.game.load.image('blockH', 'assets/images/backgrounds/blockH.png');
 		this.game.load.image('block', 'assets/images/backgrounds/block.png');
 		this.game.load.spritesheet('duke', 'assets/images/characters/duke.png', 23, 43);
+		this.game.load.spritesheet('underwaterDuke', 'assets/images/characters/underwaterDuke.png', 19, 43);
+		this.game.load.spritesheet('boat', 'assets/images/characters/boat.png', 16, 19);
+		this.game.load.spritesheet('deepWater', 'assets/images/tilesets/deepWater.png', 32, 32);
 		this.game.load.image('invaderCollider','assets/images/characters/collider.png');
 		this.game.load.image('invader', 'assets/images/characters/invader.png');
 		this.game.load.image('bullet', 'assets/images/bullets/purple_ball.png');
@@ -43,6 +46,17 @@ States.Boot = {
 		this.game.load.spritesheet('textBox','assets/images/textBox/textBox.png', 600, 200);
 
 		this.game.load.spritesheet('portal', 'assets/images/misc/portal.png', 123, 123);
+
+		this.game.load.tilemap('boatMap','assets/tilemaps/boatMap.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.image('boatMapTS', 'assets/images/tilesets/boatMap.png');
+
+		this.game.load.tilemap('underwater1','assets/tilemaps/underwater1.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.tilemap('underwater2','assets/tilemaps/underwater2.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.tilemap('underwater3','assets/tilemaps/underwater3.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.image('underwaterTS', 'assets/images/tilesets/underwater.png');
+
+		this.game.load.tilemap('dock','assets/tilemaps/dock.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.image('dockTS', 'assets/images/tilesets/dock.png');
 
 		for (var i=0; i<2; i++){
 			var iStr = i.toString();
