@@ -53,6 +53,9 @@ RobertoSecond.prototype.create = function() {
 	game.music = new Effects(window.game,'mgs', 'sand');
 	game.music.load();
 
+	game.enemySnake = new EnemySnake(window.game,250,500);
+	game.enemySnake.load();
+
 }	
 
 /**
@@ -64,6 +67,7 @@ RobertoSecond.prototype.update = function(){
 	game.HUD.update(game.player);
 
 	game.physics.arcade.overlap(game.player, game.enemy, collisionEnemy, null, this);
+	game.enemySnake.update();
 }
 
 function collisionEnemy (Player, Enemy) {
