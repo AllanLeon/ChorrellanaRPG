@@ -5,10 +5,11 @@ function BlueDragon(game){
 	this.sprite = null;
 	this.colliderSprite = null;
 	this.speed = 150;
+	this.sleep = true;
 	this.animation = 'BlueDragon';
-	this.direction = 'Down';
+	this.direction = 'Right';
 	this.stopped = true;
-	this.initial = Math.floor(Math.random() * (1356));
+	this.initial = Math.floor(Math.random() * (500));
 	this.enableBody = true;
 	this.energyBall = null;
 	this.positionData =  {
@@ -100,9 +101,12 @@ BlueDragon.prototype.setBodyPosition = function(x, y){
 // Checks the input and handles the movement.
 BlueDragon.prototype.handleMovement = function(){
 
-	
-	//Distance of Player to Enemy
 	var enemyDistance = Math.sqrt(Math.pow(this.game.player.sprite.x - this.sprite.x,2) + Math.pow(this.game.player.sprite.y - this.sprite.y,2));
+	this.viewControl(enemyDistance);
+	
+	if(this.sleep == false)
+	{
+	//Distance of Player to Enemy
 	
 
 
@@ -112,7 +116,7 @@ BlueDragon.prototype.handleMovement = function(){
 		if(enemyDistance <= 200){
 		this.stop();
 
-		this.viewControl(enemyDistance);
+		//this.viewControl(enemyDistance);
 
 		this.circularMove(enemyDistance);
 
@@ -134,7 +138,7 @@ var ballDistance = Math.sqrt(Math.pow(this.sprite.x - this.energyBall.x,2) + Mat
 	}
 
 	this.game.physics.arcade.overlap(this.energyBall, this.game.player.sprite, null, this.energyBallCollition, this);
-
+}
 	this.playAnimation();
 
 	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
@@ -321,4 +325,9 @@ BlueDragon.prototype.stopAnimation = function(direction){
 			this.sprite.frame = 0;
 			break;
 	}
+}
+
+BlueDragon.prototype.setBodySprite = function(x, y) {
+	this.colliderSprite.x = x;
+	this.colliderSprite.y = y;
 }
