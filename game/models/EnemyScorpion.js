@@ -1,11 +1,12 @@
 // Declaration of Enemy data.
-function EnemyScorpion(game, x, y){
+function EnemyScorpion(game, x, y, direction){
 	this.game = game;
 	this.health = 100;
 	this.sprite = null;
 	this.colliderSprite = null;
 	//this.collide = false;
 	this.animation = 'scorpion';
+	this.direction = direction;
 	this.initialX = x;
 	this.initialY = y;
 	this.enableBody = true;
@@ -25,7 +26,8 @@ function EnemyScorpion(game, x, y){
 // Initializes the Enemys sprites.
 EnemyScorpion.prototype.render = function(){
 	// loads sprites
-	this.colliderSprite = this.game.add.sprite(this.initialX - this.positionData.colliderDifference.x, this.initialY - this.positionData.colliderDifference.y, 'scorpion');
+	this.colliderSprite = this.game.add.sprite(this.initialX - this.positionData.colliderDifference.x, 5+this.initialY - this.positionData.colliderDifference.y, 'scorpionCollider');
+
 	this.sprite = this.game.add.sprite(this.initialX, this.initialY, 'scorpion');
 	this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 
@@ -45,7 +47,8 @@ EnemyScorpion.prototype.render = function(){
 
 // Defines the Enemy's animations with their respective frames.
 EnemyScorpion.prototype.addAnimations = function () {
-	this.sprite.animations.add(this.animation, [0,1,2,3,4,5,6], 7, true);
+	this.sprite.animations.add(this.animation+'Right', [0,1,2,3,4,5,6], 8, true);
+	this.sprite.animations.add(this.animation+'Left', [7,8,9,10,11,12,13], 8, true);
 }
 
 // Loads the Enemy's sprites and defines it's animations.
@@ -56,28 +59,57 @@ EnemyScorpion.prototype.load = function(){
 
 // Plays the current animation.
 EnemyScorpion.prototype.playAnimation = function(){
-	this.sprite.play(this.animation);
+	this.sprite.play(this.animation+this.direction);
 }
 
 // Checks the input and handles the movement.
 EnemyScorpion.prototype.handleCollider = function(){
+	if(this.direction=="Right")
+	{
+		if(this.sprite.animations.currentAnim.frame==0 || this.sprite.animations.currentAnim.frame==6)
+		{
+			this.colliderSprite.scale.setTo(1,1); 
+		}
+		else if(this.sprite.animations.currentAnim.frame==1 || this.sprite.animations.currentAnim.frame==5)
+		{	
+			this.colliderSprite.scale.setTo(0.76,1);
+		}
+		else if(this.sprite.animations.currentAnim.frame==2 || this.sprite.animations.currentAnim.frame==4)
+		{
+			this.colliderSprite.scale.setTo(0.6,1);
+		}
+		else if(this.sprite.animations.currentAnim.frame==3)
+		{
+			this.colliderSprite.scale.setTo(0.5,1);
+		}
+	}
+	else if(this.direction=="Left")
+	{	
+		if(this.sprite.animations.currentAnim.frame==7 || this.sprite.animations.currentAnim.frame==13)
+		{
+			this.colliderSprite.x = this.initialX;
+			this.colliderSprite.scale.setTo(1,1); 	
+		}
+		else if(this.sprite.animations.currentAnim.frame==8 || this.sprite.animations.currentAnim.frame==12)
+		{
+			this.colliderSprite.x = this.initialX + 26;
+			this.colliderSprite.scale.setTo(0.76,1);
+		}
+		else if(this.sprite.animations.currentAnim.frame==9 || this.sprite.animations.currentAnim.frame==11)
+		{
+			this.colliderSprite.x = this.initialX + 42;
+			this.colliderSprite.scale.setTo(0.6,1);
+		}
+		else if(this.sprite.animations.currentAnim.frame==10)
+		{
+			this.colliderSprite.x = this.initialX + 54;
+			this.colliderSprite.scale.setTo(0.5,1);
+		}
+
+	}
+
 	this.game.physics.arcade.overlap(this.colliderSprite, this.game.player.sprite, null, this._enemyAttack, this);
-	if(this.sprite.animations.currentAnim.frame==0 || this.sprite.animations.currentAnim.frame==6)
-	{
-		this.colliderSprite.scale.setTo(1,1); 
-	}
-	else if(this.sprite.animations.currentAnim.frame==1 || this.sprite.animations.currentAnim.frame==5)
-	{
-		this.colliderSprite.scale.setTo(0.76,1);
-	}
-	else if(this.sprite.animations.currentAnim.frame==2 || this.sprite.animations.currentAnim.frame==4)
-	{
-		this.colliderSprite.scale.setTo(0.6,1);
-	}
-	else
-	{
-		this.colliderSprite.scale.setTo(0.5,1);
-	}
+	
 }
 
 // Updates the Enemy.
