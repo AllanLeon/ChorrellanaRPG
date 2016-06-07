@@ -230,3 +230,8 @@ Player.prototype.addGravity = function(){
 Player.prototype.changeMovement = function() {
 	this.usualMovement = !this.usualMovement;
 };
+
+Player.prototype.setBodySprite = function(x, y) {
+	this.colliderSprite.x = x;
+	this.colliderSprite.y = y;
+}
