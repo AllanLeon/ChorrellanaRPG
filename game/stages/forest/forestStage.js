@@ -28,8 +28,15 @@ forestStage.prototype.create = function() {
 	// Sets the camera to follow the player.
 	this.game.camera.follow(this.game.player.colliderSprite);
 
-	//game.obstacleForest = new obstacleForest(this.game);
-	//game.obstacleForest.load();
+	game.obstacleForest = new obstacleForest(this.game);
+	game.obstacleForest.load();
+
+	game.physics.arcade.enable(game.player);
+
+	game.physics.arcade.collide(game.player.colliderSprite, game.obstacleForest.bloque);
+	
+	game.portals.push(new Portal(window.game, 300, 100, 'forestStage')); //Vale
+		
 }
 
 /**
@@ -39,6 +46,9 @@ forestStage.prototype.update = function(){
 	//this.create();
 	// Updates the player.
 	game.player.update(game.player);
+
+	game.portals.update();
+	//every(portal => portal.update());
 }
 
 // Adds this stage to the game's states.

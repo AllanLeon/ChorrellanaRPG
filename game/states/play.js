@@ -133,8 +133,10 @@ States.Play = {
 
 
 		//Creates and loads blocks
-		game.obstacle = new Obstacle(window.game);
-		game.obstacle.load();
+		//game.obstacle = new Obstacle(window.game);
+		//game.obstacle.load();
+		game.obstacleForest = new obstacleForest(window.game);
+		game.obstacleForest.load();
 
 		/*game.enemy3 = new Enemy(window.game, game.player);
 		game.enemy3.load();*/
