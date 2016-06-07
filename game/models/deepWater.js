@@ -7,14 +7,9 @@
  * @param      y          Starting y-axis position
  * @param      nextStage  The next stage the portal leads
  */
-function Portal(game, x, y, nextStage) {
-	this.game = game;
-	this.sprite = null;
-	this.animation = 'portalAnim'
-	this.startingX = x;
-	this.startingY = y;
-	this.nextStage = nextStage;
-
+function Portal(sprite) {
+	this.sprite = sprite;
+	this.active = true;
 	this.load();
 }
 

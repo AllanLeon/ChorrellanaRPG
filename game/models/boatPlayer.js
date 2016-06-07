@@ -14,6 +14,7 @@ function BoatPlayer(game) {
 		initial: { x: 30, y: 230}, // initial position o fthe player
 	};
 	this.collectedItems = 0;
+	this.visitedDeepWaters = [];
 
 }
 
@@ -116,7 +117,7 @@ BoatPlayer.prototype.handleMovement = function() {
 // Updates the boat player.
 BoatPlayer.prototype.update = function() {
 	if(!this.game.writer.onScreen){
-		this.handleMovement();	
+		this.handleMovement();
 	} else {
 		this.game.writer.update();
 	}
@@ -161,10 +162,18 @@ BoatPlayer.prototype.fixMessage = function(){
 BoatPlayer.prototype.overlapDeepWater = function(boatPlayer, deepWater){
 	 if (game.input.keyboard.isDown(Phaser.Keyboard.X)) {
 	 	//game.debug.text("ENTRE", 32, 32);
+	 	game.player.visitedDeepWaters.push(game.deepWaters.getChildIndex(deepWater));
 	 	game.player.positionData.initial.x = game.player.sprite.x;
 	 	game.player.positionData.initial.y = game.player.sprite.y;
-	 	deepWater.kill();
 		game.state.start("UnderwaterStage", true);
+	 }
+};
+
+BoatPlayer.prototype.killVisitedDeepWaters = function(){
+	 //game.debug.text(this.visitedDeepWaters.length.toString(),32,32);
+	 for (var i=0; i<this.visitedDeepWaters.length; i++){
+	 	this.game.deepWaters.getChildAt(this.visitedDeepWaters[i]).kill();
+
 	 }
 };
 

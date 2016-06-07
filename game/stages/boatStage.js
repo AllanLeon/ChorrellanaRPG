@@ -30,21 +30,24 @@ BoatStage.prototype.create = function() {
 	this.layer = this.map.createLayer('BoatMap Layer');
 	this.layer.resizeWorld();
 
-	this.deepWaters = this.game.add.group();
-	this.deepWaters.enableBody = true;
+	this.game.deepWaters = this.game.add.group();
+	this.game.deepWaters.enableBody = true;
 
-	this.map.createFromObjects('Deep', 8, 'deepWater', 0, true, false, this.deepWaters);
+	this.map.createFromObjects('Deep', 8, 'deepWater', 0, true, false, this.game.deepWaters);	
 
-	this.deepWaters.callAll('animations.add', 'animations', 'shine', [0, 1, 2, 3], 10, true);
-    this.deepWaters.callAll('animations.play', 'animations', 'shine');
+	this.game.deepWaters.callAll('animations.add', 'animations', 'shine', [0, 1, 2, 3], 10, true);
+	this.game.deepWaters.callAll('animations.play', 'animations', 'shine');
 	
+	if (!this.game.player.firstTimeLoaded){
+		this.game.player.killVisitedDeepWaters();
+	}
 	/*
 	// Creates and loads a Player object.
 	this.game.player = new BoatPlayer(window.game);*/
 
 	this.game.player.load();
 	this.game.camera.follow(this.game.player.sprite);
-	
+
 	//Creates the layer that will be drawn over the player
 	this.layerUpper = this.map.createLayer('Upper');
 	this.layerUpper.resizeWorld();
@@ -68,8 +71,8 @@ BoatStage.prototype.create = function() {
 BoatStage.prototype.update = function(){
 	
 	this.game.physics.arcade.collide(game.player.sprite, this.layer);
-	this.game.physics.arcade.overlap(game.player.sprite, this.deepWaters, this.game.player.overlapDeepWater);
 
+	this.game.physics.arcade.overlap(this.game.player.sprite, this.game.deepWaters, this.game.player.overlapDeepWater);	
 	// Updates the player.
 	this.game.player.update();
 }
