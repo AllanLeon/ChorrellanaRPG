@@ -10,7 +10,7 @@ function UnderwaterPlayer(game, boatPlayer) {
 	this.arrowKeys = null;
 	this.stopped = true;
 	this.jumpPressed = false;
-	this.collected = true;
+	this.collected = false;
 
 this.positionData = {    // Player's position info.
 		initial: { x: 50, y: 100}, // initial position of the player
@@ -128,7 +128,3 @@ UnderwaterPlayer.prototype.checkExit = function() {
 		this.game.state.start("BoatStage", true);
 	}
 }
-
-
-
-

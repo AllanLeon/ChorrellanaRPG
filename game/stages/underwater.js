@@ -22,7 +22,20 @@ UnderwaterStage.prototype.create = function() {
 	} else {
 		this.levelNumber = '0';
 	}
-	
+
+	switch (this.levelNumber) {
+		case "0":
+		this.underwaterItem = new UnderwaterItem(window.game, 672, 416, 0);
+			break;
+		case "1":
+
+		this.underwaterItem = new UnderwaterItem(window.game, 992, 288, 1);
+			break;
+		case "2":
+
+		this.underwaterItem = new UnderwaterItem(window.game, 160, 928, 2);
+			break;
+	}	
 	// Sets the tilemap
 	this.map = this.game.add.tilemap('underwater' + this.levelNumber);
 
@@ -43,6 +56,8 @@ UnderwaterStage.prototype.create = function() {
 	this.layerObstacles = this.map.createLayer('Obstacles');
 	this.layerObstacles.resizeWorld();
 
+	this.underwaterItem.load();
+
 	this.layerDetails = this.map.createLayer('Details');
 	this.layerDetails.resizeWorld();
 	
@@ -55,9 +70,12 @@ UnderwaterStage.prototype.create = function() {
  */
 UnderwaterStage.prototype.update = function(){
 	this.game.physics.arcade.collide(game.player.sprite, this.layerObstacles);
+	this.game.physics.arcade.overlap(game.player.sprite, this.underwaterItem.item, this.underwaterItem.collectItem);
 	// Updates the player.
 	this.game.player.update();
 }
+
+
 
 // Adds this stage to the game's states.
 States.UnderwaterStage = new UnderwaterStage();

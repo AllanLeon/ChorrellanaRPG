@@ -10,6 +10,7 @@ States.Boot = {
 		this.game.load.spritesheet('duke', 'assets/images/characters/duke.png', 23, 43);
 		this.game.load.spritesheet('underwaterDuke', 'assets/images/characters/underwaterDuke.png', 19, 43);
 		this.game.load.spritesheet('boat', 'assets/images/characters/boat.png', 16, 19);
+		this.game.load.spritesheet('underwaterItem', 'assets/images/misc/underwaterItems.png', 32, 32);
 		this.game.load.spritesheet('deepWater', 'assets/images/tilesets/deepWater.png', 32, 32);
 		this.game.load.image('invaderCollider','assets/images/characters/collider.png');
 		this.game.load.image('invader', 'assets/images/characters/invader.png');
