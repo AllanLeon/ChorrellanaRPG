@@ -17,37 +17,37 @@ UnderwaterStage.prototype.init = function() {
 UnderwaterStage.prototype.create = function() {
 	// Sets the world bounds.
 	this.game.world.setBounds(0, 0, 800, 600);
+	if (this.game.player.collectedItems<3){
+		this.levelNumber = this.game.player.collectedItems.toString();
+	} else {
+		this.levelNumber = '0';
+	}
+	
 	// Sets the tilemap
-	this.map1 = this.game.add.tilemap('underwater1');
-	this.map2 = this.game.add.tilemap('underwater2');
-	this.map3 = this.game.add.tilemap('underwater3');
+	this.map = this.game.add.tilemap('underwater' + this.levelNumber);
 
 	// Adds a tileset image to the tilemap
-	this.map1.addTilesetImage('underwater', 'underwaterTS');
-	this.map2.addTilesetImage('underwater', 'underwaterTS');
-	this.map3.addTilesetImage('underwater', 'underwaterTS');
+	this.map.addTilesetImage('underwater', 'underwaterTS');
 
 	// Creates a displayable layer from the tilemap
-	this.layerBackground = this.map3.createLayer('Background');
+	this.layerBackground = this.map.createLayer('Background');
 	this.layerBackground.resizeWorld();
-	
+
 	// Creates and loads a Player object.
-	this.game.player = new UnderwaterPlayer(window.game);
+	var boatPlayer = this.game.player;
+	this.game.player = new UnderwaterPlayer(window.game, boatPlayer);
 	this.game.player.load();
 	this.game.camera.follow(this.game.player.sprite);
 
-	//Creates the layer that will be drawn over the player
-	this.layerObstacles = this.map3.createLayer('Obstacles');
+	//Creates the layers that will be drawn over the player
+	this.layerObstacles = this.map.createLayer('Obstacles');
 	this.layerObstacles.resizeWorld();
 
-	this.layerDetails = this.map3.createLayer('Details');
+	this.layerDetails = this.map.createLayer('Details');
 	this.layerDetails.resizeWorld();
-
+	
 	//Sets the colliders of the tilemap
-	this.map3.setCollisionBetween(1,90, true, this.layerObstacles);
-
-	//this.layerBackground.debug = true;
-	//this.layerDetails.debug = true;
+	this.map.setCollisionBetween(1,90, true, 'Obstacles');	
 }
 
 /**
@@ -57,8 +57,6 @@ UnderwaterStage.prototype.update = function(){
 	this.game.physics.arcade.collide(game.player.sprite, this.layerObstacles);
 	// Updates the player.
 	this.game.player.update();
-
-	this.game.HUD.update(game.player);
 }
 
 // Adds this stage to the game's states.

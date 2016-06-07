@@ -55,9 +55,9 @@ States.Boot = {
 		this.game.load.tilemap('boatMap','assets/tilemaps/boatMap.json', null, Phaser.Tilemap.TILED_JSON);
 		this.game.load.image('boatMapTS', 'assets/images/tilesets/boatMap.png');
 
-		this.game.load.tilemap('underwater1','assets/tilemaps/underwater1.json', null, Phaser.Tilemap.TILED_JSON);
-		this.game.load.tilemap('underwater2','assets/tilemaps/underwater2.json', null, Phaser.Tilemap.TILED_JSON);
-		this.game.load.tilemap('underwater3','assets/tilemaps/underwater3.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.tilemap('underwater0','assets/tilemaps/underwater1.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.tilemap('underwater1','assets/tilemaps/underwater2.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.tilemap('underwater2','assets/tilemaps/underwater3.json', null, Phaser.Tilemap.TILED_JSON);
 		this.game.load.image('underwaterTS', 'assets/images/tilesets/underwater.png');
 
 		this.game.load.tilemap('dock','assets/tilemaps/dock.json', null, Phaser.Tilemap.TILED_JSON);

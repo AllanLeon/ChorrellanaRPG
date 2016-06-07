@@ -17,6 +17,8 @@ DockStage.prototype.init = function() {
 DockStage.prototype.create = function() {
 	// Sets the world bounds.
 	this.game.world.setBounds(0, 0, 800, 600);
+
+	this.game.cursors = game.input.keyboard.createCursorKeys();
 	// Sets the tilemap
 	this.map = this.game.add.tilemap('dock');
 
@@ -35,7 +37,7 @@ DockStage.prototype.create = function() {
 	this.map.setCollisionBetween(16,40, true, this.layerCollision);
 
 	this.map.setTileLocationCallback(16, 17, 3, 2, this.chat, this, this.layerCollision);
-	
+
 	// Creates and loads a Player object.
 	this.game.player = new Player(window.game);
 	this.game.player.load();
@@ -97,6 +99,7 @@ DockStage.prototype.chat = function(){
 DockStage.prototype.changeStage = function() {
 	this.game.input.reset();
 	this.game.sound.stopAll();
+	this.game.player = new BoatPlayer(window.game);
 	this.game.state.start("BoatStage", true);
 }
 

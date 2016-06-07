@@ -1,6 +1,7 @@
 // Declaration of player data.
-function UnderwaterPlayer(game) {
+function UnderwaterPlayer(game, boatPlayer) {
 	this.game = game;
+	this.boatPlayer = boatPlayer;
 	this.health = 100;
 	this.sprite = null;
 	this.speed = 200;
@@ -9,8 +10,7 @@ function UnderwaterPlayer(game) {
 	this.arrowKeys = null;
 	this.stopped = true;
 	this.jumpPressed = false;
-	this.previousX = null;
-	this.previousY = null;
+	this.collected = true;
 
 this.positionData = {    // Player's position info.
 		initial: { x: 50, y: 100}, // initial position of the player
@@ -106,7 +106,7 @@ UnderwaterPlayer.prototype.handleMovement = function() {
 // Updates the player.
 UnderwaterPlayer.prototype.update = function() {
 	this.checkDeath();
-
+	this.checkExit();
 	this.handleMovement();
 }
 
@@ -118,6 +118,14 @@ UnderwaterPlayer.prototype.checkDeath = function() {
 		this.game.input.reset();
 		this.game.sound.stopAll();
 		this.game.state.start('GameOver', true);
+	}
+}
+
+UnderwaterPlayer.prototype.checkExit = function() {
+	if (this.sprite.y <= 32 && this.collected) {
+		this.game.player = this.boatPlayer;
+		this.game.player.collectedItems++;
+		this.game.state.start("BoatStage", true);
 	}
 }
 

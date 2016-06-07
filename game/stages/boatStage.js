@@ -18,6 +18,8 @@ BoatStage.prototype.create = function() {
 	// Sets the world bounds.
 	this.game.world.setBounds(0, 0, 800, 600);
 
+	this.game.cursors = game.input.keyboard.createCursorKeys();
+
 	// Sets the tilemap
 	this.map = this.game.add.tilemap('boatMap');
 	
@@ -36,11 +38,13 @@ BoatStage.prototype.create = function() {
 	this.deepWaters.callAll('animations.add', 'animations', 'shine', [0, 1, 2, 3], 10, true);
     this.deepWaters.callAll('animations.play', 'animations', 'shine');
 	
+	/*
 	// Creates and loads a Player object.
-	this.game.player = new BoatPlayer(window.game);
+	this.game.player = new BoatPlayer(window.game);*/
+
 	this.game.player.load();
 	this.game.camera.follow(this.game.player.sprite);
-
+	
 	//Creates the layer that will be drawn over the player
 	this.layerUpper = this.map.createLayer('Upper');
 	this.layerUpper.resizeWorld();
@@ -64,7 +68,7 @@ BoatStage.prototype.create = function() {
 BoatStage.prototype.update = function(){
 	
 	this.game.physics.arcade.collide(game.player.sprite, this.layer);
-	this.game.physics.arcade.overlap(game.player.sprite, this.deepWaters);
+	this.game.physics.arcade.overlap(game.player.sprite, this.deepWaters, this.game.player.overlapDeepWater);
 
 	// Updates the player.
 	this.game.player.update();
