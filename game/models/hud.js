@@ -1,12 +1,12 @@
 //Creating HUD wwhit its properties
-function HUD(game)
+function HUD(game, minimap)
 {
 	var graphics;
 	this.game = game;
 	this.healthHUD = game.player.health;
 	this.healthBar = null;
 	this.availableHealth = null;
-	this.miniMap = null;
+	this.miniMap = minimap;
 	this.playerPosMiniMapX = game.player.sprite.x;
 	this.playerPosMiniMapY = game.player.sprite.y;
 	this.miniMapPosX = 640;
@@ -26,7 +26,7 @@ HUD.prototype.render = function()
 	this.healthBar = this.game.add.sprite(positionDataHud.initialHUD.healthBarX, positionDataHud.initialHUD.healthBarY, 'healthBar' );
 	this.availableHealth = this.game.add.sprite(positionDataHud.availablelife.lifeBarX, positionDataHud.availablelife.lifeBarY, 'lifeBar');
 	this.availableHealth.scale.setTo((this.healthHUD/10),1);
-	this.miniMap = this.game.add.sprite(this.miniMapPosX, this.miniMapPosY, 'minimap');
+	this.miniMap = this.game.add.sprite(this.miniMapPosX, this.miniMapPosY, this.miniMap);
 	this.miniMap.scale.setTo(0.50,0.50);		
 	this.drawPlayerPos();
 };
