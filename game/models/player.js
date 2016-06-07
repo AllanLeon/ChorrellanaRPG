@@ -14,6 +14,7 @@ function Player(game) {
 
 	this.usualMovement = true;
 	this.grounded = false;
+	this.timer = null;
 
 this.positionData = {    // Player's position info.
 		//initial: { x: 300, y: 300}, // initial position of the player
@@ -53,6 +54,7 @@ Player.prototype.load = function() {
 	this.render();
 	this.addAnimations();
 	this.loadWeapon();
+	this.initializeTimer();
 }
 
 Player.prototype.loadWeapon = function() {
@@ -131,8 +133,16 @@ Player.prototype.handleMovement = function() {
 	{
 		if (this.game.cursors.up.isDown && this.grounded)
 		{
-		    this.direction = "Up";
-			this.move(-this.speed, 0);
+			if (!this.timer.running) {
+				this.stop();
+				this.handleJump(this.colliderSprite.body.x, this.colliderSprite.body.y);
+
+				this.timer.add(500, this.endOfJump, this);
+				this.timer.start();
+			}
+
+		    //this.direction = "Up";
+			//this.move(-this.speed, 0);
 		    console.log("Salta salta");
 		}
 	}
@@ -228,3 +238,17 @@ Player.prototype.addGravity = function(){
 Player.prototype.changeMovement = function() {
 	this.usualMovement = !this.usualMovement;
 };
+
+Player.prototype.handleJump = function(initialX, initialY) {
+	this.move(-this.speed*1000, 0);
+}
+
+Player.prototype.endOfJump = function() {
+	this.colliderSprite.body.velocity.y = 0;
+	this.grounded = false;
+	console.log('END OF JUMP');
+};
+
+Player.prototype.initializeTimer = function() {
+	this.timer = this.game.time.create(false);
+}
