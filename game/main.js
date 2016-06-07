@@ -24,6 +24,7 @@ game.state.add('LvlCesped', Game.States.LvlCesped); //Squirtle
 game.state.add('Roberto', Game.States.Roberto); //Shapy
 game.state.add('RobertoSecond', Game.States.RobertoSecond); //Shapy
 game.state.add('forestStage', Game.States.forestStage); //Baleh
+game.state.add('FirstPass',Game.States.FirstPass); //ioto
 
 // Starts the initial state.
 game.state.start('Boot');
