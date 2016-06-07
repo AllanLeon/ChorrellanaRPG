@@ -4,7 +4,7 @@ function Player(game) {
 	this.health = 100;
 	this.sprite = null;
 	this.colliderSprite = null;
-	this.speed = 600;
+	this.speed = 300;
 	this.animation = 'dukeAnim';
 	this.direction = 'Down';
 	this.arrowKeys = null;
