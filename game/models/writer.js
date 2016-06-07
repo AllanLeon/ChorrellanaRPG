@@ -46,6 +46,7 @@ Writer.prototype.openTextBox = function(textBoxType){
 		this.onScreen = true;
 		this.sprite.alpha = 0.8;
 		this.startWriting();	
+		this.buttonPressed = true;
 	}
 };
 

@@ -4,11 +4,13 @@
 	<title>Chorellana</title>
 	<link rel="icon" type="image/ico" href="favicon.ico"/>
 	<style>	@font-face {  font-family: "Minecraft";  src: url('assets/fonts/Minecraft.ttf') format("truetype");}</style> <!--Font used in the text box-->
-	<script type="text/javascript" src="game/models/hud.js" ></script>
 	<script type="text/javascript" src="lib/queue.src.js" ></script>
 	<script type="text/javascript" src="lib/phaser.js" ></script>
+	<script type="text/javascript" src="game/models/hud.js" ></script>
 	<script type="text/javascript" src="game/models/portal.js"></script>
 	<script type="text/javascript" src="game/models/player.js" ></script>
+	<script type="text/javascript" src="game/models/boatPlayer.js" ></script>
+	<script type="text/javascript" src="game/models/underwaterPlayer.js" ></script>
 	<script type="text/javascript" src="game/models/weapon.js" ></script>
 	<script type="text/javascript" src="game/models/bullet.js" ></script>
 	<script type="text/javascript" src="game/models/bomb.js" ></script>
@@ -17,16 +19,41 @@
 	<script type="text/javascript" src="game/models/npc.js" ></script>	
 	<script type="text/javascript" src="game/models/sign.js" ></script>	
 	<script type="text/javascript" src="game/models/writer.js" ></script>
+
 	<!--<script type="text/javascript" src="game/models/enemyLeo.js" ></script>-->
+
+
 	<script type="text/javascript" src="game/models/inventory.js" ></script>
-	<script type="text/javascript" src="game/models/enemy.js"></script>
+	<script type="text/javascript" src="game/models/enemys/enemy.js"></script>
 	<script type="text/javascript" src="game/models/effects.js"></script>
-	<script type="text/javascript" src="game/models/energyEnemy.js"></script>
-	<script type="text/javascript" src="game/models/mina1.js"></script>
+	<script type="text/javascript" src="game/models/enemys/energyEnemy.js"></script>
+	<script type="text/javascript" src="game/models/enemys/mina1.js"></script>
+	<script type="text/javascript" src="game/models/houseObstacle.js" ></script>
 	<script type="text/javascript" src="game/states/boot.js" ></script>
 	<script type="text/javascript" src="game/states/play.js" ></script>
 	<script type="text/javascript" src="game/states/gameover.js" ></script>
 	<script type="text/javascript" src="game/stages/mauricioStage.js" ></script>
+	<script type="text/javascript" src="game/stages/houseStage/houseStage.js" ></script>
+	<script type="text/javascript" src="game/stages/houseStage/basementStage.js" ></script>
+	<script type="text/javascript" src="game/stages/boatStage.js" ></script>
+	<script type="text/javascript" src="game/stages/underwater.js" ></script>
+	<script type="text/javascript" src="game/stages/dockStage.js" ></script>
+	<script type="text/javascript" src="game/stages/Roberto/Roberto.js" ></script>
+	<script type="text/javascript" src="game/stages/Roberto/RobertoSecond.js" ></script>
+	<script type="text/javascript" src="game/models/EnemyScorpion.js" ></script>
+	<script type="text/javascript" src="game/models/EnemySnake.js" ></script>
+	<script type="text/javascript" src="game/stages/forestStage.js" ></script>
+	<script type="text/javascript" src="game/stages/LevelCesped/PlayLvlCesped.js" ></script>
+	<script type="text/javascript" src="game/stages/LevelCesped/npcplantas.js" ></script>
+	<script type="text/javascript" src="game/stages/LevelCesped/clock.js" ></script>
+
+	<script type="text/javascript" src="game/stages/rockslevel/FirstPass.js" ></script>
+	<script type="text/javascript" src="game/stages/rockslevel/rockStage.js" ></script>
+	<script type="text/javascript" src="game/stages/rockslevel/monster.js" ></script>
+	<script type="text/javascript" src="game/models/enemys/bluedragon.js" ></script>
+
+
+
 	<script type="text/javascript" src="game/main.js" ></script>
 
 </head>
