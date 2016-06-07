@@ -39,7 +39,7 @@ BoatPlayer.prototype.load = function() {
 
 		this.timer = this.game.time.create(true);
 
-		this.timer.add(5000, this.fixMessage, this);
+		this.timer.add(3000, this.fixMessage, this);
 	}
 }
 
