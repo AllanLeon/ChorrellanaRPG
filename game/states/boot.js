@@ -93,9 +93,10 @@ States.Boot = {
 		this.game.load.image('sand','assets/images/roberto/sand.png');
 		this.game.load.image('rBullet','assets/images/roberto/rightBullet.png');
 		this.game.load.image('lBullet','assets/images/roberto/leftBullet.png');
-		this.game.load.spritesheet('scorpion','assets/images/roberto/scorpion2.png',110,50);
+		this.game.load.image('scorpionCollider','assets/images/roberto/scorpionCollider.png');
+		this.game.load.spritesheet('scorpion','assets/images/roberto/scorpion4.png',110,50);
 		this.game.load.spritesheet('snake','assets/images/roberto/snake.png',42,51);
-		this.game.load.spritesheet('snakeCollider','assets/images/roberto/snakecollider.png',42,51);
+		this.game.load.spritesheet('snakeCollider','assets/images/roberto/snakecollide.png',42,51);
 
 		//Aqui empiezo nivel de piedra
 		this.game.load.image('rockpassagemap', 'assets/images/backgrounds/rockpassage.png');

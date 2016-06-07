@@ -43,6 +43,24 @@ RobertoSecond.prototype.create = function() {
 	game.HUD.availableHealth.fixedToCamera = true;
 	game.HUD.miniMap.fixedToCamera = true;
 
+	//Creates CollectableItems 
+	game.coinDesert1 = new collectableItems(window.game, 100, 200, 'coin');
+	game.coinDesert1.load();
+
+	game.coinDesert2 = new collectableItems(window.game, 500, 900, 'coin');
+	game.coinDesert2.load();
+
+	game.firstAidDesert1 = new collectableItems(window.game, 300, 800, 'firstAid');
+	game.firstAidDesert1.load();
+
+	game.firstAidDesert2 = new collectableItems(window.game, 700, 300, 'firstAid');
+	game.firstAidDesert2.load();
+
+	game.keyDesert1 = new collectableItems(window.game, 800, 900, 'key');
+	game.keyDesert1.load();
+
+	game.keyDesert2 = new collectableItems(window.game, 150, 900, 'key');
+	game.keyDesert2.load();
 	
 
 	//Creates and loads blocks
@@ -56,6 +74,30 @@ RobertoSecond.prototype.create = function() {
 	game.enemySnake = new EnemySnake(window.game,250,500);
 	game.enemySnake.load();
 
+	game.enemySnake2 = new EnemySnake(window.game,500,300);
+	game.enemySnake2.load();
+
+	game.enemySnake3 = new EnemySnake(window.game,300,800);
+	game.enemySnake3.load();
+
+
+	game.enemyScorpion2 = new EnemyScorpion(window.game,100,100, 'Right');
+	game.enemyScorpion2.load();
+
+	game.enemyScorpion3 = new EnemyScorpion(window.game,450,600, 'Left');
+	game.enemyScorpion3.load();
+
+
+	game.inventory2 = new inventory(window.game);
+	game.inventory2.load();
+
+		//Sets inventory elements fixed to the camera
+	game.inventory2.keyImage.fixedToCamera = true;
+	game.inventory2.coinImage.fixedToCamera = true;
+	game.inventory2.numberCoinsText.fixedToCamera = true;
+	game.inventory2.numberKeysText.fixedToCamera = true;
+	game.inventory2.inventoryImage.fixedToCamera = true;
+
 }	
 
 /**
@@ -65,9 +107,20 @@ RobertoSecond.prototype.update = function(){
 	// Updates the player.
 	game.player.update(game.player);
 	game.HUD.update(game.player);
+	game.inventory2.update(game.player);	
+	game.coinDesert1.update(game.player);
+	game.coinDesert2.update(game.player);
+	game.keyDesert1.update(game.player);
+	game.keyDesert2.update(game.player);
+	game.firstAidDesert1.update(game.player);
+	game.firstAidDesert2.update(game.player);
 
 	game.physics.arcade.overlap(game.player, game.enemy, collisionEnemy, null, this);
 	game.enemySnake.update();
+	game.enemySnake2.update();
+	game.enemySnake3.update();
+	game.enemyScorpion2.update();
+	game.enemyScorpion3.update();
 }
 
 function collisionEnemy (Player, Enemy) {
