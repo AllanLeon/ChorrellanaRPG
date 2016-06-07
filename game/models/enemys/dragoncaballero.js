@@ -200,10 +200,10 @@ DragonCaballero.prototype.stopAnimation = function(direction){
 			this.sprite.frame = 5;
 			break;
 		case 'Right':
-			this.sprite.frame = 9;
+			this.sprite.frame = 10;
 			break;
 		case 'Up':
-			this.sprite.frame = 12;
+			this.sprite.frame = 15;
 			break;
 		case 'Down':
 			this.sprite.frame = 0;
