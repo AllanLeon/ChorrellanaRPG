@@ -5,7 +5,10 @@ var music;
 /**
  * Sets the state's basic configurations.
  */
-forestStage.prototype.init = function() {}
+forestStage.prototype.init = function() {
+	this.game.renderer.renderSession.roundPixels = true;
+	this.physics.startSystem(Phaser.Physics.ARCADE);
+}
 
 /**
  * Initializes the stage objects.
@@ -28,15 +31,10 @@ forestStage.prototype.create = function() {
 	// Sets the camera to follow the player.
 	this.game.camera.follow(this.game.player.colliderSprite);
 
-	game.obstacleForest = new obstacleForest(this.game);
-	game.obstacleForest.load();
-
-	game.physics.arcade.enable(game.player);
-
-	game.physics.arcade.collide(game.player.colliderSprite, game.obstacleForest.bloque);
+	game.obstacle = new Obstacle(window.game, 'forestStage');
+	game.obstacle.load();
 	
-	game.portals.push(new Portal(window.game, 300, 100, 'forestStage')); //Vale
-		
+	//game.portal.push(new Portal(window.game, 3000, 100, 'forestRun'));		
 }
 
 /**
@@ -46,9 +44,7 @@ forestStage.prototype.update = function(){
 	//this.create();
 	// Updates the player.
 	game.player.update(game.player);
-
-	game.portals.update();
-	//every(portal => portal.update());
+	//game.portal.update();
 }
 
 // Adds this stage to the game's states.

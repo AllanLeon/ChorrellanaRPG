@@ -15,9 +15,6 @@ States.Boot = {
 		this.game.load.image('invader', 'assets/images/characters/invader.png');
 		this.game.load.image('bullet', 'assets/images/bullets/purple_ball.png');
 
-
-
-
 		this.game.load.spritesheet('enemy', 'assets/images/enemys/enemy1.png',32,32);
 		this.game.load.spritesheet('energyEnemy', 'assets/images/enemys/enemy2.png',64,80);
 		this.game.load.spritesheet('energyBall', 'assets/images/attacks/energyBall.png',32,32);
@@ -26,6 +23,7 @@ States.Boot = {
 
 		this.game.load.image('map', 'assets/images/backgrounds/yourmommasmap.png');
 		this.game.load.image('forest', 'assets/images/backgrounds/forestgump.png');
+		this.game.load.image('run', 'assets/images/backgrounds/forestrun.png');
 		this.game.load.image('healthBar', 'assets/images/HUD/healthbar.png');
 		this.game.load.image('lifeBar', 'assets/images/HUD/life.png');
 		this.game.load.image('minimap','assets/images/backgrounds/minimap.png');
@@ -33,7 +31,6 @@ States.Boot = {
 		//House Stage background
 		this.game.load.image('houseStage', 'assets/images/backgrounds/homeStage.png');
 		this.game.load.image('basement', 'assets/images/backgrounds/basement.png');
-
 		
 		this.game.load.audio('bossanova','assets/audio/bossanova.mp3');
 		this.game.load.audio('awesome','assets/audio/onepunch.mp3');
