@@ -63,6 +63,9 @@ BoatStage.prototype.create = function() {
 	game.writer.load();
 
 	this.game.player.adviceMessage();
+	if (this.game.player.collectedItems >= 3){
+		this.game.player.endMessage();
+	}
 }
 
 /**

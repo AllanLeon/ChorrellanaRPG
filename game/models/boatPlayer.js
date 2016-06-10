@@ -118,6 +118,7 @@ BoatPlayer.prototype.handleMovement = function() {
 BoatPlayer.prototype.update = function() {
 	if(!this.game.writer.onScreen){
 		this.handleMovement();
+		this.checkExit();
 	} else {
 		this.game.writer.update();
 	}
@@ -159,6 +160,14 @@ BoatPlayer.prototype.fixMessage = function(){
 	 this.rotation = 10;
 };
 
+BoatPlayer.prototype.endMessage = function(){
+	this.game.writer.addText("I can't believe you did it!");
+	this.game.writer.addText("Now I finally have them all");
+	this.game.writer.addText("(You begin to realize this wasn't a good idea)");
+	this.game.writer.addText("(You better go back where it all began)");
+	this.game.writer.openTextBox(0);		
+};
+
 BoatPlayer.prototype.overlapDeepWater = function(boatPlayer, deepWater){
 	 if (game.input.keyboard.isDown(Phaser.Keyboard.X)) {
 	 	//game.debug.text("ENTRE", 32, 32);
@@ -176,4 +185,14 @@ BoatPlayer.prototype.killVisitedDeepWaters = function(){
 
 	 }
 };
+
+BoatPlayer.prototype.checkExit = function() {
+	if (this.collectedItems >= 3) {
+		if (this.sprite.x < 32 && this.sprite.y < 256){
+
+			this.game.sound.stopAll();
+			this.game.state.start("Play", true)
+		}
+	}
+}
 
