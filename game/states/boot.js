@@ -38,6 +38,7 @@ States.Boot = {
 		
 		this.game.load.audio('bossanova','assets/audio/bossanova.mp3');
 		this.game.load.audio('awesome','assets/audio/onepunch.mp3');
+		this.game.load.audio('docks','assets/audio/waterStage.mp3');
 		this.game.load.image('rain','assets/images/effects/rain1.png');
 		this.game.load.image('leaf','assets/images/effects/leaf.png');
 		

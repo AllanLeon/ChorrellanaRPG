@@ -19,6 +19,11 @@ DockStage.prototype.create = function() {
 	this.game.world.setBounds(0, 0, 800, 600);
 
 	this.game.cursors = game.input.keyboard.createCursorKeys();
+
+
+	music = this.add.audio('docks');
+    music.play();
+
 	// Sets the tilemap
 	this.map = this.game.add.tilemap('dock');
 
@@ -98,7 +103,6 @@ DockStage.prototype.chat = function(){
 
 DockStage.prototype.changeStage = function() {
 	this.game.input.reset();
-	this.game.sound.stopAll();
 	this.game.player = new BoatPlayer(window.game);
 	this.game.state.start("BoatStage", true);
 }
