@@ -11,10 +11,10 @@ BasementStage.prototype.init = function() {};
  */
 BasementStage.prototype.create = function() {
 	// Sets the world bounds
-	this.game.world.setBounds(0, 0, 1000, 800);
+	this.game.world.setBounds(0, 0, 1242, 840);
 
 	//Sets the world background
-	this.game.background = this.game.add.sprite(0, 0, 'basement');
+	this.game.background = this.game.add.sprite(0, 0, 'basementTest');
 
 	// Creates and loads a Player object.
 	game.player = new Player(window.game);
