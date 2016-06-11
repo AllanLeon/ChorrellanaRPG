@@ -107,7 +107,7 @@ HouseStage.prototype.update = function(){
 	game.coin2.update(game.player);
 
 	//checks if all the keys were collected
-	if(game.inventory.numberKeys == 7){
+	if(game.inventory.numberKeys == 1){
 		console.log(game.inventory.numberKeys)
 		//If all the keys were recollected. New stage (working on that)
 		this.game.state.start('BasementStage', true);
