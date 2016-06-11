@@ -20,13 +20,10 @@ function EnergyEnemy(game){
 // Initializes the EnergyEnemys sprites.
 EnergyEnemy.prototype.render = function(){
 	// loads sprites
+
 	this.colliderSprite = this.game.add.sprite(this.initial - this.positionData.colliderDifference.x, this.initial - this.positionData.colliderDifference.y, 'energyEnemyCollider');
 	this.sprite = this.game.add.sprite(this.initial, this.initial, 'energyEnemy');
 	this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
-
-
-	//this.game.physics.startSystem(Phaser.Physics.BOX2D);
-	//var circle = game.physics.box2d.createCircle(initial + 32, initial + 32, 32);
 
 	// sets sprite properties
 	this.colliderSprite.alpha = 0; // invisible collider sprite
@@ -35,7 +32,7 @@ EnergyEnemy.prototype.render = function(){
 
 	//this.colliderSprite.immovable = true; // makes it immovable when a collision occurs
 	this.colliderSprite.body.collideWorldBounds = true; // colliderSprite cannot exceed the world bounds
-	//this.collider.body.collider
+
 
 	
 };
@@ -58,6 +55,7 @@ EnergyEnemy.prototype.load = function(){
 // Plays the current animation.
 EnergyEnemy.prototype.playAnimation = function(){
 	this.sprite.play(this.animation + this.direction);
+	this.playAnimation();
 }
 
 
@@ -107,6 +105,49 @@ EnergyEnemy.prototype.handleMovement = function(){
 	//this.stop();
 
 
+	this.lookingForPlayer();
+	
+
+	//Distance of Player to Enemy
+	var enemyDistance = Math.sqrt(Math.pow(this.game.player.sprite.x - this.sprite.x,2) + Math.pow(this.game.player.sprite.y - this.sprite.y,2));
+	
+	if(enemyDistance <= 150){
+		this.stop();
+
+		if(this.stopped){
+			this.stopAnimation();
+		}
+		
+		if (this.energyBall == null)
+		{
+			this.attack();
+		}
+
+var ballDistance = Math.sqrt(Math.pow(this.sprite.x - this.energyBall.x,2) + Math.pow(this.sprite.y - this.energyBall.y,2));
+	
+	if (ballDistance > 200){
+
+	this.energyBall.kill();
+	this.energyBall = null;
+
+	}
+		
+	}
+
+	this.game.physics.arcade.overlap(this.energyBall, this.game.player.sprite, null, this.energyBallCollition, this);
+	
+
+	this.playAnimation();
+
+
+	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
+
+
+
+}
+	//busca al jugador
+EnergyEnemy.prototype.lookingForPlayer = function(){
+
 	// busca al jugador de manera lineal
 	if (this.game.player.sprite.y -30 > this.sprite.y){
 		this.direction = "Down";
@@ -142,43 +183,9 @@ EnergyEnemy.prototype.handleMovement = function(){
 		this.move(0, 0);
 		this.move(this.speed,1);
 	}
-
-	//Distance of Player to Enemy
-	var enemyDistance = Math.sqrt(Math.pow(this.game.player.sprite.x - this.sprite.x,2) + Math.pow(this.game.player.sprite.y - this.sprite.y,2));
-	
-	if(enemyDistance <= 150){
-		this.stop();
-
-		if(this.stopped){
-			this.stopAnimation();
-		}
-		
-		if (this.energyBall == null)
-		{
-			this.attack();
-		}
-
-var ballDistance = Math.sqrt(Math.pow(this.sprite.x - this.energyBall.x,2) + Math.pow(this.sprite.y - this.energyBall.y,2));
-	
-	if (ballDistance > 200){
-
-	this.energyBall.kill();
-	this.energyBall = null;
-
-	}
-		
-	}
-
-	this.game.physics.arcade.overlap(this.energyBall, this.game.player.sprite, null, this.energyBallCollition, this);
-	
-
-	this.playAnimation();
-
-	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
-
-
 }
 
+	//attack collition
 EnergyEnemy.prototype.energyBallCollition = function(){
 	this.game.player.health -=20;
 	this.energyBall.kill();
@@ -196,7 +203,7 @@ EnergyEnemy.prototype.attack = function(direction){
 			this.energyBall = this.game.add.sprite(this.sprite.x - 16 ,this.sprite.y + 32,'energyBall');
 			break;
 		case 'Right':
-			this.energyBall = this.game.add.sprite(this.sprite.x + 80 ,this.sprite.y + 32,'energyBall');
+			this.energyBall = this.game.add.sprite(this.sprite.x + 60 ,this.sprite.y + 32,'energyBall');
 			break;
 		case 'Up':
 			this.energyBall = this.game.add.sprite(this.sprite.x + 20 ,this.sprite.y - 18,'energyBall');
@@ -207,6 +214,7 @@ EnergyEnemy.prototype.attack = function(direction){
 	}
 
 	this.game.physics.enable(this.energyBall, Phaser.Physics.ARCADE);
+
 	this.energyBall.animations.add('ball',[0,1,2,3],10,true);
 
 
@@ -215,6 +223,7 @@ EnergyEnemy.prototype.attack = function(direction){
 	var ballAttackY = (this.game.player.sprite.y - this.sprite.y)/100;
 	
 
+	//direction and velocity of attack
 	if (this.game.player.sprite.y > this.energyBall.y){
 
 		//"Down"
@@ -252,9 +261,8 @@ EnergyEnemy.prototype.update = function(){
 	this.handleMovement();
 }
 
-// Stops all the animations and sets the currect frame to the default based on the player's direction.
+// look to the rigth side
 EnergyEnemy.prototype.stopAnimation = function(direction){
-	//this.sprite.animations.stop();
 
 	switch (this.direction) {
 		case 'Left':

@@ -1,6 +1,16 @@
 //branch creation//asd
-function Effects(game){
+function Effects(game, music, particle){
 	this.game = game;
+    this.song = music;
+    this.particle = particle;
+    if(this.particle == 'sand')
+    {
+        this.position = -500;
+    }
+    else
+    {
+        this.position = game.world.centerX
+    }
 }
 
 var music;
@@ -10,19 +20,26 @@ var image = null;
 
 Effects.prototype.create = function() {
     
-    music = this.game.add.audio('bossanova');
+    music = this.game.add.audio(this.song);
     music.play();
 
-    var emitter = game.add.emitter(game.world.centerX, 0, 800);
+    var emitter = game.add.emitter(this.position, 0, 800);
 
     emitter.width = game.world.width;
     emitter.height = game.world.height;
-    // emitter.angle = 30; // uncomment to set an angle for the rain.
+    if(this.particle=='sand')
+    {
+        emitter.angle = -80;
+    }
+    else
+    {
+        emitter.angle = 20;
+    }
 
-    emitter.makeParticles('rain');
+    emitter.makeParticles(this.particle);
 
-    emitter.minParticleScale = 0.85;
-    emitter.maxParticleScale = 0.85;
+    emitter.minParticleScale = 0.65;
+    emitter.maxParticleScale = 0.65;
 
     emitter.setYSpeed(300, 500);
     emitter.setXSpeed(-5, 5);
