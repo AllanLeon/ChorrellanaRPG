@@ -241,7 +241,7 @@ Player.prototype.changeMovement = function() {
 	this.usualMovement = !this.usualMovement;
 };
 
-<<<<<<< HEAD
+
 Player.prototype.handleJump = function(initialX, initialY) {
 	this.move(-this.speed*1000, 0);
 }
@@ -255,9 +255,9 @@ Player.prototype.endOfJump = function() {
 Player.prototype.initializeTimer = function() {
 	this.timer = this.game.time.create(false);
 }
-=======
+
 Player.prototype.setBodySprite = function(x, y) {
 	this.colliderSprite.x = x;
 	this.colliderSprite.y = y;
 }
->>>>>>> 77ee1afc2dee48bbfbde4f7b9153ab43b64ec1dd
+

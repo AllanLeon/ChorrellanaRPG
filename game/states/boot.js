@@ -68,6 +68,8 @@ States.Boot = {
 		this.game.load.tilemap('dock','assets/tilemaps/dock.json', null, Phaser.Tilemap.TILED_JSON);
 		this.game.load.image('dockTS', 'assets/images/tilesets/dock.png');
 
+		this.game.load.spritesheet('eagle', 'assets/images/characters/eagsp.png', 163, 100);
+
 		for (var i=0; i<2; i++){
 			var iStr = i.toString();
 			//this.game.load.image('bullet'.concat(iStr),'assets/images/weapons/bullet/bullet'.concat(iStr.concat(".png")));
