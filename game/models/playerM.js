@@ -13,10 +13,6 @@ function PlayerM(game) {
 	this.enableBody = true;
 
 
-	this.usualMovement = true;
-	this.grounded = false;
-	this.timer = null;
-
 this.positionData = {    // Player's position info.
 		//initial: { x: 300, y: 300}, // initial position of the player
 		initial: { x: 150, y: 900}, // initial position of the player
@@ -165,13 +161,7 @@ PlayerM.prototype.update = function() {
 }
 
 PlayerM.prototype.obstacleCollision = function() {
-	if(game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite)){
-		this.grounded = true;
-		console.log("grounded");
-	}
-	else{
-		this.grounded = false;
-	}
+	game.physics.arcade.collide(game.obstacle.blocks, this.colliderSprite);
 };
 
 PlayerM.prototype.NPCCollission = function(){
@@ -219,9 +209,6 @@ PlayerM.prototype.addGravity = function(){
 	this.colliderSprite.body.gravity.y = 500;
 }
 
-PlayerM.prototype.changeMovement = function() {
-	this.usualMovement = !this.usualMovement;
-};
 
 PlayerM.prototype.setInitialPosition = function(x, y) {
 	this.colliderSprite.x = x;
