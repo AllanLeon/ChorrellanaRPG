@@ -27,7 +27,7 @@ Eagle.prototype.render = function(){
 
 
 	// sets sprite properties
-	this.colliderSprite.alpha = 1; // invisible collider sprite
+	this.colliderSprite.alpha = 0; // invisible collider sprite
 	this.game.physics.arcade.enable(this.colliderSprite); // enables physics on colliderSprite
 	this.game.physics.arcade.enable(this.sprite); // enables physics on sprite
 	this.sprite.checkWorldBounds = true;
