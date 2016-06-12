@@ -2694,7 +2694,7 @@ Obstacle.prototype.forestblocks = function(){
 Obstacle.prototype.forestrunblocks = function(){
 
 	//ground
-	this.bloque = this.blocks.create(0, 300, 'blockH');
+	this.bloque = this.blocks.create(0, 310, 'blockH');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 2400;
 	this.bloque.height = 15;

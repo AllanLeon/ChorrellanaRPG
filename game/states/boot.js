@@ -13,6 +13,7 @@ States.Boot = {
 		this.game.load.spritesheet('deepWater', 'assets/images/tilesets/deepWater.png', 32, 32);
 		this.game.load.image('invaderCollider','assets/images/characters/collider.png');
 		this.game.load.image('invader', 'assets/images/characters/invader.png');
+		this.game.load.image('kirby', 'assets/images/characters/kirby.png');
 		this.game.load.image('bullet', 'assets/images/bullets/purple_ball.png');
 
 		this.game.load.spritesheet('enemy', 'assets/images/enemys/enemy1.png',32,32);
@@ -20,10 +21,12 @@ States.Boot = {
 		this.game.load.spritesheet('energyBall', 'assets/images/attacks/energyBall.png',32,32);
 		this.game.load.spritesheet('mina1', 'assets/images/enemys/mina1.png',24,24);
 		this.game.load.spritesheet('explotion', 'assets/images/attacks/explosion.png',64,64);
+		this.game.load.spritesheet('pikachu', 'assets/images/enemys/pikaattack.png',192, 47);
 
 		this.game.load.image('map', 'assets/images/backgrounds/yourmommasmap.png');
 		this.game.load.image('forest', 'assets/images/backgrounds/forestgump.png');
 		this.game.load.image('run', 'assets/images/backgrounds/forestrun.png');
+		this.game.load.image('forestmap', 'assets/images/backgrounds/miniforestgump.png');
 		this.game.load.image('healthBar', 'assets/images/HUD/healthbar.png');
 		this.game.load.image('lifeBar', 'assets/images/HUD/life.png');
 		this.game.load.image('minimap','assets/images/backgrounds/minimap.png');
@@ -40,6 +43,7 @@ States.Boot = {
 		//this.game.load.spritesheet('coin','assets/images/items/coin.png');
 		this.game.load.image('coin','assets/images/inventory/coin.png');
 		this.game.load.image('key','assets/images/inventory/key.png');
+		this.game.load.image('apple','assets/images/inventory/apple.png');
 		this.game.load.image('firstAid','assets/images/inventory/firstaid.png');
 		this.game.load.image('inventory','assets/images/inventory/grid.png');
 		this.game.load.image('npcs', 'assets/images/characters/npcs1.png');

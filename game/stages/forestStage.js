@@ -31,20 +31,46 @@ forestStage.prototype.create = function() {
 	// Sets the camera to follow the player.
 	this.game.camera.follow(this.game.player.colliderSprite);
 
+	//Creates HUD and its elements
+	this.game.HUD = new HUD(window.game, 'forestmap');
+	this.game.HUD.load();
+
+	game.HUD.healthBar.fixedToCamera = true;
+	game.HUD.availableHealth.fixedToCamera = true;
+	game.HUD.miniMap.fixedToCamera = true;
+
 	game.obstacle = new Obstacle(window.game, 'forestStage');
 	game.obstacle.load();
-	
-	//game.portal.push(new Portal(window.game, 3000, 100, 'forestRun'));		
+
+	//Creates CollectableItems 
+	game.kirby = new collectableItems(window.game, 70, 590, 'kirby');
+	game.kirby.load();
+
+	// Creates and loads a Writer object.
+	game.writer = new Writer(window.game);
+	game.writer.load();
+
+	//creates portal
+	game.portals.push(new Portal(window.game, 1385, 10, 'forestRun'));		
 }
+
+/*//adds a dialogue
+forestStage.prototype.chat = function(){
+	this.game.player.colliderSprite.y +=5;
+	this.game.writer.addText("You found a wild Kirby!...\n Now...what are you going to do with it??");
+	this.game.writer.addText("...oh look! It disappeared...");
+	this.game.writer.openTextBox(0);
+}*/
 
 /**
  * Updates all the stages's objects.
  */
 forestStage.prototype.update = function(){
-	//this.create();
 	// Updates the player.
 	game.player.update(game.player);
-	//game.portal.update();
+	game.writer.update();
+	game.kirby.update(game.player);
+	game.portals.every(portal => portal.update());
 }
 
 // Adds this stage to the game's states.

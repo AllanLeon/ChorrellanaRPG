@@ -48,11 +48,26 @@ collectableItems.prototype.collectItem = function()
  	{
  		this.game.physics.arcade.overlap(this.game.player.sprite, this.item, null,this.collectKey, this);
  	}
+ 	else if (this.itemSprite == 'kirby') 
+ 	{
+ 		this.game.physics.arcade.overlap(this.game.player.sprite, this.item, null, this.collectKirby,this);
+ 	}
+ 	else if (this.itemSprite == 'apple') 
+ 	{
+ 		this.game.physics.arcade.overlap(this.game.player.sprite, this.item, null, this.collectApple,this);
+ 	}
  	else
  	{
  		this.game.physics.arcade.overlap(this.game.player.sprite, this.item, null,this.collectFirstAid, this);
  	}
  }
+
+ //adds a dialogue
+collectableItems.prototype.chat = function(){
+	this.game.writer.addText("You found a wild Kirby!...\n Now...what are you going to do with it??");
+	this.game.writer.addText("...oh look! It disappeared...");
+	this.game.writer.openTextBox(0);
+}
 
  collectableItems.prototype.collectCoin = function()
  {
@@ -64,6 +79,19 @@ collectableItems.prototype.collectItem = function()
  collectableItems.prototype.collectKey = function()
  {
  	this.game.inventory.numberKeys = game.inventory.numberKeys + 1;
+ 	this.item.kill();
+ }
+
+ collectableItems.prototype.collectKirby = function()
+ {
+ 	//this.game.forestStage.chat();
+ 	this.chat();
+ 	this.item.kill();
+ }
+
+ collectableItems.prototype.collectApple = function()
+ {
+ 	this.game.forestRun.numberKeys = game.forestRun.numberKeys + 1;
  	this.item.kill();
  }
 
