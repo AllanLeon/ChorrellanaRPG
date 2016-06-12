@@ -11,7 +11,7 @@ Clock.prototype.render = function(){
     this.timer = game.time.create(false);
 
     //  Set a TimerEvent to occur after a second
-    this.timer.loop(1000, this.updateCounter, this);
+    this.timer.loop(500, this.updateCounter, this);
 
     //  Start the timer running - this is important!
     //  It won't start automatically, allowing you to hook it to button events and the like.
@@ -20,17 +20,11 @@ Clock.prototype.render = function(){
 }
 
 Clock.prototype.updateCounter = function(){
-
 	this.total++;
-    game.debug.text('Tiempo: ' + this.total, 32, 64);
+    game.debug.text(this.total, 32, 64);
 
 }
 Clock.prototype.load = function(){
 	this.render();
 	this.updateCounter();
-}
-checkTime = function(){
-	if(this.total == 17){
-		this.game.state.start('BasementStage', true);
-	}
 }
