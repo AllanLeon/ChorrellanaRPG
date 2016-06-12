@@ -15,7 +15,7 @@ Obstacle.prototype.render = function(){
 	this.blocks.enableBody = true;
 
 	//visibility of blocks
-	this.blocks.alpha = 1;
+	this.blocks.alpha = 0;
 /*
 	if(this.stage == 'play')
 	{

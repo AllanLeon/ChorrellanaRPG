@@ -77,3 +77,7 @@ HUD.prototype.update = function()
 	this.updatePlayerPos();
 };
 
+HUD.prototype.clearMinimap = function()
+{
+	this.miniMap.alpha = 0;
+}

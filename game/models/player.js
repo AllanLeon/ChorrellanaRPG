@@ -210,6 +210,8 @@ Player.prototype.signCollission = function(){
 	} 
 };
 
+
+
 // Checks the input and fires the weapon.
 Player.prototype.fireWeapon = function(){
 	this.weapon.cooldown();
