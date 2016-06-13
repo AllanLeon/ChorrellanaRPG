@@ -7,7 +7,7 @@ function OrangeDragon(game){
 	this.speed = 150;
 	this.sleep = true;
 	this.animation = 'OrangeDragon';
-	this.direction = 'Left';
+	this.direction = 'Down';
 	this.stopped = true;
 	this.initial = Math.floor(Math.random() * (500));
 	this.enableBody = true;
@@ -122,7 +122,7 @@ OrangeDragon.prototype.handleMovement = function(){
 		this.circularMove(enemyDistance);
 
 			
-		if (this.energyBall == null)
+	/*	if (this.energyBall == null)
 		{
 			this.attack();
 		}
@@ -134,12 +134,14 @@ var ballDistance = Math.sqrt(Math.pow(this.sprite.x - this.energyBall.x,2) + Mat
 	this.energyBall.kill();
 	this.energyBall = null;
 
-	}
+	}*/
 		
 	}
 
 	//this.game.physics.arcade.overlap(this.energyBall, this.game.player.sprite, null, this.energyBallCollition, this);
-}
+}	else {
+	this.startTest(enemyDistance);
+	}
 	this.playAnimation();
 
 	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
@@ -151,7 +153,39 @@ var ballDistance = Math.sqrt(Math.pow(this.sprite.x - this.energyBall.x,2) + Mat
 OrangeDragon.prototype.lookingForPlayer = function(){
 	// busca al jugador de manera lineal hacia arriba
 
-	//coming soon....
+	if (this.game.player.sprite.y -50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x < this.sprite.x){
+		this.direction = "Left";
+		this.move(0, 0);
+		this.move(-this.speed,1);
+	}
+	//una vez encontrado puede ir a la izquierda
+	else if (this.game.player.sprite.y -30 < this.sprite.y){
+		this.direction = "Up";
+		this.move(-this.speed, 0);
+		this.move(0,1);
+	}
+
+	// busca al jugador de manera lineal hacia abajo
+	if (this.game.player.sprite.y -50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x < this.sprite.x){
+		this.direction = "Left";
+		this.move(0, 0);
+		this.move(-this.speed,1);
+	}
+
+	//una vez encontrado puede ir a la izquierda
+	else if (this.game.player.sprite.y -30 > this.sprite.y){
+		this.direction = "Down";
+		this.move(this.speed, 0);
+		this.move(0,1);
+	}
+
+
+	//una vez encontrado puede ir a la derecha
+	if (this.game.player.sprite.y - 50 < this.sprite.y && this.game.player.sprite.y > this.sprite.y && this.game.player.sprite.x > this.sprite.x){
+		this.direction = "Right";
+		this.move(0, 0);
+		this.move(this.speed,1);
+	}
 
 }
 	//colision del ataque del dragon
@@ -165,7 +199,59 @@ OrangeDragon.prototype.energyBallCollition = function(){
 	// OrangeDragon OrangeBallAttack
 OrangeDragon.prototype.attack = function(direction){
 
-	//coming soon....
+	//create Attack
+	switch (this.direction){
+		case 'Left':
+			this.energyBall = this.game.add.sprite(this.sprite.x - 16 ,this.sprite.y + 32,'giantEnergyBall');
+			break;
+		case 'Right':
+			this.energyBall = this.game.add.sprite(this.sprite.x + 80 ,this.sprite.y + 32,'giantEnergyBall');
+			break;
+		case 'Up':
+			this.energyBall = this.game.add.sprite(this.sprite.x + 20 ,this.sprite.y - 18,'giantEnergyBall');
+			break;
+		case 'Down':
+			this.energyBall = this.game.add.sprite(this.sprite.x + 20 ,this.sprite.y + 40,'giantEnergyBall');
+			break;
+	}
+
+	this.game.physics.enable(this.energyBall, Phaser.Physics.ARCADE);
+	this.energyBall.animations.add('ball',[0,1,2,3,4,5,6,7,8,9],10,true);
+
+
+	//Variables to increise the velocity of the ball atack (depend of the distance)
+	var ballAttackX = (this.game.player.sprite.x - this.sprite.x)/100;
+	var ballAttackY = (this.game.player.sprite.y - this.sprite.y)/100;
+	
+
+	//attack direction
+	if (this.game.player.sprite.y > this.energyBall.y){
+
+		//"Down"
+		this.energyBall.body.velocity.y = this.speed * ballAttackY;
+
+	}
+
+	else if (this.game.player.sprite.y < this.energyBall.y){
+		
+		//"Up";
+		this.energyBall.body.velocity.y = (this.speed * ballAttackY);
+	}
+
+
+	if(this.game.player.sprite.x > this.energyBall.x){
+		
+		//"Rigth";
+		this.energyBall.body.velocity.x = this.speed * ballAttackX;
+	}
+
+	else if (this.game.player.sprite.x < this.energyBall.x){
+		
+		//"Left";
+		this.energyBall.body.velocity.x = (this.speed * ballAttackX);
+	}
+
+	this.energyBall.animations.play('ball');
 }
 
 //Circular move of the OrangeDragon, around of player.
@@ -228,3 +314,24 @@ OrangeDragon.prototype.setBodySprite = function(x, y) {
 	this.colliderSprite.x = x;
 	this.colliderSprite.y = y;
 }
+
+
+OrangeDragon.prototype.changeStage = function() {
+	this.game.input.reset();
+	this.game.state.start("OrangeDragonStage", true);
+}
+
+OrangeDragon.prototype.startTest = function(distanceToPlayer){
+	 
+	if(distanceToPlayer < 45){
+
+		//this.chat();
+		this.changeStage();
+	}
+}
+
+OrangeDragon.prototype.wakeUp = function(){
+	this.sleep = false;
+}
+
+
