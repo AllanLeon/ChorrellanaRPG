@@ -4,12 +4,12 @@ function MiniGreenDragon(game){
 	this.health = 300;
 	this.sprite = null;
 	this.colliderSprite = null;
-	this.speed = 150;
+	this.speed = 700;
 	this.sleep = true;
 	this.animation = 'MiniGreenDragon';
 	this.direction = 'Right';
 	this.stopped = true;
-	this.initial = Math.floor(Math.random() * (500));
+	this.initial = Math.floor(Math.random() * (1500));
 	this.enableBody = true;
 	this.energyBall = null;
 	this.positionData =  {
@@ -102,7 +102,6 @@ MiniGreenDragon.prototype.setBodyPosition = function(x, y){
 MiniGreenDragon.prototype.handleMovement = function(){
 
 	var enemyDistance = Math.sqrt(Math.pow(this.game.player.sprite.x - this.sprite.x,2) + Math.pow(this.game.player.sprite.y - this.sprite.y,2));
-	this.viewControl(enemyDistance);
 	
 	//si es que dormir es falso empieza a moverse
 	if(this.sleep == false)
@@ -114,7 +113,7 @@ MiniGreenDragon.prototype.handleMovement = function(){
 		this.lookingForPlayer();	
 
 
-		if(enemyDistance <= 200){
+	/*	if(enemyDistance <= 200){
 		this.stop();
 
 		//this.viewControl(enemyDistance);
@@ -136,12 +135,16 @@ var ballDistance = Math.sqrt(Math.pow(this.sprite.x - this.energyBall.x,2) + Mat
 
 	}
 		
-	}
+	}*/
 
 	this.game.physics.arcade.overlap(this.energyBall, this.game.player.sprite, null, this.energyBallCollition, this);
+}	else {
+	this.startTest(enemyDistance);
 }
 	this.playAnimation();
-
+	this.viewControl(enemyDistance);
+	
+	this.game.physics.arcade.overlap(this.sprite, this.game.player.sprite, null, this.attack, this);
 	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
 
 
@@ -149,8 +152,26 @@ var ballDistance = Math.sqrt(Math.pow(this.sprite.x - this.energyBall.x,2) + Mat
 
 	//Metodo para buscar al jugador
 MiniGreenDragon.prototype.lookingForPlayer = function(){
-	//coming soon....
+	if (this.game.player.sprite.y > this.sprite.y){
+		this.direction = "Down";
+		this.move(this.speed, 0);
+	}
 
+	else if (this.game.player.sprite.y < this.sprite.y){
+		this.direction = "Up";
+		this.move(-this.speed, 0);
+	}
+
+
+	if(this.game.player.sprite.x > this.sprite.x){
+		this.direction = "Right";
+		this.move(this.speed, 1);
+	}
+
+	else if (this.game.player.sprite.x < this.sprite.x){
+		this.direction = "Left";
+		this.move(-this.speed,1);
+	}
 }
 	//colision del ataque del dragon
 MiniGreenDragon.prototype.energyBallCollition = function(){
@@ -161,10 +182,18 @@ MiniGreenDragon.prototype.energyBallCollition = function(){
 }
 
 	// MiniGreenDragon MiniGreenBallAttack
+	var contador;
 MiniGreenDragon.prototype.attack = function(direction){
 
+contador += 1;
 
-	//coming soon...
+	if(contador == 10) {
+
+    this.game.player.health -= 5;
+    contador = 0;
+
+
+	}
 }
 
 //Circular move of the MiniGreenDragon, around of player.
@@ -226,4 +255,22 @@ MiniGreenDragon.prototype.stopAnimation = function(direction){
 MiniGreenDragon.prototype.setBodySprite = function(x, y) {
 	this.colliderSprite.x = x;
 	this.colliderSprite.y = y;
+}
+
+MiniGreenDragon.prototype.changeStage = function() {
+	this.game.input.reset();
+	this.game.state.start("MiniGreenDragonStage", true);
+}
+
+MiniGreenDragon.prototype.startTest = function(distanceToPlayer){
+	 
+	if(distanceToPlayer < 45){
+
+		//this.chat();
+		this.changeStage();
+	}
+}
+
+MiniGreenDragon.prototype.wakeUp = function(){
+	this.sleep = false;
 }
