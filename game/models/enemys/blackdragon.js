@@ -7,7 +7,7 @@ function BlackDragon(game){
 	this.speed = 150;
 	this.sleep = true;
 	this.animation = 'BlackDragon';
-	this.direction = 'Left';
+	this.direction = 'Down';
 	this.stopped = true;
 	this.initial = Math.floor(Math.random() * (500));
 	this.enableBody = true;
@@ -114,31 +114,20 @@ BlackDragon.prototype.handleMovement = function(){
 		this.lookingForPlayer();	
 
 
-		if(enemyDistance <= 200){
+		if(enemyDistance <= 900){
 		this.stop();
 
 		//this.viewControl(enemyDistance);
 
 		this.circularMove(enemyDistance);
 
-			
-		if (this.energyBall == null)
-		{
-			this.attack();
-		}
-
-var ballDistance = Math.sqrt(Math.pow(this.sprite.x - this.energyBall.x,2) + Math.pow(this.sprite.y - this.energyBall.y,2));
-	
-	if (ballDistance > 200){
-
-	this.energyBall.kill();
-	this.energyBall = null;
-
-	}
+		this.attack();
 		
 	}
 
 	//this.game.physics.arcade.overlap(this.energyBall, this.game.player.sprite, null, this.energyBallCollition, this);
+}	else {
+	this.startTest(enemyDistance);
 }
 	this.playAnimation();
 
@@ -162,10 +151,34 @@ BlackDragon.prototype.energyBallCollition = function(){
 
 }
 
-	// BlackDragon BlackBallAttack
-BlackDragon.prototype.attack = function(direction){
+	// BlackDragon Attack
+var contador;
 
-	//coming soon....
+BlackDragon.prototype.attack = function(){
+
+	contador += 1;
+
+	if(contador == 200) {
+
+   	this.summon();
+    contador = 0;
+	}
+}
+
+BlackDragon.prototype.summon = function(){
+
+	this.blueDragon = new BlueDragon(window.game);
+	this.blueDragon.load();
+	this.blueDragon.setBodySprite(this.sprite.x - 70, this.sprite.y + 40);
+	this.blueDragon.handleMovement();
+	this.blueDragon.wakeUp();
+
+	this.orangeDragon = new OrangeDragon(window.game);
+	this.orangeDragon.load();
+	this.orangeDragon.setBodySprite(this.sprite.x + 120, this.sprite.y + 40);
+	this.orangeDragon.handleMovement();
+	this.orangeDragon.wakeUp();
+
 }
 
 //Circular move of the BlackDragon, around of player.
@@ -227,4 +240,22 @@ BlackDragon.prototype.stopAnimation = function(direction){
 BlackDragon.prototype.setBodySprite = function(x, y) {
 	this.colliderSprite.x = x;
 	this.colliderSprite.y = y;
+}
+
+BlackDragon.prototype.changeStage = function() {
+	this.game.input.reset();
+	this.game.state.start("BlackDragonStage", true);
+}
+
+BlackDragon.prototype.startTest = function(distanceToPlayer){
+	 
+	if(distanceToPlayer < 45){
+
+		//this.chat();
+		this.changeStage();
+	}
+}
+
+BlackDragon.prototype.wakeUp = function(){
+	this.sleep = false;
 }
