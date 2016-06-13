@@ -7,7 +7,7 @@ function BlueDragon(game){
 	this.speed = 150;
 	this.sleep = true;
 	this.animation = 'BlueDragon';
-	this.direction = 'Right';
+	this.direction = 'Down';
 	this.stopped = true;
 	this.initial = Math.floor(Math.random() * (500));
 	this.enableBody = true;
@@ -101,23 +101,19 @@ BlueDragon.prototype.setBodyPosition = function(x, y){
 // Checks the input and handles the movement.
 BlueDragon.prototype.handleMovement = function(){
 
+	//Distance of Player to Enemy
 	var enemyDistance = Math.sqrt(Math.pow(this.game.player.sprite.x - this.sprite.x,2) + Math.pow(this.game.player.sprite.y - this.sprite.y,2));
 	this.viewControl(enemyDistance);
 	
 	//si es que dormir es falso empieza a moverse
 	if(this.sleep == false)
 	{
-	//Distance of Player to Enemy
 	
-
-
 		this.lookingForPlayer();	
 
 
 		if(enemyDistance <= 200){
 		this.stop();
-
-		//this.viewControl(enemyDistance);
 
 		this.circularMove(enemyDistance);
 
@@ -140,6 +136,9 @@ var ballDistance = Math.sqrt(Math.pow(this.sprite.x - this.energyBall.x,2) + Mat
 
 	this.game.physics.arcade.overlap(this.energyBall, this.game.player.sprite, null, this.energyBallCollition, this);
 }
+	else {
+		this.startTest(enemyDistance);
+	}
 	this.playAnimation();
 
 	this.setBodyPosition(this.colliderSprite.x - this.positionData.colliderDifference.x, this.colliderSprite.y - this.positionData.colliderDifference.x);
@@ -332,3 +331,21 @@ BlueDragon.prototype.setBodySprite = function(x, y) {
 	this.colliderSprite.x = x;
 	this.colliderSprite.y = y;
 }
+
+BlueDragon.prototype.wakeUp = function(){
+	this.sleep = false;
+}
+
+BlueDragon.prototype.changeStage = function() {
+	this.game.input.reset();
+	this.game.state.start("BlueDragonStage", true);
+}
+
+BlueDragon.prototype.startTest = function(distanceToPlayer){
+	 
+	if(distanceToPlayer < 45){
+
+		this.changeStage();
+	}
+}
+
