@@ -143,4 +143,8 @@ Enemy.prototype._enemyAttack = function() {
 	}
 }
 
+Enemy.prototype.setBodySprite = function(x, y) {
+	this.colliderSprite.x = x;
+	this.colliderSprite.y = y;
+}
 
