@@ -11,7 +11,6 @@ function Player(game) {
 	this.stopped = true;
 	this.weapon = null;
 	this.enableBody = true;
-
 	this.usualMovement = true;
 	this.grounded = false;
 
