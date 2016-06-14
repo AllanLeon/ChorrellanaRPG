@@ -31,6 +31,7 @@ States.Boot = {
 		this.game.load.image('lifeBar', 'assets/images/HUD/life.png');
 		this.game.load.image('minimap','assets/images/backgrounds/minimap.png');
 
+
 		//House Stage background
 		this.game.load.image('houseStage', 'assets/images/backgrounds/homeStage.png');
 		this.game.load.image('basement', 'assets/images/backgrounds/basement.png');
@@ -69,6 +70,10 @@ States.Boot = {
 
 		this.game.load.tilemap('dock','assets/tilemaps/dock.json', null, Phaser.Tilemap.TILED_JSON);
 		this.game.load.image('dockTS', 'assets/images/tilesets/dock.png');
+
+		this.game.load.spritesheet('eagle', 'assets/images/characters/eagsp.png', 163, 100);
+		this.game.load.image('cloudMinimap','assets/images/backgrounds/cloudMinimap.jpg');
+
 
 		for (var i=0; i<2; i++){
 			var iStr = i.toString();
