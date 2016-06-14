@@ -108,10 +108,26 @@ States.Boot = {
 		//Aqui empiezo nivel de piedra
 		this.game.load.image('rockpassagemap', 'assets/images/backgrounds/rockpassage.png');
 		this.game.load.image('rockmap', 'assets/images/backgrounds/rocklevel.png');
-		this.game.load.image('monster', 'assets/images/enemys/monster.png',64,64);
+		this.game.load.spritesheet('monster', 'assets/images/enemys/monster.png',64,64);
 		this.game.load.spritesheet('bluedragon', 'assets/images/enemys/bluedragon.png',65,65);
 		this.game.load.spritesheet('giantEnergyBall', 'assets/images/attacks/giantEnergyBall.png',38,37);
+		this.game.load.spritesheet('orangedragon', 'assets/images/enemys/orangedragon.png',75,75);
+		this.game.load.spritesheet('minigreendragon', 'assets/images/enemys/minigreendragon.png',80,64);
+		this.game.load.spritesheet('blackdragon', 'assets/images/enemys/blackdragon.png',96,96);
+		this.game.load.spritesheet('dragoncaballero', 'assets/images/enemys/dragoncaballero.png',118,118);
+		this.game.load.spritesheet('dragonmasterncp', 'assets/images/characters/dragonmaster.png',31,47);
+		this.game.load.image('rockarena', 'assets/images/backgrounds/rockarena.png');
+		this.game.load.spritesheet('babydragon', 'assets/images/enemys/babydragon.png',27,27);
+		this.game.load.spritesheet('dukemount', 'assets/images/characters/dukemount.png',72,82);
+		this.game.load.image('skyarena', 'assets/images/backgrounds/skyarena.png');
+		this.game.load.image('volcanarena', 'assets/images/backgrounds/volcanarena.png');
+		this.game.load.image('jardinarena', 'assets/images/backgrounds/jardinarena.png');
+		this.game.load.image('nochearena', 'assets/images/backgrounds/nochearena.jpg');
 
+
+		this.game.load.audio('alas','assets/audio/alas.wav');
+		this.game.load.audio('nogamenolife','assets/audio/nogamenolife.mp3');
+		this.game.load.audio('requiemforadream','assets/audio/requiemforadream.mp3');
 
 
 	},

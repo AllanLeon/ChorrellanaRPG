@@ -4,14 +4,13 @@ function Player(game) {
 	this.health = 100;
 	this.sprite = null;
 	this.colliderSprite = null;
-	this.speed = 300;
+	this.speed = 800;
 	this.animation = 'dukeAnim';
 	this.direction = 'Down';
 	this.arrowKeys = null;
 	this.stopped = true;
 	this.weapon = null;
 	this.enableBody = true;
-
 	this.usualMovement = true;
 	this.grounded = false;
 	this.timer = null;
