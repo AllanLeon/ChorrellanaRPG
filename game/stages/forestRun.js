@@ -81,9 +81,5 @@ forestRun.prototype.update = function(){
 	}
 }
 
-/*forestRun.prototype.collectApple = function(){
-		this.game.state.start('forestStage', true);
-}
-*/
 // Adds this stage to the game's states.
 States.forestRun = new forestRun();
