@@ -124,6 +124,8 @@ States.Play = {
 		game.music.load();
 
 		game.portals = [];
+
+
 		game.portals.push(new Portal(window.game, 50, 280, 'forestStage')); //Vale
 		game.portals.push(new Portal(window.game, 230, 180, 'Roberto')); //Robe
 		game.portals.push(new Portal(window.game, 420, 420, 'DockStage')); //Sergio

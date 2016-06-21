@@ -25,7 +25,13 @@ game.state.add('Roberto', Game.States.Roberto); //Shapy
 game.state.add('RobertoSecond', Game.States.RobertoSecond); //Shapy
 game.state.add('forestStage', Game.States.forestStage); //Baleh
 game.state.add('forestRun', Game.States.forestRun); //Baleh
+game.state.add('MiniDragonTestStage',Game.States.MiniDragonTestStage);//ioto
+game.state.add('BlueDragonStage',Game.States.BlueDragonStage); //ioto
+game.state.add('OrangeDragonStage',Game.States.OrangeDragonStage); //ioto
+game.state.add('MiniGreenDragonStage',Game.States.MiniGreenDragonStage); //ioto
+game.state.add('BlackDragonStage',Game.States.BlackDragonStage); //ioto
 game.state.add('FirstPass',Game.States.FirstPass); //ioto
+
 
 // Starts the initial state.
 game.state.start('Boot');

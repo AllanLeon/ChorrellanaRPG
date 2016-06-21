@@ -32,7 +32,7 @@ inventory.prototype.render = function()
 	this.keyImage.scale.setTo(1.5,1.5);
 	this.numberKeysText  = game.add.text(inventoryData.topRightCorner.topRightX + (3*inventoryData.keyCoinSize) , inventoryData.topRightCorner.topRightY + (0.15*inventoryData.keyCoinSize), this.numberKeys, { fontSize: '32px', fill: '#000' });
 	//Render the Inventory
-	this.inventoryImage = this.game.add.sprite(	inventoryData.inventoryPosition.inventoryPosX , inventoryData.inventoryPosition.inventoryPosY, 'inventory');
+	this.inventoryImage = this.game.add.sprite(	inventoryData.inventoryPosition.inventoryPosX , inventoryData.inventoryPosition.inventoryPosY, this);
 	this.inventoryImage.scale.setTo(1.5,1.5);
 	this.inventoryImage.alpha = 0;
 };	

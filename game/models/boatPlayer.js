@@ -9,9 +9,12 @@ function BoatPlayer(game) {
 	this.arrowKeys = null;
 	this.stopped = true;
 	this.timer = null;
+	this.firstTimeLoaded = true;
 	this.positionData = {    // Player's position info.
-		initial: { x: 30, y: 230}, // initial position of the player
+		initial: { x: 30, y: 230}, // initial position o fthe player
 	};
+	this.collectedItems = 0;
+	this.visitedDeepWaters = [];
 
 }
 
@@ -27,15 +30,17 @@ BoatPlayer.prototype.render = function() {
 	this.sprite.body.collideWorldBounds = true; // sprite cannot exceed the world bounds
 
 	this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
-
-	this.timer = this.game.time.create(true);
-
-	this.timer.add(5000, this.fixMessage, this);
 };
 
 // Loads the boat player's sprites and defines it's animations.
 BoatPlayer.prototype.load = function() {
 	this.render();
+	if (this.firstTimeLoaded){
+
+		this.timer = this.game.time.create(true);
+
+		this.timer.add(3000, this.fixMessage, this);
+	}
 }
 
 // Change the sprite's frame based on the boat player angle
@@ -112,7 +117,8 @@ BoatPlayer.prototype.handleMovement = function() {
 // Updates the boat player.
 BoatPlayer.prototype.update = function() {
 	if(!this.game.writer.onScreen){
-		this.handleMovement();	
+		this.handleMovement();
+		this.checkExit();
 	} else {
 		this.game.writer.update();
 	}
@@ -125,23 +131,28 @@ BoatPlayer.prototype.update = function() {
 
 // Message at the begining of the stage
 BoatPlayer.prototype.adviceMessage = function(){
-	 this.game.writer.addText("Alright kid\nThis is a new boat, my dear 'advance_wars.png',\nso you know what that means...");
-	 this.game.writer.addText("It's time to teach you how to pilot this thing");
-	 this.game.writer.addText("Press UP to go forward");
-	 this.game.writer.addText("Press DOWN to go backward");
-	 this.game.writer.addText("Press LEFT and RIGHT to steer");
-	 this.game.writer.addText("You have to go to the deep waters in this place");
-	 this.game.writer.addText("Once we're there, just press X to enter");
-	 this.game.writer.addText("When I was your age, I did all of this by myself.\nWe never had those tutorials or the stuff you kids are into,\n" + 
-	 	"just pressing buttons randomly would take us everywhere...\n(He keeps talking.. You decide to pilot now)");
-	 this.game.writer.openTextBox(0);
+	if (this.firstTimeLoaded){
+		this.game.writer.addText("Alright kid\nThis is a new boat, my dear 'advance_wars.png',\nso you know what that means...");
+		this.game.writer.addText("It's time to teach you how to pilot this thing");
+		this.game.writer.addText("Press UP to go forward");
+		this.game.writer.addText("Press DOWN to go backward");
+		this.game.writer.addText("Press LEFT and RIGHT to steer");
+		this.game.writer.addText("You have to go to the deep waters in this place");
+		this.game.writer.addText("Once we're there, just press X to enter");
+		this.game.writer.addText("When I was your age, I did all of this by myself.\nWe never had those tutorials or the stuff you kids are into,\n" + 
+			"just pressing buttons randomly would take us everywhere...\n(He keeps talking.. You decide to pilot now)");
+		 	
+		this.firstTimeLoaded = false;
+		this.game.writer.openTextBox(0);	
+	}
+	
 };
 
 // After 5 seconds of the first pressed key
 BoatPlayer.prototype.fixMessage = function(){
 	 this.stop();
 	 this.game.writer.addText("WOAAAA............. STOP!!\nASDFGHJKJKSASDJHAKSJASDASDASDNAKJSNDJJAKSNDA\n"+ 
-	 	"!  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  ");
+	 	"!  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  !  1  1  1  ");
 	 this.game.writer.addText("Let me pilot this thing, I guess we won't die if that's the case");
 	 this.game.writer.addText("Just focus on your mission");
 	 this.game.writer.openTextBox(0);
@@ -149,5 +160,39 @@ BoatPlayer.prototype.fixMessage = function(){
 	 this.rotation = 10;
 };
 
+BoatPlayer.prototype.endMessage = function(){
+	this.game.writer.addText("I can't believe you did it!");
+	this.game.writer.addText("Now I finally have them all");
+	this.game.writer.addText("(You begin to realize this wasn't a good idea)");
+	this.game.writer.addText("(You better go back where it all began)");
+	this.game.writer.openTextBox(0);		
+};
 
+BoatPlayer.prototype.overlapDeepWater = function(boatPlayer, deepWater){
+	 if (game.input.keyboard.isDown(Phaser.Keyboard.X)) {
+	 	//game.debug.text("ENTRE", 32, 32);
+	 	game.player.visitedDeepWaters.push(game.deepWaters.getChildIndex(deepWater));
+	 	game.player.positionData.initial.x = game.player.sprite.x;
+	 	game.player.positionData.initial.y = game.player.sprite.y;
+		game.state.start("UnderwaterStage", true);
+	 }
+};
+
+BoatPlayer.prototype.killVisitedDeepWaters = function(){
+	 //game.debug.text(this.visitedDeepWaters.length.toString(),32,32);
+	 for (var i=0; i<this.visitedDeepWaters.length; i++){
+	 	this.game.deepWaters.getChildAt(this.visitedDeepWaters[i]).kill();
+
+	 }
+};
+
+BoatPlayer.prototype.checkExit = function() {
+	if (this.collectedItems >= 3) {
+		if (this.sprite.x < 32 && this.sprite.y < 256){
+
+			this.game.sound.stopAll();
+			this.game.state.start("Play", true)
+		}
+	}
+}
 

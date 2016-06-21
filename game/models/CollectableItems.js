@@ -52,9 +52,17 @@ collectableItems.prototype.collectItem = function()
  	{
  		this.game.physics.arcade.overlap(this.game.player.sprite, this.item, null, this.collectKirby,this);
  	}
+ 	else if (this.itemSprite == 'yoshi') 
+ 	{
+ 		this.game.physics.arcade.overlap(this.game.player.sprite, this.item, null, this.collectYoshi,this);
+ 	}
  	else if (this.itemSprite == 'apple') 
  	{
  		this.game.physics.arcade.overlap(this.game.player.sprite, this.item, null, this.collectApple,this);
+ 	}
+ 	else if (this.itemSprite == 'leaf')
+ 	{
+ 		this.game.physics.arcade.overlap(this.game.player.sprite, this.item, null, this.collectLeaf,this);
  	}
  	else
  	{
@@ -66,6 +74,12 @@ collectableItems.prototype.collectItem = function()
 collectableItems.prototype.chat = function(){
 	this.game.writer.addText("You found a wild Kirby!...\n Now...what are you going to do with it??");
 	this.game.writer.addText("...oh look! It disappeared...");
+	this.game.writer.openTextBox(0);
+}
+
+//adds a dialogue
+collectableItems.prototype.chat2 = function(){
+	this.game.writer.addText("Thanks, you found all my apples! \n Now I'll have something to eat");
 	this.game.writer.openTextBox(0);
 }
 
@@ -84,15 +98,28 @@ collectableItems.prototype.chat = function(){
 
  collectableItems.prototype.collectKirby = function()
  {
- 	//this.game.forestStage.chat();
  	this.chat();
  	this.item.kill();
  }
 
+collectableItems.prototype.collectYoshi = function()
+ {
+ 	this.chat2();
+	music = this.add.audio('tone');
+    music.play();
+ }
+
  collectableItems.prototype.collectApple = function()
  {
- 	this.game.forestRun.numberKeys = game.forestRun.numberKeys + 1;
+ 	this.game.forestStage.numberApples = game.forestStage.numberApples + 1;
  	this.item.kill();
+ }
+
+ collectableItems.prototype.collectLeaf = function()
+ {
+ 	this.item.kill();
+ 	this.game.state.start('Play', true);
+ 	music.stop();
  }
 
  collectableItems.prototype.collectFirstAid = function()

@@ -1446,10 +1446,22 @@ Obstacle.prototype.mauricioBlocks = function() {
 	this.bloque.width = 450;
 	this.bloque.height = 2;
 
-	this.bloque = this.blocks.create(580, 85,'blockH');
+	this.bloque = this.blocks.create(510, 85,'blockH');
 	this.bloque.body.immovable = true;
 	this.bloque.width = 300;
 	this.bloque.height = 2;
+
+	this.bloque = this.blocks.create(25, 640,'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 300;
+	this.bloque.height = 2;
+
+	this.bloque = this.blocks.create(720, 465,'blockH');
+	this.bloque.body.immovable = true;
+	this.bloque.width = 300;
+	this.bloque.height = 2;
+
+
 }
 
 Obstacle.prototype.robertoBlocks = function(){
