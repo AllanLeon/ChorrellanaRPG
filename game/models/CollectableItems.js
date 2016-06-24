@@ -105,13 +105,14 @@ collectableItems.prototype.chat2 = function(){
 collectableItems.prototype.collectYoshi = function()
  {
  	this.chat2();
-	music = this.add.audio('tone');
+	music = this.game.add.audio('tone');
     music.play();
+    this.item.kill();
  }
 
  collectableItems.prototype.collectApple = function()
  {
- 	this.game.forestStage.numberApples = game.forestStage.numberApples + 1;
+ 	this.game.state.states.forestStage.numberApples = this.game.state.states.forestStage.numberApples + 1;
  	this.item.kill();
  }
 

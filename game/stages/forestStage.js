@@ -11,6 +11,7 @@ var	forestInventoryData =
 	topRightCorner : {topRightX: 620, topRightY:10},
 	keyCoinSize : 48,
 };
+var yoshiCreated = false;
 
 /**
  * Sets the state's basic configurations.
@@ -90,6 +91,8 @@ forestStage.prototype.create = function() {
 	game.writer = new Writer(window.game);
 	game.writer.load();
 
+	game.yoshi = new collectableItems(window.game, 900, 110, 'yoshi');
+
 	//creates portal
 	game.portals.push(new Portal(window.game, 1385, 10, 'forestRun'));
 }
@@ -115,8 +118,13 @@ forestStage.prototype.update = function(){
 	this.numberApplesText.text = this.numberApples;
 	//checks if all apples were collected
 	if(this.numberApples == 3){
-		console.log(this.numberApples)
-		this.yoshi();
+		console.log(this.numberApples);
+		game.yoshi.load();
+		this.numberApples = 0;
+		yoshiCreated = true;
+	}
+	if (yoshiCreated) {
+		game.yoshi.update();
 	}
 }
 
