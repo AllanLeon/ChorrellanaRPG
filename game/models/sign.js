@@ -1,8 +1,11 @@
-function Sign(game){
+function Sign(game, x, y, stage){
 	this.game = game;
 	this.sprite = null;
 	this.colliderSprite = true;
-	this.message = ["Press X to speed up the dialogue", "I hope you are not doing it right now,\nyou may be losing some important information", "Wait... Are you really reading this?"];
+	this.message = null;
+	this.stage = stage;
+	this.positionX = x;
+	this.positionY = y;
 }
 //Declaration of variables
 	var carteles;
@@ -16,7 +19,13 @@ Sign.prototype.render = function(){
 
 	this.cartel = this.carteles.create(300, 600, 'poster');
 	this.cartel.body.immovable = true;
-}
+
+	if(this.stage=='forestRun'){
+		this.message = ["Collect all the apples for Yoshi"];
+	}
+	else{
+	this.message = ["Press X to speed up the dialogue", "I hope you are not doing it right now,\nyou may be losing some important information", "Wait... Are you really reading this?"];
+}}
 
 Sign.prototype.load = function(){
 	this.render();

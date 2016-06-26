@@ -24,6 +24,7 @@ game.state.add('LvlCesped', Game.States.LvlCesped); //Squirtle
 game.state.add('Roberto', Game.States.Roberto); //Shapy
 game.state.add('RobertoSecond', Game.States.RobertoSecond); //Shapy
 game.state.add('forestStage', Game.States.forestStage); //Baleh
+game.state.add('forestRun', Game.States.forestRun); //Baleh
 game.state.add('MiniDragonTestStage',Game.States.MiniDragonTestStage);//ioto
 game.state.add('BlueDragonStage',Game.States.BlueDragonStage); //ioto
 game.state.add('OrangeDragonStage',Game.States.OrangeDragonStage); //ioto

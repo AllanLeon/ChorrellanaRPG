@@ -21,7 +21,7 @@ States.Play = {
 		game.npc.load();
 
 		// Creates and loads a sign
-		game.sign = new Sign(window.game);
+		game.sign = new Sign(window.game, 300, 600,  'play');
 		game.sign.load();
 
 		// Creates and loads a Player object.

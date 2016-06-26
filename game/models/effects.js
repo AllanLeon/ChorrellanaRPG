@@ -7,9 +7,13 @@ function Effects(game, music, particle){
     {
         this.position = -500;
     }
+    else if (this.particle == 'bubble') 
+    {
+        this.position = 100;
+    }
     else
     {
-        this.position = game.world.centerX
+        this.position = game.world.centerX;
     }
 }
 
@@ -30,6 +34,10 @@ Effects.prototype.create = function() {
     if(this.particle=='sand')
     {
         emitter.angle = -80;
+    }
+    else if (this.particle=='bubble') 
+    {
+        emitter.angle = -120;
     }
     else
     {
