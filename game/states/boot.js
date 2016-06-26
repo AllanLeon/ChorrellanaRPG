@@ -1,4 +1,4 @@
-	var States = {};
+var States = {};
 
 // Loads all the necesasary assets before starting the game.
 States.Boot = {
@@ -36,9 +36,7 @@ States.Boot = {
 
 		//House Stage background
 		this.game.load.image('houseStage', 'assets/images/backgrounds/homeStage.png');
-		this.game.load.image('basement', 'assets/images/backgrounds/basement.png');
 		this.game.load.image('basementTest', 'assets/images/backgrounds/basementTest.png');
-		//this.game.load.image('basement', 'assets/images/backgrounds/basement.png');
 		
 		this.game.load.audio('bossanova','assets/audio/bossanova.mp3');
 		this.game.load.audio('awesome','assets/audio/onepunch.mp3');
@@ -79,19 +77,16 @@ States.Boot = {
 		this.game.load.spritesheet('eagle', 'assets/images/characters/eagsp.png', 163, 100);
 		this.game.load.image('cloudMinimap','assets/images/backgrounds/cloudMinimap.jpg');
 
-
-		for (var i=0; i<2; i++){
+		for (var i=0; i<2; i++) {
 			var iStr = i.toString();
 			//this.game.load.image('bullet'.concat(iStr),'assets/images/weapons/bullet/bullet'.concat(iStr.concat(".png")));
 			this.game.load.image('weapon'.concat(iStr),'assets/images/weapons/weapon'.concat(iStr.concat(".png")));	
 		}
 
-		for (var i = 1; i <= 5; i++)
-		{
+		for (var i = 1; i <= 5; i++) {
 		    this.game.load.image('bullet' + i, 'assets/images/weapons/bullet/bullet' + i + '.png');
 		    //this.game.load.image('weapon' + i, 'assets/images/weapons/weapon' + i + ".png");	
 		}
-
 
 		this.game.load.image('bomb', 'assets/images/weapons/bomb.png');
 
@@ -129,13 +124,10 @@ States.Boot = {
 		this.game.load.image('jardinarena', 'assets/images/backgrounds/jardinarena.png');
 		this.game.load.image('nochearena', 'assets/images/backgrounds/nochearena.jpg');
 
-
 		this.game.load.audio('alas','assets/audio/alas.wav');
 		this.game.load.audio('nogamenolife','assets/audio/nogamenolife.mp3');
 		this.game.load.audio('requiemforadream','assets/audio/requiemforadream.mp3');
 		this.game.load.audio('tone','assets/audio/yoshi_tone.mp3');
-
-
 	},
 	// Starts the next state.
 	create: function(){
